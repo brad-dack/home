@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Four Foxes Consulting - AML Programs & Reviews for Real Estate</title>
+<meta name="description" content="Four Foxes Consulting helps Australian real estate agencies design AML/CTF programs, run health checks, support AUSTRAC reporting, and implement practical verification tools like Verify.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Four Foxes Consulting - AML for Real Estate">
+<meta property="og:description" content="Practical AML programs, health checks, AUSTRAC reporting support, and verification tools built for small to medium real estate agencies.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fourfoxes.com.au">
+<link rel="canonical" href="https://fourfoxes.com.au">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0f1f38;
+    --navy-mid: #1a3050;
+    --teal: #1a7f6e;
+    --teal-light: #e8f5f2;
+    --teal-mid: #c2e8e0;
+    --sand: #f5f2ec;
+    --text: #1a1a2e;
+    --text-mid: #4a5568;
+    --text-light: #718096;
+    --white: #ffffff;
+    --border: #e2ddd6;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--navy);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-logo span { color: var(--teal); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    color: var(--text-mid);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-link:hover { color: var(--navy); }
+
+  .nav-cta {
+    background: var(--navy);
+    color: var(--white);
+    padding: 10px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-cta:hover { background: var(--navy-mid); }
+
+  section { padding: 100px 2rem; }
+  .container { max-width: 720px; margin: 0 auto; }
+
+  .section-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--teal);
+    margin-bottom: 1.5rem;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+
+  h1, h2 {
+    font-family: 'DM Serif Display', serif;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+  }
+
+  h1 {
+    font-size: clamp(36px, 6vw, 54px);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    max-width: 620px;
+  }
+
+  h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-intro {
+    font-size: 17px;
+    color: var(--text-mid);
+    font-weight: 300;
+    max-width: 580px;
+    margin-bottom: 3rem;
+    line-height: 1.75;
+  }
+
+  /* HERO (dot grid, same as Verify) */
+  #hero {
+    padding-top: 148px;
+    padding-bottom: 96px;
+    background-color: var(--sand);
+    background-image: radial-gradient(circle, #c8c4bc 1px, transparent 1px);
+    background-size: 24px 24px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  #hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(245,242,236,0.4) 0%, rgba(245,242,236,0.85) 60%, rgba(245,242,236,1) 100%);
+    pointer-events: none;
+  }
+
+  #hero .container { position: relative; z-index: 1; }
+
+  .deadline-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal-light);
+    border: 1px solid var(--teal-mid);
+    color: var(--teal);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+  }
+
+  .deadline-badge::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    max-width: 540px;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 2rem;
+  }
+
+  .btn-primary {
+    background: var(--navy);
+    color: var(--white);
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: var(--white);
+    color: var(--text-mid);
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid var(--border);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-secondary:hover {
+    background: var(--teal-light);
+    color: var(--navy);
+  }
+
+  .hero-note {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 0.75rem;
+  }
+
+  /* CALLOUT STRIP */
+  .callout-strip {
+    background: var(--navy);
+    padding: 1.25rem 2rem;
+    text-align: center;
+  }
+
+  .callout-strip p {
+    color: rgba(255,255,255,0.8);
+    font-size: 15px;
+    font-weight: 300;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  .callout-strip p strong {
+    color: var(--teal-mid);
+    font-weight: 500;
+  }
+
+  /* SERVICES (diagonal lines, echoing Verify problem section) */
+  #services {
+    background-color: var(--white);
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      rgba(226,221,214,0.3) 20px,
+      rgba(226,221,214,0.3) 21px
+    );
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 1.75rem 1.75rem 1.5rem;
+  }
+
+  .service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  .service-price {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+
+  .service-tagline {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+  }
+
+  .service-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+    gap: 1.25rem;
+  }
+
+  .service-col-title {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .service-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 14px;
+    color: var(--text-mid);
+  }
+
+  .service-list li::before {
+    content: '• ';
+    color: var(--teal);
+    margin-right: 2px;
+  }
+
+  .service-footnote {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 0.75rem;
+  }
+
+  /* VERIFY SECTION (teal top border, ties to product site) */
+  #verify {
+    background: var(--white);
+    border-top: 3px solid var(--teal);
+  }
+
+  .verify-card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem 1.75rem 1.5rem;
+    background: var(--sand);
+    margin-top: 1.75rem;
+  }
+
+  .verify-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+
+  .verify-pill span {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--teal);
+  }
+
+  .verify-card p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .verify-meta {
+    font-size: 13px;
+    color: var(--text-light);
+  }
+
+  .verify-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .btn-outline {
+    border-radius: 8px;
+    padding: 10px 20px;
+    border: 1px solid var(--navy);
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover {
+    background: var(--navy);
+    color: var(--white);
+  }
+
+  /* APPROACH / ABOUT (navy grid, like Verify about) */
+  #approach {
+    background-color: var(--navy);
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  #approach .eyebrow { color: var(--teal-mid); }
+  #approach h2 { color: var(--white); }
+  #approach .section-divider { background: var(--teal-mid); }
+
+  .approach-card {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 2.5rem;
+    background: rgba(255,255,255,0.05);
+    margin-top: 2rem;
+  }
+
+  .approach-card p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .approach-card p + p { margin-top: 1rem; }
+
+  .approach-sig {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .approach-sig strong {
+    display: block;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+
+  /* CONTACT (same pattern as Verify) */
+  #contact {
+    background-color: var(--sand);
+    background-image: radial-gradient(circle, #c8c4bc 1px, transparent 1px);
+    background-size: 24px 24px;
+    position: relative;
+  }
+
+  #contact::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(245,242,236,0.75);
+    pointer-events: none;
+  }
+
+  #contact .container { position: relative; z-index: 1; }
+
+  .contact-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 2px 16px rgba(15,31,56,0.07);
+  }
+
+  .contact-sub {
+    font-size: 16px;
+    color: var(--text-mid);
+    font-weight: 300;
+    line-height: 1.75;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--sand);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    min-height: 44px;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: var(--teal);
+    background: var(--white);
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 110px;
+    line-height: 1.6;
+  }
+
+  .btn-contact {
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 16px 28px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    width: 100%;
+    margin-top: 6px;
+    min-height: 52px;
+  }
+
+  .btn-contact:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
+  .form-reassurance {
+    font-size: 13px;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  .success-msg {
+    display: none;
+    background: var(--teal-light);
+    border: 1px solid var(--teal-mid);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    color: var(--teal);
+    font-size: 15px;
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+
+  /* FOOTER (same as Verify) */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2.5rem 2rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 720px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+  }
+
+  .footer-logo span { color: var(--teal-mid); }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-links a:hover { color: rgba(255,255,255,0.75); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    margin-top: 1.5rem;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * { animation: fadeUp 0.6s ease both; }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    section { padding: 72px 1.25rem; }
+    #hero { padding-top: 112px; }
+    .service-columns { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+    .contact-card { padding: 2rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Four Foxes <span>Consulting</span></a>
+  <div class="nav-links">
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#verify" class="nav-link">Verify</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="deadline-badge">AML laws take effect 1 July 2026</div>
+      <h1>Practical AML programs for real estate. Right-sized, not overbuilt.</h1>
+      <p class="hero-sub">
+        Four Foxes Consulting helps small and medium agencies get AML ready ahead of July 1 – from drafting your program to health checks, AUSTRAC reporting and simple verification tools.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Book a quick chat</a>
+        <a href="#services" class="btn-secondary">View services & pricing</a>
+      </div>
+      <p class="hero-note">Independent, technology-agnostic support with on‑shore, personalised service.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CALLOUT STRIP -->
+<div class="callout-strip">
+  <p>
+    Most AML platforms are built for big groups and long contracts – we focus on <strong>fit‑for‑purpose programs, light processes and tools that small agencies will actually use.</strong>
+  </p>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="eyebrow">Services</div>
+    <div class="section-divider"></div>
+    <h2>From first program draft to independent review.</h2>
+    <p class="section-intro">
+      Start where you are. Whether you need a first AML/CTF program, a bi‑annual health check, help with AUSTRAC reporting, or a full independent review, we can right‑size the work to your agency.
+    </p>
+
+    <div class="service-grid">
+
+      <!-- AML Program Setup -->
+      <article class="service-card">
+        <div class="service-header">
+          <div class="service-title">AML/CTF Program Setup (Parts A & B)</div>
+          <div class="service-price">From $700</div>
+        </div>
+        <p class="service-tagline">Designing a practical, documented AML program tailored to how your agency actually operates.</p>
+        <div class="service-columns">
+          <div>
+            <div class="service-col-title">Part A – Framework</div>
+            <ul class="service-list">
+              <li>Review of regulatory guidance and AML risk considerations.</li>
+              <li>Assessment of your business model and operational structure.</li>
+              <li>Identification of key risks across customers, transactions and geography.</li>
+              <li>Development of a documented AML risk assessment and risk appetite.</li>
+              <li>Drafting or co‑designing your AML Program Part A (policies, procedures, controls).</li>
+            </ul>
+          </div>
+          <div>
+            <div class="service-col-title">Part B – CDD</div>
+            <ul class="service-list">
+              <li>Design of practical customer identification and verification processes.</li>
+              <li>CDD procedures that work with your existing workflows.</li>
+              <li>Guidance on verification options: manual, pay‑per‑use tools, low‑cost services, or full platforms.</li>
+              <li>Documentation of your AML Program Part B framework.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="service-footnote">Delivered collaboratively so your program is usable day‑to‑day, not a binder that sits on a shelf.</p>
+      </article>
+
+      <!-- Health Check -->
+      <article class="service-card">
+        <div class="service-header">
+          <div class="service-title">Health Check (recommended bi‑annual)</div>
+          <div class="service-price">$999 + $10 / AML txn</div>
+        </div>
+        <p class="service-tagline">A light‑touch review to confirm your program is in place and working as intended.</p>
+        <div class="service-columns">
+          <div>
+            <div class="service-col-title">What we review</div>
+            <ul class="service-list">
+              <li>Existing AML documentation and program content.</li>
+              <li>Evidence of training and awareness across your team.</li>
+              <li>Sampling of onboarding and verification files (15% sample).</li>
+            </ul>
+          </div>
+          <div>
+            <div class="service-col-title">What you receive</div>
+            <ul class="service-list">
+              <li>Operational testing of key processes.</li>
+              <li>Practical recommendations prioritised by risk and effort.</li>
+              <li>A concise report you can table with your principals or governing body.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="service-footnote">Designed to be repeated every 6–12 months to keep your program on track.</p>
+      </article>
+
+      <!-- AUSTRAC Annual Report Support -->
+      <article class="service-card">
+        <div class="service-header">
+          <div class="service-title">AUSTRAC Annual Report Support</div>
+          <div class="service-price">From $499*</div>
+        </div>
+        <p class="service-tagline">Support to prepare and lodge your Annual Compliance Report and governing body report on time.</p>
+        <div class="service-columns">
+          <div>
+            <div class="service-col-title">How we help</div>
+            <ul class="service-list">
+              <li>Pre‑report planning, key dates and AUSTRAC Online setup checks.</li>
+              <li>Review of preview questions and information requirements.</li>
+              <li>Collation of SMRs, TTRs, CBMs, internal escalations and training records.</li>
+              <li>Testing outcomes across onboarding, verification and reporting.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="service-col-title">Deliverables</div>
+            <ul class="service-list">
+              <li>Drafted responses for the Annual Compliance Report (ACR).</li>
+              <li>Signed Annual Report to the Governing Body (Sections 1–12).</li>
+              <li>Narrative on effectiveness, deficiencies and recommendations.</li>
+              <li>Record‑keeping pack stored in line with the 7‑year requirement.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="service-footnote">*Discounted when bundled with a Health Check for the relevant period.</p>
+      </article>
+
+      <!-- Independent Review -->
+      <article class="service-card">
+        <div class="service-header">
+          <div class="service-title">Independent Review</div>
+          <div class="service-price">$1,799 + $30 / AML txn</div>
+        </div>
+        <p class="service-tagline">A deeper, independent review of your AML program, operations and evidence.</p>
+        <div class="service-columns">
+          <div>
+            <div class="service-col-title">Scope</div>
+            <ul class="service-list">
+              <li>Review of AML/CTF Program Parts A & B.</li>
+              <li>Training compliance and competency checks.</li>
+              <li>Operational testing of key processes (30% sample).</li>
+            </ul>
+          </div>
+          <div>
+            <div class="service-col-title">Outcome</div>
+            <ul class="service-list">
+              <li>Detailed findings and remediation recommendations.</li>
+              <li>Report suitable for your governing body and AUSTRAC enquiries.</li>
+              <li>Optional follow‑up support to implement changes.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="service-footnote">Best suited where an independent perspective or higher level of assurance is required.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- VERIFY SECTION -->
+<section id="verify">
+  <div class="container">
+    <div class="eyebrow">Verify by Four Foxes</div>
+    <div class="section-divider"></div>
+    <h2>Verification without the platform lock‑in.</h2>
+    <p class="section-intro">
+      Alongside program work, we offer Verify – a simple, pay‑per‑check KYC/KYB tool built specifically for small and boutique real estate agencies that don’t want full‑blown enterprise software.
+    </p>
+
+    <div class="verify-card">
+      <div class="verify-pill"><span></span> Product spotlight</div>
+      <p>
+        Verify lets you send branded verification links to your clients, capture identification details, run KYC/PEP/sanctions checks and receive a complete audit trail – all billed per check, with no subscriptions or lock‑in contracts.
+      </p>
+      <p class="verify-meta">
+        Use it as your primary verification tool, or alongside existing manual processes as you build confidence in digital checks.
+      </p>
+      <div class="verify-actions">
+        <a href="https://verify.fourfoxes.com.au" class="btn-outline">Visit Verify site</a>
+        <a href="#contact" class="btn-secondary">Ask how Verify fits your program</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH / ABOUT -->
+<section id="approach">
+  <div class="container">
+    <div class="eyebrow">Approach</div>
+    <div class="section-divider"></div>
+    <h2>Technology‑agnostic, relationship‑first support.</h2>
+    <div class="approach-card">
+      <p>
+        Four Foxes Consulting started after seeing smaller agencies pushed toward expensive, complex compliance platforms that did not match their size, risk or budget. Instead of forcing one system, we focus on combining the right tools with practical processes that people will actually follow.
+      </p>
+      <p>
+        My background includes helping build operations and processes in an ASX‑listed business, and I bring that structure to independent agencies without the enterprise overhead. The aim is simple: meet AUSTRAC requirements in a way that fits how you work today, while building a foundation for ongoing reviews, audits and reporting.
+      </p>
+      <div class="approach-sig">
+        <strong>Brad</strong>
+        Founder, Four Foxes Consulting
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-card">
+      <div class="eyebrow">Get in touch</div>
+      <div class="section-divider"></div>
+      <h2>Still working through AML for July 1?</h2>
+      <p class="contact-sub">
+        If you would like a practical, low‑friction way to get ready – or a second set of eyes on what you have – send a quick note below. We will reply personally and let you know what makes sense for your agency size and risk.
+      </p>
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mvzvzreb" method="POST">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Email address" required>
+        </div>
+        <input type="text" name="agency" placeholder="Agency name (optional)">
+        <textarea name="message" placeholder="What are you most concerned about? (optional)"></textarea>
+        <button type="submit" class="btn-contact">Send message</button>
+        <p class="form-reassurance">No spam. No pushy sales calls. Just a short, honest conversation about what you need.</p>
+      </form>
+      <div class="success-msg" id="successMsg">
+        Thanks for reaching out – we will be in touch shortly with next steps and options tailored to your agency.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">Four Foxes <span>Consulting</span></a>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#verify">Verify</a>
+      <a href="#contact">Contact</a>
+      <a href="mailto:aml@fourfoxes.com.au">Email us</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 Four Foxes Consulting. ABN XX XXX XXX XXX · fourfoxes.com.au</p>
+</footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function() {
+    const form = this;
+    setTimeout(function() {
+      form.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    }, 100);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
