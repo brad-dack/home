@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -18,675 +17,674 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-–navy: #0f1f38;
-–navy-mid: #1a3050;
-–teal: #1a7f6e;
-–teal-light: #e8f5f2;
-–teal-mid: #c2e8e0;
-–sand: #f5f2ec;
-–text: #1a1a2e;
-–text-mid: #4a5568;
-–text-light: #718096;
-–white: #ffffff;
-–border: #e2ddd6;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-font-family: ‘DM Sans’, sans-serif;
-font-weight: 400;
-color: var(–text);
-background: var(–white);
-line-height: 1.7;
-font-size: 16px;
-}
-
-nav {
-position: fixed;
-top: 0; left: 0; right: 0;
-z-index: 100;
-background: rgba(255,255,255,0.95);
-backdrop-filter: blur(8px);
-border-bottom: 1px solid var(–border);
-padding: 0 2rem;
-height: 64px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-}
-
-.nav-logo {
-font-family: ‘DM Serif Display’, serif;
-font-size: 18px;
-color: var(–navy);
-text-decoration: none;
-letter-spacing: -0.01em;
-}
-
-.nav-logo span { color: var(–teal); }
-
-.nav-links {
-display: flex;
-align-items: center;
-gap: 1.5rem;
-}
-
-.nav-link {
-color: var(–text-mid);
-text-decoration: none;
-font-size: 14px;
-font-weight: 400;
-transition: color 0.2s;
-min-height: 44px;
-display: flex;
-align-items: center;
-}
-
-.nav-link:hover { color: var(–navy); }
-
-.nav-cta {
-background: var(–navy);
-color: var(–white);
-padding: 10px 22px;
-border-radius: 6px;
-text-decoration: none;
-font-size: 14px;
-font-weight: 500;
-transition: background 0.2s;
-min-height: 44px;
-display: flex;
-align-items: center;
-}
-
-.nav-cta:hover { background: var(–navy-mid); }
-
-section { padding: 100px 2rem; }
-.container { max-width: 720px; margin: 0 auto; }
-
-.section-divider {
-width: 40px;
-height: 2px;
-background: var(–teal);
-margin-bottom: 1.5rem;
-}
-
-.eyebrow {
-font-size: 11px;
-font-weight: 500;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: var(–teal);
-margin-bottom: 1rem;
-}
-
-h1, h2 {
-font-family: ‘DM Serif Display’, serif;
-letter-spacing: -0.02em;
-color: var(–navy);
-}
-
-h1 {
-font-size: clamp(36px, 6vw, 54px);
-line-height: 1.1;
-margin-bottom: 1.5rem;
-max-width: 620px;
-}
-
-h2 {
-font-size: clamp(28px, 4vw, 40px);
-line-height: 1.2;
-margin-bottom: 1.25rem;
-}
-
-.section-intro {
-font-size: 17px;
-color: var(–text-mid);
-font-weight: 300;
-max-width: 580px;
-margin-bottom: 3rem;
-line-height: 1.75;
-}
-
-#hero {
-padding-top: 148px;
-padding-bottom: 96px;
-background-color: var(–sand);
-background-image: radial-gradient(circle, #c8c4bc 1px, transparent 1px);
-background-size: 24px 24px;
-border-bottom: 1px solid var(–border);
-position: relative;
-}
-
-#hero::after {
-content: ‘’;
-position: absolute;
-inset: 0;
-background: linear-gradient(to bottom, rgba(245,242,236,0.4) 0%, rgba(245,242,236,0.85) 60%, rgba(245,242,236,1) 100%);
-pointer-events: none;
-}
-
-#hero .container { position: relative; z-index: 1; }
-
-.deadline-badge {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-background: var(–teal-light);
-border: 1px solid var(–teal-mid);
-color: var(–teal);
-font-size: 13px;
-font-weight: 500;
-padding: 6px 14px;
-border-radius: 100px;
-margin-bottom: 2rem;
-}
-
-.deadline-badge::before {
-content: ‘’;
-width: 7px;
-height: 7px;
-border-radius: 50%;
-background: var(–teal);
-flex-shrink: 0;
-animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-0%, 100% { opacity: 1; transform: scale(1); }
-50% { opacity: 0.5; transform: scale(0.8); }
-}
-
-.hero-sub {
-font-size: 18px;
-color: var(–text-mid);
-line-height: 1.75;
-max-width: 540px;
-font-weight: 300;
-}
-
-.hero-actions {
-display: flex;
-flex-wrap: wrap;
-gap: 12px;
-margin-top: 2rem;
-}
-
-.btn-primary {
-background: var(–navy);
-color: var(–white);
-padding: 12px 24px;
-border-radius: 8px;
-text-decoration: none;
-font-size: 15px;
-font-weight: 500;
-min-height: 44px;
-display: inline-flex;
-align-items: center;
-justify-content: center;
-transition: background 0.2s, transform 0.15s;
-}
-
-.btn-primary:hover { background: var(–navy-mid); transform: translateY(-1px); }
-
-.btn-secondary {
-background: var(–white);
-color: var(–text-mid);
-padding: 12px 20px;
-border-radius: 8px;
-text-decoration: none;
-font-size: 14px;
-font-weight: 400;
-border: 1px solid var(–border);
-min-height: 44px;
-display: inline-flex;
-align-items: center;
-justify-content: center;
-transition: background 0.2s, color 0.2s;
-}
-
-.btn-secondary:hover { background: var(–teal-light); color: var(–navy); }
-
-.hero-note {
-font-size: 13px;
-color: var(–text-light);
-margin-top: 0.75rem;
-}
-
-.callout-strip {
-background: var(–navy);
-padding: 1.25rem 2rem;
-text-align: center;
-}
-
-.callout-strip p {
-color: rgba(255,255,255,0.8);
-font-size: 15px;
-font-weight: 300;
-max-width: 720px;
-margin: 0 auto;
-line-height: 1.65;
-}
-
-.callout-strip p strong { color: var(–teal-mid); font-weight: 500; }
-
-#services {
-background-color: var(–white);
-background-image: repeating-linear-gradient(
--45deg,
-transparent,
-transparent 20px,
-rgba(226,221,214,0.3) 20px,
-rgba(226,221,214,0.3) 21px
-);
-}
-
-.service-grid {
-display: grid;
-grid-template-columns: 1fr;
-gap: 1.25rem;
-}
-
-.service-card {
-background: var(–white);
-border-radius: 14px;
-border: 1px solid var(–border);
-padding: 1.75rem 1.75rem 1.5rem;
-}
-
-.service-header {
-display: flex;
-justify-content: space-between;
-align-items: baseline;
-gap: 1rem;
-margin-bottom: 0.75rem;
-}
-
-.service-title {
-font-size: 16px;
-font-weight: 500;
-color: var(–navy);
-}
-
-.service-price {
-font-family: ‘DM Serif Display’, serif;
-font-size: 20px;
-color: var(–navy);
-white-space: nowrap;
-}
-
-.service-tagline {
-font-size: 14px;
-color: var(–text-light);
-margin-bottom: 1rem;
-}
-
-.service-columns {
-display: grid;
-grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
-gap: 1.25rem;
-}
-
-.service-col-title {
-font-size: 13px;
-font-weight: 500;
-text-transform: uppercase;
-letter-spacing: 0.08em;
-color: var(–text-light);
-margin-bottom: 0.5rem;
-}
-
-.service-list {
-list-style: none;
-display: flex;
-flex-direction: column;
-gap: 4px;
-font-size: 14px;
-color: var(–text-mid);
-}
-
-.service-list li::before { content: ’• ’; color: var(–teal); margin-right: 2px; }
-
-.service-footnote {
-font-size: 13px;
-color: var(–text-light);
-margin-top: 0.75rem;
-}
-
-/* HOW IT WORKS LINK BANNER */
-.how-it-works-banner {
-margin-top: 2.5rem;
-background: var(–teal-light);
-border: 1px solid var(–teal-mid);
-border-radius: 12px;
-padding: 1.25rem 1.5rem;
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 1rem;
-flex-wrap: wrap;
-}
-
-.how-it-works-banner p {
-font-size: 15px;
-color: var(–teal);
-font-weight: 300;
-line-height: 1.5;
-}
-
-.how-it-works-banner p strong {
-font-weight: 500;
-display: block;
-margin-bottom: 2px;
-}
-
-.btn-teal {
-background: var(–teal);
-color: var(–white);
-padding: 10px 20px;
-border-radius: 8px;
-text-decoration: none;
-font-size: 14px;
-font-weight: 500;
-white-space: nowrap;
-min-height: 44px;
-display: inline-flex;
-align-items: center;
-transition: background 0.2s;
-flex-shrink: 0;
-}
-
-.btn-teal:hover { background: #158a77; }
-
-#verify {
-background: var(–white);
-border-top: 3px solid var(–teal);
-}
-
-.verify-card {
-border: 1px solid var(–border);
-border-radius: 14px;
-padding: 1.75rem 1.75rem 1.5rem;
-background: var(–sand);
-margin-top: 1.75rem;
-}
-
-.verify-pill {
-display: inline-flex;
-align-items: center;
-gap: 6px;
-padding: 4px 10px;
-border-radius: 999px;
-background: var(–navy);
-color: var(–white);
-font-size: 11px;
-text-transform: uppercase;
-letter-spacing: 0.08em;
-margin-bottom: 0.75rem;
-}
-
-.verify-pill span {
-width: 6px;
-height: 6px;
-border-radius: 999px;
-background: var(–teal);
-}
-
-.verify-card p {
-font-size: 14px;
-color: var(–text-mid);
-line-height: 1.7;
-margin-bottom: 1rem;
-}
-
-.verify-meta { font-size: 13px; color: var(–text-light); }
-
-.verify-actions {
-display: flex;
-flex-wrap: wrap;
-gap: 10px;
-margin-top: 1rem;
-}
-
-.btn-outline {
-border-radius: 8px;
-padding: 10px 20px;
-border: 1px solid var(–navy);
-color: var(–navy);
-text-decoration: none;
-font-size: 14px;
-font-weight: 500;
-background: transparent;
-display: inline-flex;
-align-items: center;
-justify-content: center;
-min-height: 44px;
-transition: background 0.2s, color 0.2s;
-}
-
-.btn-outline:hover { background: var(–navy); color: var(–white); }
-
-#approach {
-background-color: var(–navy);
-background-image:
-linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-background-size: 40px 40px;
-}
-
-#approach .eyebrow { color: var(–teal-mid); }
-#approach h2 { color: var(–white); }
-#approach .section-divider { background: var(–teal-mid); }
-
-.approach-card {
-border: 1px solid rgba(255,255,255,0.1);
-border-radius: 14px;
-padding: 2.5rem;
-background: rgba(255,255,255,0.05);
-margin-top: 2rem;
-}
-
-.approach-card p {
-font-size: 16px;
-color: rgba(255,255,255,0.75);
-line-height: 1.85;
-font-weight: 300;
-}
-
-.approach-card p + p { margin-top: 1rem; }
-
-.approach-sig {
-margin-top: 1.5rem;
-padding-top: 1.5rem;
-border-top: 1px solid rgba(255,255,255,0.1);
-font-size: 14px;
-color: rgba(255,255,255,0.4);
-}
-
-.approach-sig strong {
-display: block;
-color: var(–white);
-font-weight: 500;
-font-size: 15px;
-margin-bottom: 2px;
-}
-
-#contact {
-background-color: var(–sand);
-background-image: radial-gradient(circle, #c8c4bc 1px, transparent 1px);
-background-size: 24px 24px;
-position: relative;
-}
-
-#contact::after {
-content: ‘’;
-position: absolute;
-inset: 0;
-background: rgba(245,242,236,0.75);
-pointer-events: none;
-}
-
-#contact .container { position: relative; z-index: 1; }
-
-.contact-card {
-background: var(–white);
-border: 1px solid var(–border);
-border-radius: 16px;
-padding: 3rem;
-box-shadow: 0 2px 16px rgba(15,31,56,0.07);
-}
-
-.contact-sub {
-font-size: 16px;
-color: var(–text-mid);
-font-weight: 300;
-line-height: 1.75;
-margin-top: 1rem;
-margin-bottom: 2.5rem;
-}
-
-.contact-form {
-display: flex;
-flex-direction: column;
-gap: 14px;
-}
-
-.form-row {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 14px;
-}
-
-.contact-form input,
-.contact-form textarea {
-width: 100%;
-padding: 14px 16px;
-border-radius: 8px;
-border: 1px solid var(–border);
-background: var(–sand);
-color: var(–text);
-font-family: ‘DM Sans’, sans-serif;
-font-size: 15px;
-outline: none;
-transition: border-color 0.2s, background 0.2s;
-min-height: 44px;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus { border-color: var(–teal); background: var(–white); }
-
-.contact-form textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
-
-.btn-contact {
-background: var(–navy);
-color: var(–white);
-border: none;
-padding: 16px 28px;
-border-radius: 8px;
-font-family: ‘DM Sans’, sans-serif;
-font-size: 16px;
-font-weight: 500;
-cursor: pointer;
-transition: background 0.2s, transform 0.15s;
-width: 100%;
-margin-top: 6px;
-min-height: 52px;
-}
-
-.btn-contact:hover { background: var(–navy-mid); transform: translateY(-1px); }
-
-.form-reassurance {
-font-size: 13px;
-color: var(–text-light);
-text-align: center;
-margin-top: 4px;
-}
-
-.success-msg {
-display: none;
-background: var(–teal-light);
-border: 1px solid var(–teal-mid);
-border-radius: 10px;
-padding: 1.25rem 1.5rem;
-color: var(–teal);
-font-size: 15px;
-margin-top: 1rem;
-line-height: 1.6;
-}
-
-footer {
-background: var(–navy);
-border-top: 1px solid rgba(255,255,255,0.06);
-padding: 2.5rem 2rem;
-}
-
-.footer-inner {
-display: flex;
-align-items: center;
-justify-content: space-between;
-max-width: 720px;
-margin: 0 auto;
-flex-wrap: wrap;
-gap: 1rem;
-}
-
-.footer-logo {
-font-family: ‘DM Serif Display’, serif;
-font-size: 16px;
-color: rgba(255,255,255,0.6);
-text-decoration: none;
-}
-
-.footer-logo span { color: var(–teal-mid); }
-
-.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-
-.footer-links a {
-font-size: 13px;
-color: rgba(255,255,255,0.4);
-text-decoration: none;
-transition: color 0.2s;
-min-height: 44px;
-display: flex;
-align-items: center;
-}
-
-.footer-links a:hover { color: rgba(255,255,255,0.75); }
-
-.footer-copy {
-font-size: 12px;
-color: rgba(255,255,255,0.2);
-margin-top: 1.5rem;
-max-width: 720px;
-margin-left: auto;
-margin-right: auto;
-text-align: center;
-}
-
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-.hero-content > * { animation: fadeUp 0.6s ease both; }
-.hero-content > *:nth-child(1) { animation-delay: 0.1s; }
-.hero-content > *:nth-child(2) { animation-delay: 0.2s; }
-.hero-content > *:nth-child(3) { animation-delay: 0.3s; }
-.hero-content > *:nth-child(4) { animation-delay: 0.4s; }
-
-@media (max-width: 640px) {
-nav { padding: 0 1.25rem; }
-section { padding: 72px 1.25rem; }
-#hero { padding-top: 112px; }
-.service-columns { grid-template-columns: 1fr; }
-.how-it-works-banner { flex-direction: column; align-items: flex-start; }
-.footer-inner { flex-direction: column; text-align: center; }
-.footer-links { justify-content: center; }
-.contact-card { padding: 2rem 1.25rem; }
-}
+  :root {
+    --navy: #0f1f38;
+    --navy-mid: #1a3050;
+    --teal: #1a7f6e;
+    --teal-light: #e8f5f2;
+    --teal-mid: #c2e8e0;
+    --sand: #f5f2ec;
+    --text: #1a1a2e;
+    --text-mid: #4a5568;
+    --text-light: #718096;
+    --white: #ffffff;
+    --border: #e2ddd6;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--navy);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-logo span { color: var(--teal); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    color: var(--text-mid);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-link:hover { color: var(--navy); }
+
+  .nav-cta {
+    background: var(--navy);
+    color: var(--white);
+    padding: 10px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-cta:hover { background: var(--navy-mid); }
+
+  section { padding: 100px 2rem; }
+  .container { max-width: 720px; margin: 0 auto; }
+
+  .section-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--teal);
+    margin-bottom: 1.5rem;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+
+  h1, h2 {
+    font-family: 'DM Serif Display', serif;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+  }
+
+  h1 {
+    font-size: clamp(36px, 6vw, 54px);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    max-width: 620px;
+  }
+
+  h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-intro {
+    font-size: 17px;
+    color: var(--text-mid);
+    font-weight: 300;
+    max-width: 580px;
+    margin-bottom: 3rem;
+    line-height: 1.75;
+  }
+
+  #hero {
+    padding-top: 148px;
+    padding-bottom: 96px;
+    background-color: var(--sand);
+    background-image: radial-gradient(circle, #c8c4bc 1px, transparent 1px);
+    background-size: 24px 24px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  #hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(245,242,236,0.4) 0%, rgba(245,242,236,0.85) 60%, rgba(245,242,236,1) 100%);
+    pointer-events: none;
+  }
+
+  #hero .container { position: relative; z-index: 1; }
+
+  .deadline-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal-light);
+    border: 1px solid var(--teal-mid);
+    color: var(--teal);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+  }
+
+  .deadline-badge::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    max-width: 540px;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 2rem;
+  }
+
+  .btn-primary {
+    background: var(--navy);
+    color: var(--white);
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: var(--white);
+    color: var(--text-mid);
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid var(--border);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-secondary:hover { background: var(--teal-light); color: var(--navy); }
+
+  .hero-note {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 0.75rem;
+  }
+
+  .callout-strip {
+    background: var(--navy);
+    padding: 1.25rem 2rem;
+    text-align: center;
+  }
+
+  .callout-strip p {
+    color: rgba(255,255,255,0.8);
+    font-size: 15px;
+    font-weight: 300;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  .callout-strip p strong { color: var(--teal-mid); font-weight: 500; }
+
+  #services {
+    background-color: var(--white);
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      rgba(226,221,214,0.3) 20px,
+      rgba(226,221,214,0.3) 21px
+    );
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 1.75rem 1.75rem 1.5rem;
+  }
+
+  .service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  .service-price {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+
+  .service-tagline {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+  }
+
+  .service-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+    gap: 1.25rem;
+  }
+
+  .service-col-title {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .service-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 14px;
+    color: var(--text-mid);
+  }
+
+  .service-list li::before { content: '• '; color: var(--teal); margin-right: 2px; }
+
+  .service-footnote {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-top: 0.75rem;
+  }
+
+  /* HOW IT WORKS LINK BANNER */
+  .how-it-works-banner {
+    margin-top: 2.5rem;
+    background: var(--teal-light);
+    border: 1px solid var(--teal-mid);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .how-it-works-banner p {
+    font-size: 15px;
+    color: var(--teal);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .how-it-works-banner p strong {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .btn-teal {
+    background: var(--teal);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+
+  .btn-teal:hover { background: #158a77; }
+
+  #verify {
+    background: var(--white);
+    border-top: 3px solid var(--teal);
+  }
+
+  .verify-card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem 1.75rem 1.5rem;
+    background: var(--sand);
+    margin-top: 1.75rem;
+  }
+
+  .verify-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+
+  .verify-pill span {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--teal);
+  }
+
+  .verify-card p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .verify-meta { font-size: 13px; color: var(--text-light); }
+
+  .verify-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .btn-outline {
+    border-radius: 8px;
+    padding: 10px 20px;
+    border: 1px solid var(--navy);
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+  #approach {
+    background-color: var(--navy);
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  #approach .eyebrow { color: var(--teal-mid); }
+  #approach h2 { color: var(--white); }
+  #approach .section-divider { background: var(--teal-mid); }
+
+  .approach-card {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 2.5rem;
+    background: rgba(255,255,255,0.05);
+    margin-top: 2rem;
+  }
+
+  .approach-card p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .approach-card p + p { margin-top: 1rem; }
+
+  .approach-sig {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .approach-sig strong {
+    display: block;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+
+  #contact {
+    background-color: var(--sand);
+    background-image: radial-gradient(circle, #c8c4bc 1px, transparent 1px);
+    background-size: 24px 24px;
+    position: relative;
+  }
+
+  #contact::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(245,242,236,0.75);
+    pointer-events: none;
+  }
+
+  #contact .container { position: relative; z-index: 1; }
+
+  .contact-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 2px 16px rgba(15,31,56,0.07);
+  }
+
+  .contact-sub {
+    font-size: 16px;
+    color: var(--text-mid);
+    font-weight: 300;
+    line-height: 1.75;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--sand);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    min-height: 44px;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus { border-color: var(--teal); background: var(--white); }
+
+  .contact-form textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+
+  .btn-contact {
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 16px 28px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    width: 100%;
+    margin-top: 6px;
+    min-height: 52px;
+  }
+
+  .btn-contact:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
+  .form-reassurance {
+    font-size: 13px;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  .success-msg {
+    display: none;
+    background: var(--teal-light);
+    border: 1px solid var(--teal-mid);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    color: var(--teal);
+    font-size: 15px;
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2.5rem 2rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 720px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+  }
+
+  .footer-logo span { color: var(--teal-mid); }
+
+  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-links a:hover { color: rgba(255,255,255,0.75); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    margin-top: 1.5rem;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * { animation: fadeUp 0.6s ease both; }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    section { padding: 72px 1.25rem; }
+    #hero { padding-top: 112px; }
+    .service-columns { grid-template-columns: 1fr; }
+    .how-it-works-banner { flex-direction: column; align-items: flex-start; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+    .contact-card { padding: 2rem 1.25rem; }
+  }
 </style>
-
 </head>
 <body>
 
@@ -725,133 +723,131 @@ section { padding: 72px 1.25rem; }
     <h2>From first program draft to independent review.</h2>
     <p class="section-intro">Start where you are. Whether you need a first AML/CTF program, a bi‑annual health check, help with AUSTRAC reporting, or a full independent review, we can right‑size the work to your agency.</p>
 
-```
-<div class="service-grid">
+    <div class="service-grid">
 
-  <article class="service-card">
-    <div class="service-header">
-      <div class="service-title">AML/CTF Program Setup (Parts A & B)</div>
-      <div class="service-price">From $499</div>
-    </div>
-    <p class="service-tagline">Designing a practical, documented AML program tailored to how your agency actually operates.</p>
-    <div class="service-columns">
-      <div>
-        <div class="service-col-title">Part A – Framework</div>
-        <ul class="service-list">
-          <li>Review of regulatory guidance and AML risk considerations.</li>
-          <li>Assessment of your business model and operational structure.</li>
-          <li>Identification of key risks across customers, transactions and geography.</li>
-          <li>Development of a documented AML risk assessment and risk appetite.</li>
-          <li>Drafting or co‑designing your AML Program Part A (policies, procedures, controls).</li>
-        </ul>
-      </div>
-      <div>
-        <div class="service-col-title">Part B – CDD</div>
-        <ul class="service-list">
-          <li>Design of practical customer identification and verification processes.</li>
-          <li>CDD procedures that work with your existing workflows.</li>
-          <li>Guidance on verification options: manual, pay‑per‑use tools, low‑cost services, or full platforms.</li>
-          <li>Documentation of your AML Program Part B framework.</li>
-        </ul>
-      </div>
-    </div>
-    <p class="service-footnote">Delivered collaboratively so your program is usable day‑to‑day, not a binder that sits on a shelf.</p>
-  </article>
+      <article class="service-card">
+        <div class="service-header">
+          <div class="service-title">AML/CTF Program Setup (Parts A & B)</div>
+          <div class="service-price">From $499</div>
+        </div>
+        <p class="service-tagline">Designing a practical, documented AML program tailored to how your agency actually operates.</p>
+        <div class="service-columns">
+          <div>
+            <div class="service-col-title">Part A – Framework</div>
+            <ul class="service-list">
+              <li>Review of regulatory guidance and AML risk considerations.</li>
+              <li>Assessment of your business model and operational structure.</li>
+              <li>Identification of key risks across customers, transactions and geography.</li>
+              <li>Development of a documented AML risk assessment and risk appetite.</li>
+              <li>Drafting or co‑designing your AML Program Part A (policies, procedures, controls).</li>
+            </ul>
+          </div>
+          <div>
+            <div class="service-col-title">Part B – CDD</div>
+            <ul class="service-list">
+              <li>Design of practical customer identification and verification processes.</li>
+              <li>CDD procedures that work with your existing workflows.</li>
+              <li>Guidance on verification options: manual, pay‑per‑use tools, low‑cost services, or full platforms.</li>
+              <li>Documentation of your AML Program Part B framework.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="service-footnote">Delivered collaboratively so your program is usable day‑to‑day, not a binder that sits on a shelf.</p>
+      </article>
 
-  <article class="service-card">
-    <div class="service-header">
-      <div class="service-title">Health Check (recommended bi‑annual)</div>
-      <div class="service-price">From $599 + $10 / file</div>
-    </div>
-    <p class="service-tagline">A review to confirm your program is in place and working as intended.</p>
-    <div class="service-columns">
-      <div>
-        <div class="service-col-title">What we review</div>
-        <ul class="service-list">
-          <li>Existing AML documentation and program content.</li>
-          <li>Evidence of training and awareness across your team.</li>
-          <li>Sampling of onboarding and verification files (15% sample).</li>
-        </ul>
-      </div>
-      <div>
-        <div class="service-col-title">What you receive</div>
-        <ul class="service-list">
-          <li>Operational testing of key processes.</li>
-          <li>Practical recommendations prioritised by risk and effort.</li>
-          <li>A concise report you can table with your principals or governing body.</li>
-        </ul>
-      </div>
-    </div>
-    <p class="service-footnote">Designed to be repeated every 6–12 months to keep your program on track.</p>
-  </article>
+      <article class="service-card">
+        <div class="service-header">
+          <div class="service-title">Health Check (recommended bi‑annual)</div>
+          <div class="service-price">From $599 + $10 / file</div>
+        </div>
+        <p class="service-tagline">A review to confirm your program is in place and working as intended.</p>
+        <div class="service-columns">
+          <div>
+            <div class="service-col-title">What we review</div>
+            <ul class="service-list">
+              <li>Existing AML documentation and program content.</li>
+              <li>Evidence of training and awareness across your team.</li>
+              <li>Sampling of onboarding and verification files (15% sample).</li>
+            </ul>
+          </div>
+          <div>
+            <div class="service-col-title">What you receive</div>
+            <ul class="service-list">
+              <li>Operational testing of key processes.</li>
+              <li>Practical recommendations prioritised by risk and effort.</li>
+              <li>A concise report you can table with your principals or governing body.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="service-footnote">Designed to be repeated every 6–12 months to keep your program on track.</p>
+      </article>
 
-  <article class="service-card">
-    <div class="service-header">
-      <div class="service-title">AUSTRAC Annual Report Support</div>
-      <div class="service-price">From $499*</div>
-    </div>
-    <p class="service-tagline">Support to prepare and lodge your Annual Compliance Report and governing body report on time.</p>
-    <div class="service-columns">
-      <div>
-        <div class="service-col-title">How we help</div>
-        <ul class="service-list">
-          <li>Pre‑report planning, key dates and AUSTRAC Online setup checks.</li>
-          <li>Review of preview questions and information requirements.</li>
-          <li>Collation of SMRs, TTRs, CBMs, internal escalations and training records.</li>
-          <li>Testing outcomes across onboarding, verification and reporting.</li>
-        </ul>
-      </div>
-      <div>
-        <div class="service-col-title">Deliverables</div>
-        <ul class="service-list">
-          <li>Drafted responses for the Annual Compliance Report (ACR).</li>
-          <li>Signed Annual Report to the Governing Body (Sections 1–12).</li>
-          <li>Narrative on effectiveness, deficiencies and recommendations.</li>
-          <li>Record‑keeping pack stored in line with the 7‑year requirement.</li>
-        </ul>
-      </div>
-    </div>
-    <p class="service-footnote">*Discounted when bundled with a Health Check for the relevant period.</p>
-  </article>
+      <article class="service-card">
+        <div class="service-header">
+          <div class="service-title">AUSTRAC Annual Report Support</div>
+          <div class="service-price">From $499*</div>
+        </div>
+        <p class="service-tagline">Support to prepare and lodge your Annual Compliance Report and governing body report on time.</p>
+        <div class="service-columns">
+          <div>
+            <div class="service-col-title">How we help</div>
+            <ul class="service-list">
+              <li>Pre‑report planning, key dates and AUSTRAC Online setup checks.</li>
+              <li>Review of preview questions and information requirements.</li>
+              <li>Collation of SMRs, TTRs, CBMs, internal escalations and training records.</li>
+              <li>Testing outcomes across onboarding, verification and reporting.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="service-col-title">Deliverables</div>
+            <ul class="service-list">
+              <li>Drafted responses for the Annual Compliance Report (ACR).</li>
+              <li>Signed Annual Report to the Governing Body (Sections 1–12).</li>
+              <li>Narrative on effectiveness, deficiencies and recommendations.</li>
+              <li>Record‑keeping pack stored in line with the 7‑year requirement.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="service-footnote">*Discounted when bundled with a Health Check for the relevant period.</p>
+      </article>
 
-  <article class="service-card">
-    <div class="service-header">
-      <div class="service-title">Independent Review</div>
-      <div class="service-price">$1,799 + $30 / file</div>
-    </div>
-    <p class="service-tagline">A deeper, independent review of your AML program, operations and evidence.</p>
-    <div class="service-columns">
-      <div>
-        <div class="service-col-title">Scope</div>
-        <ul class="service-list">
-          <li>Review of AML/CTF Program Parts A & B.</li>
-          <li>Training compliance and competency checks.</li>
-          <li>Operational testing of key processes (30% sample).</li>
-        </ul>
-      </div>
-      <div>
-        <div class="service-col-title">Outcome</div>
-        <ul class="service-list">
-          <li>Detailed findings and remediation recommendations.</li>
-          <li>Report suitable for your governing body and AUSTRAC enquiries.</li>
-          <li>Optional follow‑up support to implement changes.</li>
-        </ul>
-      </div>
-    </div>
-    <p class="service-footnote">Independent Reviews are required every 2–3 years by an entity not involved in the setup or maintenance of your program.</p>
-  </article>
+      <article class="service-card">
+        <div class="service-header">
+          <div class="service-title">Independent Review</div>
+          <div class="service-price">$1,799 + $30 / file</div>
+        </div>
+        <p class="service-tagline">A deeper, independent review of your AML program, operations and evidence.</p>
+        <div class="service-columns">
+          <div>
+            <div class="service-col-title">Scope</div>
+            <ul class="service-list">
+              <li>Review of AML/CTF Program Parts A & B.</li>
+              <li>Training compliance and competency checks.</li>
+              <li>Operational testing of key processes (30% sample).</li>
+            </ul>
+          </div>
+          <div>
+            <div class="service-col-title">Outcome</div>
+            <ul class="service-list">
+              <li>Detailed findings and remediation recommendations.</li>
+              <li>Report suitable for your governing body and AUSTRAC enquiries.</li>
+              <li>Optional follow‑up support to implement changes.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="service-footnote">Independent Reviews are required every 2–3 years by an entity not involved in the setup or maintenance of your program.</p>
+      </article>
 
-</div>
+    </div>
 
-<!-- HOW IT WORKS LINK -->
-<div class="how-it-works-banner">
-  <p>
-    <strong>Not sure where to start?</strong>
-    See the full AML compliance journey — step by step, with costs at each stage.
-  </p>
-  <a href="how-it-works.html" class="btn-teal">See how it works →</a>
-</div>
-```
+    <!-- HOW IT WORKS LINK -->
+    <div class="how-it-works-banner">
+      <p>
+        <strong>Not sure where to start?</strong>
+        See the full AML compliance journey — step by step, with costs at each stage.
+      </p>
+      <a href="how-it-works.html" class="btn-teal">See how it works →</a>
+    </div>
 
   </div>
 </section>
@@ -946,6 +942,5 @@ section { padding: 72px 1.25rem; }
     });
   });
 </script>
-
 </body>
 </html>
