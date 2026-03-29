@@ -42,6 +42,7 @@
     font-size: 16px;
   }
 
+  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -148,6 +149,7 @@
     line-height: 1.75;
   }
 
+  /* HERO (dot grid, same as Verify) */
   #hero {
     padding-top: 148px;
     padding-bottom: 96px;
@@ -245,7 +247,10 @@
     transition: background 0.2s, color 0.2s;
   }
 
-  .btn-secondary:hover { background: var(--teal-light); color: var(--navy); }
+  .btn-secondary:hover {
+    background: var(--teal-light);
+    color: var(--navy);
+  }
 
   .hero-note {
     font-size: 13px;
@@ -253,6 +258,7 @@
     margin-top: 0.75rem;
   }
 
+  /* CALLOUT STRIP */
   .callout-strip {
     background: var(--navy);
     padding: 1.25rem 2rem;
@@ -268,8 +274,12 @@
     line-height: 1.65;
   }
 
-  .callout-strip p strong { color: var(--teal-mid); font-weight: 500; }
+  .callout-strip p strong {
+    color: var(--teal-mid);
+    font-weight: 500;
+  }
 
+  /* SERVICES (diagonal lines, echoing Verify problem section) */
   #services {
     background-color: var(--white);
     background-image: repeating-linear-gradient(
@@ -345,7 +355,11 @@
     color: var(--text-mid);
   }
 
-  .service-list li::before { content: '• '; color: var(--teal); margin-right: 2px; }
+  .service-list li::before {
+    content: '• ';
+    color: var(--teal);
+    margin-right: 2px;
+  }
 
   .service-footnote {
     font-size: 13px;
@@ -353,51 +367,7 @@
     margin-top: 0.75rem;
   }
 
-  /* HOW IT WORKS LINK BANNER */
-  .how-it-works-banner {
-    margin-top: 2.5rem;
-    background: var(--teal-light);
-    border: 1px solid var(--teal-mid);
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .how-it-works-banner p {
-    font-size: 15px;
-    color: var(--teal);
-    font-weight: 300;
-    line-height: 1.5;
-  }
-
-  .how-it-works-banner p strong {
-    font-weight: 500;
-    display: block;
-    margin-bottom: 2px;
-  }
-
-  .btn-teal {
-    background: var(--teal);
-    color: var(--white);
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    white-space: nowrap;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    transition: background 0.2s;
-    flex-shrink: 0;
-  }
-
-  .btn-teal:hover { background: #158a77; }
-
+  /* VERIFY SECTION (teal top border, ties to product site) */
   #verify {
     background: var(--white);
     border-top: 3px solid var(--teal);
@@ -439,7 +409,10 @@
     margin-bottom: 1rem;
   }
 
-  .verify-meta { font-size: 13px; color: var(--text-light); }
+  .verify-meta {
+    font-size: 13px;
+    color: var(--text-light);
+  }
 
   .verify-actions {
     display: flex;
@@ -464,8 +437,12 @@
     transition: background 0.2s, color 0.2s;
   }
 
-  .btn-outline:hover { background: var(--navy); color: var(--white); }
+  .btn-outline:hover {
+    background: var(--navy);
+    color: var(--white);
+  }
 
+  /* APPROACH / ABOUT (navy grid, like Verify about) */
   #approach {
     background-color: var(--navy);
     background-image:
@@ -511,6 +488,7 @@
     margin-bottom: 2px;
   }
 
+  /* CONTACT (same pattern as Verify) */
   #contact {
     background-color: var(--sand);
     background-image: radial-gradient(circle, #c8c4bc 1px, transparent 1px);
@@ -573,9 +551,16 @@
   }
 
   .contact-form input:focus,
-  .contact-form textarea:focus { border-color: var(--teal); background: var(--white); }
+  .contact-form textarea:focus {
+    border-color: var(--teal);
+    background: var(--white);
+  }
 
-  .contact-form textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 110px;
+    line-height: 1.6;
+  }
 
   .btn-contact {
     background: var(--navy);
@@ -614,6 +599,7 @@
     line-height: 1.6;
   }
 
+  /* FOOTER (same as Verify) */
   footer {
     background: var(--navy);
     border-top: 1px solid rgba(255,255,255,0.06);
@@ -639,7 +625,11 @@
 
   .footer-logo span { color: var(--teal-mid); }
 
-  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
 
   .footer-links a {
     font-size: 13px;
@@ -663,6 +653,7 @@
     text-align: center;
   }
 
+  /* Animations */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -679,7 +670,6 @@
     section { padding: 72px 1.25rem; }
     #hero { padding-top: 112px; }
     .service-columns { grid-template-columns: 1fr; }
-    .how-it-works-banner { flex-direction: column; align-items: flex-start; }
     .footer-inner { flex-direction: column; text-align: center; }
     .footer-links { justify-content: center; }
     .contact-card { padding: 2rem 1.25rem; }
@@ -688,6 +678,7 @@
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Four Foxes <span>Consulting</span></a>
   <div class="nav-links">
@@ -697,12 +688,15 @@
   </div>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div class="container">
     <div class="hero-content">
       <div class="deadline-badge">AML laws take effect 1 July 2026</div>
       <h1>Practical AML programs for real estate. Right-sized, not overbuilt.</h1>
-      <p class="hero-sub">Four Foxes Consulting helps small and medium agencies get AML ready ahead of July 1 – from drafting your program to health checks, AUSTRAC reporting and simple verification tools.</p>
+      <p class="hero-sub">
+        Four Foxes Consulting helps small and medium agencies get AML ready ahead of July 1 – from drafting your program to health checks, AUSTRAC reporting and simple verification tools.
+      </p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">Book a quick chat</a>
         <a href="#services" class="btn-secondary">View services & pricing</a>
@@ -712,19 +706,26 @@
   </div>
 </section>
 
+<!-- CALLOUT STRIP -->
 <div class="callout-strip">
-  <p>Most AML platforms are built for big groups and long contracts – we focus on <strong>fit‑for‑purpose programs, light processes and tools that suit your business.</strong></p>
+  <p>
+    Most AML platforms are built for big groups and long contracts – we focus on <strong>fit‑for‑purpose programs, light processes and tools that suit your business.</strong>
+  </p>
 </div>
 
+<!-- SERVICES -->
 <section id="services">
   <div class="container">
     <div class="eyebrow">Services</div>
     <div class="section-divider"></div>
     <h2>From first program draft to independent review.</h2>
-    <p class="section-intro">Start where you are. Whether you need a first AML/CTF program, a bi‑annual health check, help with AUSTRAC reporting, or a full independent review, we can right‑size the work to your agency.</p>
+    <p class="section-intro">
+      Start where you are. Whether you need a first AML/CTF program, a bi‑annual health check, help with AUSTRAC reporting, or a full independent review, we can right‑size the work to your agency.
+    </p>
 
     <div class="service-grid">
 
+      <!-- AML Program Setup -->
       <article class="service-card">
         <div class="service-header">
           <div class="service-title">AML/CTF Program Setup (Parts A & B)</div>
@@ -755,10 +756,11 @@
         <p class="service-footnote">Delivered collaboratively so your program is usable day‑to‑day, not a binder that sits on a shelf.</p>
       </article>
 
+      <!-- Health Check -->
       <article class="service-card">
         <div class="service-header">
           <div class="service-title">Health Check (recommended bi‑annual)</div>
-          <div class="service-price">From $599 + $10 / file</div>
+          <div class="service-price">From $599 + $10 / file </div>
         </div>
         <p class="service-tagline">A review to confirm your program is in place and working as intended.</p>
         <div class="service-columns">
@@ -782,6 +784,7 @@
         <p class="service-footnote">Designed to be repeated every 6–12 months to keep your program on track.</p>
       </article>
 
+      <!-- AUSTRAC Annual Report Support -->
       <article class="service-card">
         <div class="service-header">
           <div class="service-title">AUSTRAC Annual Report Support</div>
@@ -811,6 +814,7 @@
         <p class="service-footnote">*Discounted when bundled with a Health Check for the relevant period.</p>
       </article>
 
+      <!-- Independent Review -->
       <article class="service-card">
         <div class="service-header">
           <div class="service-title">Independent Review</div>
@@ -835,33 +839,31 @@
             </ul>
           </div>
         </div>
-        <p class="service-footnote">Independent Reviews are required every 2–3 years by an entity not involved in the setup or maintenance of your program.</p>
+        <p class="service-footnote">Independent Reviews are required every 2-3 years by an entity not involved in the setup or maintenance of your program. </p>
       </article>
 
     </div>
-
-    <!-- HOW IT WORKS LINK -->
-    <div class="how-it-works-banner">
-      <p>
-        <strong>Not sure where to start?</strong>
-        See the full AML compliance journey — step by step, with costs at each stage.
-      </p>
-      <a href="how-it-works.html" class="btn-teal">See how it works →</a>
-    </div>
-
   </div>
 </section>
 
+<!-- VERIFY SECTION -->
 <section id="verify">
   <div class="container">
     <div class="eyebrow">Verify by Four Foxes</div>
     <div class="section-divider"></div>
     <h2>Verification without the platform lock‑in.</h2>
-    <p class="section-intro">Alongside program work, we offer a simple, pay‑per‑check KYC/KYB tool built specifically for medium, small and boutique real estate agencies that don't want full‑blown enterprise software.</p>
+    <p class="section-intro">
+      Alongside program work, we offer a simple, pay‑per‑check KYC/KYB tool built specifically for medium, small and boutique real estate agencies that don’t want full‑blown enterprise software.
+    </p>
+
     <div class="verify-card">
       <div class="verify-pill"><span></span> Product spotlight</div>
-      <p>Verify powered by Four Foxes lets you send branded verification links to your clients, capture identification details, run KYC/PEP/sanctions checks and receive a complete audit trail – all billed per check, with no subscriptions or lock‑in contracts.</p>
-      <p class="verify-meta">Use it as a verification tool that sits alongside existing manual processes, keeping your program right-sized to your business.</p>
+      <p>
+        Verify powered by Four Foxes lets you send branded verification links to your clients, capture identification details, run KYC/PEP/sanctions checks and receive a complete audit trail – all billed per check, with no subscriptions or lock‑in contracts.
+      </p>
+      <p class="verify-meta">
+        Use it as a verification tool that sits alongside existing manual processes, keeping your program right-sized to your business. 
+      </p>
       <div class="verify-actions">
         <a href="https://verify.fourfoxes.com.au" class="btn-outline">Visit Verify site</a>
         <a href="#contact" class="btn-secondary">Ask how Verify fits your program</a>
@@ -870,14 +872,19 @@
   </div>
 </section>
 
+<!-- APPROACH / ABOUT -->
 <section id="approach">
   <div class="container">
     <div class="eyebrow">Approach</div>
     <div class="section-divider"></div>
     <h2>Personalised, relationship‑first support.</h2>
     <div class="approach-card">
-      <p>Four Foxes Consulting started after seeing smaller agencies pushed toward expensive, complex compliance platforms that did not match their size, risk or budget. Instead of forcing one system, we focus on combining the right tools with practical processes that people can actually follow.</p>
-      <p>My background includes helping build operations and processes in an ASX‑listed business, and I bring that structure to independent agencies without the enterprise overhead. The aim is simple: meet AUSTRAC requirements in a way that fits how you work today, while building a foundation for ongoing reviews, audits and reporting.</p>
+      <p>
+        Four Foxes Consulting started after seeing smaller agencies pushed toward expensive, complex compliance platforms that did not match their size, risk or budget. Instead of forcing one system, we focus on combining the right tools with practical processes that people can actually follow.
+      </p>
+      <p>
+        My background includes helping build operations and processes in an ASX‑listed business, and I bring that structure to independent agencies without the enterprise overhead. The aim is simple: meet AUSTRAC requirements in a way that fits how you work today, while building a foundation for ongoing reviews, audits and reporting.
+      </p>
       <div class="approach-sig">
         <strong>Brad</strong>
         Founder, Four Foxes Consulting
@@ -886,13 +893,16 @@
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <div class="contact-card">
       <div class="eyebrow">Get in touch</div>
       <div class="section-divider"></div>
       <h2>Still working through AML for July 1?</h2>
-      <p class="contact-sub">If you would like a practical, low‑friction way to get ready – or a second set of eyes on what you have – send a quick note below. We will reply personally and let you know what makes sense for your agency size and risk.</p>
+      <p class="contact-sub">
+        If you would like a practical, low‑friction way to get ready – or a second set of eyes on what you have – send a quick note below. We will reply personally and let you know what makes sense for your agency size and risk.
+      </p>
       <form class="contact-form" id="contactForm" action="https://formspree.io/f/mvzvzreb" method="POST">
         <div class="form-row">
           <input type="text" name="name" placeholder="Your name" required>
@@ -910,6 +920,7 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <a href="#" class="footer-logo">Four Foxes <span>Consulting</span></a>
