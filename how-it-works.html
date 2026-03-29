@@ -11,472 +11,102 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0f1f38; --navy-mid: #1a3050;
+    --teal: #1a7f6e; --teal-light: #e8f5f2; --teal-mid: #c2e8e0;
+    --sand: #f5f2ec; --text: #1a1a2e; --text-mid: #4a5568; --text-light: #718096;
+    --white: #ffffff; --border: #e2ddd6;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--text); background: var(--white); line-height: 1.7; font-size: 16px; }
 
-:root {
-–navy: #0f1f38;
-–navy-mid: #1a3050;
-–teal: #1a7f6e;
-–teal-light: #e8f5f2;
-–teal-mid: #c2e8e0;
-–sand: #f5f2ec;
-–text: #1a1a2e;
-–text-mid: #4a5568;
-–text-light: #718096;
-–white: #ffffff;
-–border: #e2ddd6;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-font-family: ‘DM Sans’, sans-serif;
-font-weight: 400;
-color: var(–text);
-background: var(–white);
-line-height: 1.7;
-font-size: 16px;
-}
-
-nav {
-position: fixed;
-top: 0; left: 0; right: 0;
-z-index: 100;
-background: rgba(255,255,255,0.95);
-backdrop-filter: blur(8px);
-border-bottom: 1px solid var(–border);
-padding: 0 2rem;
-height: 64px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-}
-
-.nav-logo {
-font-family: ‘DM Serif Display’, serif;
-font-size: 18px;
-color: var(–navy);
-text-decoration: none;
-letter-spacing: -0.01em;
-}
-
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(–border); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-family: ‘DM Serif Display’, serif; font-size: 18px; color: var(–navy); text-decoration: none; letter-spacing: -0.01em; }
 .nav-logo span { color: var(–teal); }
-
-.nav-links {
-display: flex;
-align-items: center;
-gap: 1.5rem;
-}
-
-.nav-link {
-color: var(–text-mid);
-text-decoration: none;
-font-size: 14px;
-font-weight: 400;
-transition: color 0.2s;
-min-height: 44px;
-display: flex;
-align-items: center;
-}
-
+.nav-links { display: flex; align-items: center; gap: 1.5rem; }
+.nav-link { color: var(–text-mid); text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.2s; min-height: 44px; display: flex; align-items: center; }
 .nav-link:hover { color: var(–navy); }
-
-.nav-cta {
-background: var(–navy);
-color: var(–white);
-padding: 10px 22px;
-border-radius: 6px;
-text-decoration: none;
-font-size: 14px;
-font-weight: 500;
-transition: background 0.2s;
-min-height: 44px;
-display: flex;
-align-items: center;
-}
-
+.nav-cta { background: var(–navy); color: var(–white); padding: 10px 22px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 500; transition: background 0.2s; min-height: 44px; display: flex; align-items: center; }
 .nav-cta:hover { background: var(–navy-mid); }
 
-/* HERO */
-#hero {
-padding-top: 148px;
-padding-bottom: 80px;
-background-color: var(–sand);
-background-image: radial-gradient(circle, #c8c4bc 1px, transparent 1px);
-background-size: 24px 24px;
-border-bottom: 1px solid var(–border);
-position: relative;
-}
+.container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+.eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(–teal); margin-bottom: 1rem; }
+.section-divider { width: 40px; height: 2px; background: var(–teal); margin-bottom: 1.5rem; }
+h1 { font-family: ‘DM Serif Display’, serif; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; color: var(–navy); letter-spacing: -0.02em; margin-bottom: 1.25rem; max-width: 620px; }
+.hero-sub { font-size: 17px; color: var(–text-mid); line-height: 1.75; max-width: 560px; font-weight: 300; }
 
-#hero::after {
-content: ‘’;
-position: absolute;
-inset: 0;
-background: linear-gradient(to bottom, rgba(245,242,236,0.4) 0%, rgba(245,242,236,0.85) 60%, rgba(245,242,236,1) 100%);
-pointer-events: none;
-}
-
+/* HERO - dot grid */
+#hero { padding-top: 148px; padding-bottom: 80px; background-color: var(–sand); background-image: radial-gradient(circle, #c8c4bc 1px, transparent 1px); background-size: 24px 24px; border-bottom: 1px solid var(–border); position: relative; }
+#hero::after { content: ‘’; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(245,242,236,0.4) 0%, rgba(245,242,236,0.85) 60%, rgba(245,242,236,1) 100%); pointer-events: none; }
 #hero .container { position: relative; z-index: 1; }
 
-.container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
-.container-narrow { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
-
-.eyebrow {
-font-size: 11px;
-font-weight: 500;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: var(–teal);
-margin-bottom: 1rem;
-}
-
-.section-divider {
-width: 40px;
-height: 2px;
-background: var(–teal);
-margin-bottom: 1.5rem;
-}
-
-h1 {
-font-family: ‘DM Serif Display’, serif;
-font-size: clamp(32px, 5vw, 48px);
-line-height: 1.1;
-color: var(–navy);
-letter-spacing: -0.02em;
-margin-bottom: 1.25rem;
-max-width: 620px;
-}
-
-.hero-sub {
-font-size: 17px;
-color: var(–text-mid);
-line-height: 1.75;
-max-width: 560px;
-font-weight: 300;
-}
-
-/* STEPS TABLE SECTION */
-#steps {
-padding: 80px 0;
-background-color: var(–white);
-}
-
-#steps .inner {
-padding: 0 2rem;
-}
-
-.steps-intro {
-max-width: 720px;
-margin: 0 auto 3rem;
-padding: 0 2rem;
-}
-
-.steps-intro h2 {
-font-family: ‘DM Serif Display’, serif;
-font-size: clamp(26px, 3.5vw, 36px);
-line-height: 1.2;
-color: var(–navy);
-letter-spacing: -0.02em;
-margin-bottom: 0.75rem;
-}
-
-.steps-intro p {
-font-size: 16px;
-color: var(–text-mid);
-font-weight: 300;
-line-height: 1.75;
-}
-
-/* TABLE */
-.steps-table-wrap {
-max-width: 960px;
-margin: 0 auto;
-padding: 0 2rem;
-overflow-x: auto;
-}
-
-table {
-width: 100%;
-border-collapse: collapse;
-border: 1px solid var(–border);
-border-radius: 14px;
-overflow: hidden;
-min-width: 600px;
-}
-
-thead tr {
-background: var(–navy);
-}
-
-thead th {
-padding: 14px 18px;
-text-align: left;
-font-size: 11px;
-font-weight: 500;
-letter-spacing: 0.09em;
-text-transform: uppercase;
-color: rgba(255,255,255,0.6);
-}
-
-thead th:first-child { border-radius: 0; width: 36%; }
-thead th:nth-child(2) { width: 40%; }
-thead th:last-child { width: 24%; }
-
-tbody tr {
-border-bottom: 1px solid var(–border);
-transition: background 0.15s;
-}
-
-tbody tr:last-child { border-bottom: none; }
-tbody tr:nth-child(even) { background: var(–sand); }
-tbody tr:hover { background: var(–teal-light); }
-
-tbody td {
-padding: 20px 18px;
-vertical-align: top;
-font-size: 14px;
-color: var(–text-mid);
-line-height: 1.65;
-}
-
-tbody td:first-child {
-color: var(–text);
-font-weight: 400;
-}
-
-.step-num {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-width: 24px;
-height: 24px;
-border-radius: 6px;
-background: var(–navy);
-color: var(–white);
-font-family: ‘DM Serif Display’, serif;
-font-size: 13px;
-margin-right: 8px;
-flex-shrink: 0;
-vertical-align: middle;
-}
-
-.step-label {
-font-weight: 500;
-color: var(–navy);
-display: block;
-margin-bottom: 4px;
-}
-
-.cost-pill {
-display: inline-block;
-padding: 4px 10px;
-border-radius: 999px;
-font-size: 13px;
-font-weight: 500;
-white-space: nowrap;
-}
-
-.cost-free {
-background: var(–teal-light);
-color: var(–teal);
-border: 1px solid var(–teal-mid);
-}
-
-.cost-paid {
-background: #eef0f7;
-color: var(–navy);
-border: 1px solid #c8cde0;
-}
-
-.cost-variable {
-background: #fdf6ec;
-color: #8a5c10;
-border: 1px solid #f5deb3;
-}
-
-/* EXCEL CALLOUT */
-#excel {
-padding: 0 0 80px;
-}
-
-.excel-card {
-max-width: 860px;
-margin: 0 auto;
-padding: 0 2rem;
-}
-
-.excel-inner {
-background: var(–navy);
-background-image:
-linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-background-size: 40px 40px;
-border-radius: 16px;
-padding: 2.5rem;
-}
-
-.excel-inner .eyebrow { color: var(–teal-mid); }
-
-.excel-inner h3 {
-font-family: ‘DM Serif Display’, serif;
-font-size: clamp(22px, 3vw, 30px);
-color: var(–white);
-letter-spacing: -0.02em;
-line-height: 1.2;
-margin-bottom: 1rem;
-}
-
-.excel-inner p {
-font-size: 15px;
-color: rgba(255,255,255,0.7);
-font-weight: 300;
-line-height: 1.8;
-max-width: 620px;
-}
-
-.excel-badge {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-background: rgba(194,232,224,0.15);
-border: 1px solid rgba(194,232,224,0.3);
-color: var(–teal-mid);
-font-size: 13px;
-font-weight: 500;
-padding: 6px 14px;
-border-radius: 100px;
-margin-bottom: 1.25rem;
-}
-
-.excel-badge::before {
-content: ‘’;
-width: 7px;
-height: 7px;
-border-radius: 50%;
-background: var(–teal-mid);
-animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-0%, 100% { opacity: 1; transform: scale(1); }
-50% { opacity: 0.4; transform: scale(0.8); }
-}
-
-/* DISCLAIMER */
-#disclaimer {
-padding: 60px 0 80px;
-background-color: var(–sand);
-background-image: repeating-linear-gradient(
--45deg,
-transparent,
-transparent 20px,
-rgba(226,221,214,0.3) 20px,
-rgba(226,221,214,0.3) 21px
-);
-}
-
-.disclaimer-card {
-max-width: 720px;
-margin: 0 auto;
-padding: 0 2rem;
-}
-
-.disclaimer-inner {
-background: var(–white);
-border: 1px solid var(–border);
-border-radius: 14px;
-padding: 2.25rem;
-}
-
-.disclaimer-inner .eyebrow { color: var(–text-light); }
-
-.disclaimer-inner h3 {
-font-family: ‘DM Serif Display’, serif;
-font-size: 22px;
-color: var(–navy);
-letter-spacing: -0.02em;
-margin-bottom: 1rem;
-}
-
-.disclaimer-inner p {
-font-size: 14px;
-color: var(–text-mid);
-font-weight: 300;
-line-height: 1.8;
-}
-
-.disclaimer-inner p + p { margin-top: 0.85rem; }
-
-/* FOOTER */
-footer {
-background: var(–navy);
-border-top: 1px solid rgba(255,255,255,0.06);
-padding: 2.5rem 2rem;
-}
-
-.footer-inner {
-display: flex;
-align-items: center;
-justify-content: space-between;
-max-width: 860px;
-margin: 0 auto;
-flex-wrap: wrap;
-gap: 1rem;
-}
-
-.footer-logo {
-font-family: ‘DM Serif Display’, serif;
-font-size: 16px;
-color: rgba(255,255,255,0.6);
-text-decoration: none;
-}
-
-.footer-logo span { color: var(–teal-mid); }
-
-.footer-links {
-display: flex;
-gap: 1.5rem;
-flex-wrap: wrap;
-}
-
-.footer-links a {
-font-size: 13px;
-color: rgba(255,255,255,0.4);
-text-decoration: none;
-transition: color 0.2s;
-min-height: 44px;
-display: flex;
-align-items: center;
-}
-
-.footer-links a:hover { color: rgba(255,255,255,0.75); }
-
-.footer-copy {
-font-size: 12px;
-color: rgba(255,255,255,0.2);
-margin-top: 1.5rem;
-max-width: 860px;
-margin-left: auto;
-margin-right: auto;
-text-align: center;
-}
-
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .hero-content > * { animation: fadeUp 0.6s ease both; }
 .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
 .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
 .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
 
+/* STEPS - clean white */
+#steps { padding: 80px 0; background-color: var(–white); }
+.steps-intro { max-width: 720px; margin: 0 auto 3rem; padding: 0 2rem; }
+.steps-intro h2 { font-family: ‘DM Serif Display’, serif; font-size: clamp(26px, 3.5vw, 36px); line-height: 1.2; color: var(–navy); letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+.steps-intro p { font-size: 16px; color: var(–text-mid); font-weight: 300; line-height: 1.75; }
+
+.steps-table-wrap { max-width: 960px; margin: 0 auto; padding: 0 2rem; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; border: 1px solid var(–border); border-radius: 14px; overflow: hidden; min-width: 600px; }
+thead tr { background: var(–navy); }
+thead th { padding: 14px 18px; text-align: left; font-size: 11px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+thead th:first-child { width: 36%; }
+thead th:nth-child(2) { width: 40%; }
+thead th:last-child { width: 24%; }
+tbody tr { border-bottom: 1px solid var(–border); transition: background 0.15s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:nth-child(even) { background: var(–sand); }
+tbody tr:hover { background: var(–teal-light); }
+tbody td { padding: 20px 18px; vertical-align: top; font-size: 14px; color: var(–text-mid); line-height: 1.65; }
+tbody td:first-child { color: var(–text); font-weight: 400; }
+
+.step-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: var(–navy); color: var(–white); font-family: ‘DM Serif Display’, serif; font-size: 13px; margin-right: 8px; flex-shrink: 0; vertical-align: middle; }
+.step-label { font-weight: 500; color: var(–navy); display: block; margin-bottom: 4px; }
+.cost-pill { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 13px; font-weight: 500; white-space: nowrap; }
+.cost-free { background: var(–teal-light); color: var(–teal); border: 1px solid var(–teal-mid); }
+.cost-paid { background: #eef0f7; color: var(–navy); border: 1px solid #c8cde0; }
+.cost-variable { background: #fdf6ec; color: #8a5c10; border: 1px solid #f5deb3; }
+
+/* EXCEL - navy grid */
+#excel { padding: 0 0 80px; }
+.excel-card { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+.excel-inner { background: var(–navy); background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; border-radius: 16px; padding: 2.5rem; }
+.excel-inner .eyebrow { color: var(–teal-mid); }
+.excel-inner h3 { font-family: ‘DM Serif Display’, serif; font-size: clamp(22px, 3vw, 30px); color: var(–white); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1rem; }
+.excel-inner p { font-size: 15px; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.8; max-width: 620px; }
+.excel-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(194,232,224,0.15); border: 1px solid rgba(194,232,224,0.3); color: var(–teal-mid); font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 100px; margin-bottom: 1.25rem; }
+.excel-badge::before { content: ‘’; width: 7px; height: 7px; border-radius: 50%; background: var(–teal-mid); animation: pulse 2s infinite; }
+
+/* DISCLAIMER - diagonal lines */
+#disclaimer { padding: 60px 0 80px; background-color: var(–sand); background-image: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(226,221,214,0.3) 20px, rgba(226,221,214,0.3) 21px); }
+.disclaimer-card { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
+.disclaimer-inner { background: var(–white); border: 1px solid var(–border); border-radius: 14px; padding: 2.25rem; }
+.disclaimer-inner .eyebrow { color: var(–text-light); }
+.disclaimer-inner h3 { font-family: ‘DM Serif Display’, serif; font-size: 22px; color: var(–navy); letter-spacing: -0.02em; margin-bottom: 1rem; }
+.disclaimer-inner p { font-size: 14px; color: var(–text-mid); font-weight: 300; line-height: 1.8; }
+.disclaimer-inner p + p { margin-top: 0.85rem; }
+
+/* FOOTER */
+footer { background: var(–navy); border-top: 1px solid rgba(255,255,255,0.06); padding: 2.5rem 2rem; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; max-width: 860px; margin: 0 auto; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-family: ‘DM Serif Display’, serif; font-size: 16px; color: rgba(255,255,255,0.6); text-decoration: none; }
+.footer-logo span { color: var(–teal-mid); }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; min-height: 44px; display: flex; align-items: center; }
+.footer-links a:hover { color: rgba(255,255,255,0.75); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); margin-top: 1.5rem; max-width: 860px; margin-left: auto; margin-right: auto; text-align: center; }
+
 @media (max-width: 640px) {
 nav { padding: 0 1.25rem; }
 #hero { padding-top: 112px; padding-bottom: 60px; }
-.steps-table-wrap { padding: 0 1.25rem; }
-.excel-card { padding: 0 1.25rem; }
-.disclaimer-card { padding: 0 1.25rem; }
-.steps-intro { padding: 0 1.25rem; }
+.steps-table-wrap, .excel-card, .disclaimer-card, .steps-intro { padding: 0 1.25rem; }
 .footer-inner { flex-direction: column; text-align: center; }
 .footer-links { justify-content: center; }
 .excel-inner { padding: 1.75rem 1.25rem; }
@@ -487,8 +117,6 @@ nav { padding: 0 1.25rem; }
 </head>
 <body>
 
-<!-- NAV -->
-
 <nav>
   <a href="/" class="nav-logo">Four Foxes <span>Consulting</span></a>
   <div class="nav-links">
@@ -496,8 +124,6 @@ nav { padding: 0 1.25rem; }
     <a href="/#contact" class="nav-cta">Contact</a>
   </div>
 </nav>
-
-<!-- HERO -->
 
 <section id="hero">
   <div class="container">
@@ -510,14 +136,11 @@ nav { padding: 0 1.25rem; }
   </div>
 </section>
 
-<!-- STEPS TABLE -->
-
 <section id="steps">
   <div class="steps-intro">
     <h2>The AML compliance process</h2>
     <p>Each step below reflects what your AML program requires under AUSTRAC's Tranche 2 obligations for real estate agents. The middle column shows where Four Foxes can support you, and the right column shows indicative costs.</p>
   </div>
-
   <div class="steps-table-wrap">
     <table>
       <thead>
@@ -529,47 +152,27 @@ nav { padding: 0 1.25rem; }
       </thead>
       <tbody>
         <tr>
-          <td>
-            <span class="step-num">1</span>
-            <span class="step-label">Onboard buyers &amp; sellers</span>
-            Collect and record customer information at the point of engagement, in line with your AML program.
-          </td>
+          <td><span class="step-num">1</span><span class="step-label">Onboard buyers &amp; sellers</span>Collect and record customer information at the point of engagement, in line with your AML program.</td>
           <td>If you don't already have an onboarding workflow, Four Foxes can suggest a practical process that fits how your agency operates — without over-engineering it.</td>
           <td><span class="cost-pill cost-free">Complimentary</span></td>
         </tr>
         <tr>
-          <td>
-            <span class="step-num">2</span>
-            <span class="step-label">AML risk assessment</span>
-            Assess each customer's ML/TF risk as required by your AML Program Risk Assessment before providing services.
-          </td>
+          <td><span class="step-num">2</span><span class="step-label">AML risk assessment</span>Assess each customer's ML/TF risk as required by your AML Program Risk Assessment before providing services.</td>
           <td>If you don't have a risk assessment framework in place, Four Foxes can guide you through building one — covering your program, policy and processes from the ground up.</td>
           <td><span class="cost-pill cost-paid">From $599</span><br><small style="font-size:12px;color:var(--text-light);display:block;margin-top:4px;">Full program setup incl. risk assessment, policy &amp; processes</small></td>
         </tr>
         <tr>
-          <td>
-            <span class="step-num">3</span>
-            <span class="step-label">Initial Customer Due Diligence (CDD)</span>
-            Perform identity verification on your customer as required under your AML program before or during the transaction.
-          </td>
+          <td><span class="step-num">3</span><span class="step-label">Initial Customer Due Diligence (CDD)</span>Perform identity verification on your customer as required under your AML program before or during the transaction.</td>
           <td>Send the request to Four Foxes. We'll generate a branded verification link for your customer to complete. You receive the report back with a full audit trail — ready for AUSTRAC if needed.</td>
           <td><span class="cost-pill cost-paid">$12.50</span><br><small style="font-size:12px;color:var(--text-light);display:block;margin-top:4px;">per KYC check · invoiced monthly</small></td>
         </tr>
         <tr>
-          <td>
-            <span class="step-num">4</span>
-            <span class="step-label">Enhanced Due Diligence (EDD)</span>
-            Where your program identifies elevated risk, additional information must be collected before proceeding.
-          </td>
+          <td><span class="step-num">4</span><span class="step-label">Enhanced Due Diligence (EDD)</span>Where your program identifies elevated risk, additional information must be collected before proceeding.</td>
           <td>Send the request to Four Foxes. We'll send a tailored link for your customer to provide further information and documentation. You receive the compiled report back for your records.</td>
           <td><span class="cost-pill cost-free">Complimentary</span></td>
         </tr>
         <tr>
-          <td>
-            <span class="step-num">5</span>
-            <span class="step-label">Escalation &amp; reporting</span>
-            At any stage, your program may require escalation — internally to senior management or your AMLCO, or externally to AUSTRAC via a Suspicious Matter Report (SMR).
-          </td>
+          <td><span class="step-num">5</span><span class="step-label">Escalation &amp; reporting</span>At any stage, your program may require escalation — internally to senior management or your AMLCO, or externally to AUSTRAC via a Suspicious Matter Report (SMR).</td>
           <td>Four Foxes can help prepare factual reports for your AMLCO, governing body or AUSTRAC. The nature of each situation varies, so we'll work through the scope and approach with you.</td>
           <td><span class="cost-pill cost-variable">Depends on scope</span><br><small style="font-size:12px;color:var(--text-light);display:block;margin-top:4px;">We'll work it out together</small></td>
         </tr>
@@ -577,8 +180,6 @@ nav { padding: 0 1.25rem; }
     </table>
   </div>
 </section>
-
-<!-- EXCEL TEMPLATE CALLOUT -->
 
 <section id="excel">
   <div class="excel-card">
@@ -590,8 +191,6 @@ nav { padding: 0 1.25rem; }
     </div>
   </div>
 </section>
-
-<!-- DISCLAIMER -->
 
 <section id="disclaimer">
   <div class="disclaimer-card">
@@ -605,8 +204,6 @@ nav { padding: 0 1.25rem; }
     </div>
   </div>
 </section>
-
-<!-- FOOTER -->
 
 <footer>
   <div class="footer-inner">
