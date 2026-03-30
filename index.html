@@ -43,7 +43,6 @@
   h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.2; margin-bottom: 1.25rem; }
   .section-intro { font-size: 17px; color: var(--text-mid); font-weight: 300; max-width: 580px; margin-bottom: 3rem; line-height: 1.75; }
 
-  /* HERO - dot grid */
   #hero { padding-top: 148px; padding-bottom: 96px; background-color: var(--sand); background-image: radial-gradient(circle, #c8c4bc 1px, transparent 1px); background-size: 24px 24px; border-bottom: 1px solid var(--border); position: relative; }
   #hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(245,242,236,0.4) 0%, rgba(245,242,236,0.85) 60%, rgba(245,242,236,1) 100%); pointer-events: none; }
   #hero .container { position: relative; z-index: 1; }
@@ -54,18 +53,22 @@
 
   .hero-sub { font-size: 18px; color: var(--text-mid); line-height: 1.75; max-width: 540px; font-weight: 300; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2rem; }
+
   .btn-primary { background: var(--navy); color: var(--white); padding: 12px 24px; border-radius: 8px; text-decoration: none; font-size: 15px; font-weight: 500; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s, transform 0.15s; }
   .btn-primary:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
   .btn-secondary { background: var(--white); color: var(--text-mid); padding: 12px 20px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 400; border: 1px solid var(--border); min-height: 44px; display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s; }
   .btn-secondary:hover { background: var(--teal-light); color: var(--navy); }
+
+  .btn-teal-outline { background: transparent; color: var(--teal); padding: 12px 20px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; border: 1px solid var(--teal-mid); min-height: 44px; display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s; }
+  .btn-teal-outline:hover { background: var(--teal-light); color: var(--teal); }
+
   .hero-note { font-size: 13px; color: var(--text-light); margin-top: 0.75rem; }
 
-  /* CALLOUT STRIP */
   .callout-strip { background: var(--navy); padding: 1.25rem 2rem; text-align: center; }
   .callout-strip p { color: rgba(255,255,255,0.8); font-size: 15px; font-weight: 300; max-width: 720px; margin: 0 auto; line-height: 1.65; }
   .callout-strip p strong { color: var(--teal-mid); font-weight: 500; }
 
-  /* SERVICES - diagonal lines */
   #services { background-color: var(--white); background-image: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(226,221,214,0.3) 20px, rgba(226,221,214,0.3) 21px); }
   .service-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
   .service-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); padding: 1.75rem 1.75rem 1.5rem; }
@@ -79,14 +82,12 @@
   .service-list li::before { content: '• '; color: var(--teal); margin-right: 2px; }
   .service-footnote { font-size: 13px; color: var(--text-light); margin-top: 0.75rem; }
 
-  /* HOW IT WORKS BANNER */
   .how-it-works-banner { margin-top: 2.5rem; background: var(--teal-light); border: 1px solid var(--teal-mid); border-radius: 12px; padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
   .how-it-works-banner p { font-size: 15px; color: var(--teal); font-weight: 300; line-height: 1.5; }
   .how-it-works-banner p strong { font-weight: 500; display: block; margin-bottom: 2px; }
   .btn-teal { background: var(--teal); color: var(--white); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 500; white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; transition: background 0.2s; flex-shrink: 0; }
   .btn-teal:hover { background: #158a77; }
 
-  /* VERIFY SECTION - teal top border */
   #verify { background: var(--white); border-top: 3px solid var(--teal); }
   .verify-card { border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem 1.75rem 1.5rem; background: var(--sand); margin-top: 1.75rem; }
   .verify-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: var(--navy); color: var(--white); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
@@ -97,7 +98,6 @@
   .btn-outline { border-radius: 8px; padding: 10px 20px; border: 1px solid var(--navy); color: var(--navy); text-decoration: none; font-size: 14px; font-weight: 500; background: transparent; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; transition: background 0.2s, color 0.2s; }
   .btn-outline:hover { background: var(--navy); color: var(--white); }
 
-  /* APPROACH - navy grid */
   #approach { background-color: var(--navy); background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; }
   #approach .eyebrow { color: var(--teal-mid); }
   #approach h2 { color: var(--white); }
@@ -108,7 +108,6 @@
   .approach-sig { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: rgba(255,255,255,0.4); }
   .approach-sig strong { display: block; color: var(--white); font-weight: 500; font-size: 15px; margin-bottom: 2px; }
 
-  /* CONTACT - dot grid */
   #contact { background-color: var(--sand); background-image: radial-gradient(circle, #c8c4bc 1px, transparent 1px); background-size: 24px 24px; position: relative; }
   #contact::after { content: ''; position: absolute; inset: 0; background: rgba(245,242,236,0.75); pointer-events: none; }
   #contact .container { position: relative; z-index: 1; }
@@ -124,7 +123,6 @@
   .form-reassurance { font-size: 13px; color: var(--text-light); text-align: center; margin-top: 4px; }
   .success-msg { display: none; background: var(--teal-light); border: 1px solid var(--teal-mid); border-radius: 10px; padding: 1.25rem 1.5rem; color: var(--teal); font-size: 15px; margin-top: 1rem; line-height: 1.6; }
 
-  /* FOOTER */
   footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06); padding: 2.5rem 2rem; }
   .footer-inner { display: flex; align-items: center; justify-content: space-between; max-width: 720px; margin: 0 auto; flex-wrap: wrap; gap: 1rem; }
   .footer-logo { font-family: 'DM Serif Display', serif; font-size: 16px; color: rgba(255,255,255,0.6); text-decoration: none; }
@@ -173,7 +171,8 @@
       <p class="hero-sub">Four Foxes Consulting helps small and medium agencies get AML ready ahead of July 1 – from drafting your program to health checks, AUSTRAC reporting and simple verification tools.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">Book a quick chat</a>
-        <a href="#services" class="btn-secondary">View services & pricing</a>
+        <a href="#services" class="btn-secondary">View services</a>
+        <a href="https://verify.fourfoxes.com.au" class="btn-secondary">$12.50 per check</a>
       </div>
       <p class="hero-note">Independent, on‑shore support, personalised service.</p>
     </div>
@@ -203,7 +202,7 @@
       </article>
 
       <article class="service-card">
-        <div class="service-header"><div class="service-title">Health Check (recommended bi‑annual)</div><div class="service-price">From $599 + $10 / file</div></div>
+        <div class="service-header"><div class="service-title">Health Check (recommended bi‑annual)</div><div class="service-price">From $299 + $10 / file</div></div>
         <p class="service-tagline">A review to confirm your program is in place and working as intended.</p>
         <div class="service-columns">
           <div><div class="service-col-title">What we review</div><ul class="service-list"><li>Existing AML documentation and program content.</li><li>Evidence of training and awareness across your team.</li><li>Sampling of onboarding and verification files (15% sample).</li></ul></div>
@@ -216,8 +215,8 @@
         <div class="service-header"><div class="service-title">AUSTRAC Annual Report Support</div><div class="service-price">From $499*</div></div>
         <p class="service-tagline">Support to prepare and lodge your Annual Compliance Report and governing body report on time.</p>
         <div class="service-columns">
-          <div><div class="service-col-title">How we help</div><ul class="service-list"><li>Pre‑report planning, key dates and AUSTRAC Online setup checks.</li><li>Review of preview questions and information requirements.</li><li>Collation of SMRs, TTRs, CBMs, internal escalations and training records.</li><li>Testing outcomes across onboarding, verification and reporting.</li></ul></div>
-          <div><div class="service-col-title">Deliverables</div><ul class="service-list"><li>Drafted responses for the Annual Compliance Report (ACR).</li><li>Signed Annual Report to the Governing Body (Sections 1–12).</li><li>Narrative on effectiveness, deficiencies and recommendations.</li><li>Record‑keeping pack stored in line with the 7‑year requirement.</li></ul></div>
+          <div><div class="service-col-title">How we help</div><ul class="service-list"><li>Pre‑report planning.</li><li>Review of questions and information requirements.</li><li>Collation of SMRs, TTRs, CBMs, internal escalations and training records.</li><li>Testing outcomes across onboarding, verification and reporting.</li></ul></div>
+          <div><div class="service-col-title">Deliverables</div><ul class="service-list"><li>Drafted responses for the Annual Compliance Report (ACR).</li><li>Annual Report drafted for the Governing Body (Sections 1–12).</li><li>Narrative on effectiveness, deficiencies and recommendations.</li><li>Record‑keeping pack stored in line with the 7‑year requirement.</li></ul></div>
         </div>
         <p class="service-footnote">*Discounted when bundled with a Health Check for the relevant period.</p>
       </article>
@@ -233,7 +232,6 @@
       </article>
     </div>
 
-    <!-- HOW IT WORKS LINK -->
     <div class="how-it-works-banner">
       <p><strong>Not sure where to start?</strong>See the full AML compliance journey — step by step, with costs at each stage.</p>
       <a href="how-it-works.html" class="btn-teal">See how it works →</a>
