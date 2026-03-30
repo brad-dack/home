@@ -3,18 +3,20 @@
 
 <url>
   <loc>https://fourfoxes.com.au/</loc>
+  <lastmod>2026-03-30</lastmod>
+  <priority>1.0</priority>
 </url>
 
 <url>
-  <loc>https://fourfoxes.com.au/about</loc>
+  <loc>https://fourfoxes.com.au/how-it-works/</loc>
+  <lastmod>2026-03-30</lastmod>
+  <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://fourfoxes.com.au/services</loc>
-</url>
-
-<url>
-  <loc>https://fourfoxes.com.au/contact</loc>
+  <loc>https://verify.fourfoxes.com.au/</loc>
+  <lastmod>2026-03-30</lastmod>
+  <priority>0.9</priority>
 </url>
 
 </urlset>
