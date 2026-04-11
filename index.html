@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,6 +52,7 @@
         .nav-link { color: var(--text-mid); text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.2s; min-height: 44px; display: flex; align-items: center; }
         .nav-link:hover { color: var(--navy); }
         .nav-cta { background: var(--navy); color: var(--white); padding: 10px 22px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 500; transition: background 0.2s; min-height: 44px; display: flex; align-items: center; }
+        .nav-cta:hover { background: var(--navy-mid); }
 
         section { padding: 100px 2rem; }
         .container { max-width: 720px; margin: 0 auto; }
@@ -177,6 +178,7 @@
     <a href="#" class="nav-logo">Four Foxes <span>Consulting</span></a>
     <div class="nav-links">
         <a href="#services" class="nav-link">Services</a>
+        <a href="how-it-works.html" class="nav-link">How it works</a>
         <a href="#verify" class="nav-link">Verify</a>
         <a href="#contact" class="nav-cta">Contact</a>
     </div>
@@ -210,7 +212,6 @@
         <p class="section-intro">Start where you are. Whether you need a first AML/CTF program, a bi‑annual health check, help with AUSTRAC reporting, or a full independent review, we can right‑size the work to your agency.</p>
 
         <div class="service-grid">
-            <!-- Service cards remain exactly the same as your original -->
             <article class="service-card">
                 <div class="service-header"><div class="service-title">AML/CTF Program Setup (Parts A & B)</div><div class="service-price">From $499</div></div>
                 <p class="service-tagline">Designing a practical, documented AML program tailored to how your agency actually operates.</p>
@@ -317,7 +318,7 @@
 </footer>
 
 <script>
-    // Mark fonts as loaded for fallback handling
+    // Mark fonts as loaded
     document.fonts.ready.then(() => {
         document.documentElement.classList.add('fonts-loaded');
     });
@@ -342,5 +343,91 @@
         });
     });
 </script>
+
+<!-- JSON-LD Schema: LocalBusiness + ProfessionalService -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Four Foxes Consulting",
+  "description": "Practical AML/CTF compliance programs, health checks, AUSTRAC reporting support and verification tools designed specifically for small to medium Australian real estate agencies.",
+  "url": "https://fourfoxes.com.au",
+  "logo": "https://fourfoxes.com.au/logo.png", 
+  "telephone": "", 
+  "email": "aml@fourfoxes.com.au",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Perth",
+    "addressRegion": "Western Australia",
+    "addressCountry": "AU"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Brad"
+  },
+  "sameAs": [],
+  "serviceType": "AML/CTF Compliance Consulting",
+  "areaServed": "Australia",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "AML Services for Real Estate",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "AML/CTF Program Setup (Parts A & B)",
+          "description": "Designing a practical, documented AML program tailored to how your agency actually operates.",
+          "offers": {
+            "@type": "Offer",
+            "price": "499",
+            "priceCurrency": "AUD"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "AML Health Check",
+          "description": "Bi-annual review of your AML program with sampling and practical recommendations.",
+          "offers": {
+            "@type": "Offer",
+            "price": "399",
+            "priceCurrency": "AUD"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Independent AML Review",
+          "description": "Deep independent review required every 2–3 years by AUSTRAC.",
+          "offers": {
+            "@type": "Offer",
+            "price": "1999",
+            "priceCurrency": "AUD"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "KYC/KYB Verification Checks",
+          "description": "Pay-per-check verification tool with no subscriptions.",
+          "offers": {
+            "@type": "Offer",
+            "price": "12.50",
+            "priceCurrency": "AUD"
+          }
+        }
+      }
+    ]
+  }
+}
+</script>
+
 </body>
 </html>
