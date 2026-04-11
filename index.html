@@ -44,8 +44,15 @@
             position: fixed; top: 0; left: 0; right: 0; z-index: 100; 
             background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); 
             border-bottom: 1px solid var(--border); 
-            padding: 0 1.25rem; height: 64px; 
-            display: flex; align-items: center; justify-content: space-between; 
+            padding: 0.75rem 1rem; 
+        }
+        .nav-container {
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
         }
         .nav-logo { 
             font-family: 'DM Serif Display', Georgia, serif; 
@@ -55,7 +62,7 @@
         .nav-logo span { color: var(--teal); }
 
         .nav-links { 
-            display: flex; align-items: center; gap: 1rem; 
+            display: flex; align-items: center; gap: 1.25rem; 
         }
         .nav-link { 
             color: var(--text-mid); text-decoration: none; 
@@ -73,12 +80,23 @@
         }
         .nav-cta:hover { background: var(--navy-mid); }
 
-        /* Improved mobile nav */
+        /* Desktop: single row layout */
+        @media (min-width: 641px) {
+            nav { padding: 0 2rem; height: 64px; }
+            .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .nav-logo { font-size: 18px; }
+        }
+
+        /* Mobile improvements - logo on top, links below */
         @media (max-width: 640px) {
-            nav { padding: 0 1rem; }
-            .nav-links { gap: 0.75rem; }
-            .nav-link { font-size: 13px; padding: 0 6px; }
-            .nav-cta { padding: 9px 16px; font-size: 13.5px; }
+            .nav-container { gap: 0.5rem; }
+            .nav-links { gap: 1rem; }
+            .nav-link { font-size: 13.5px; }
+            .nav-cta { padding: 9px 18px; font-size: 13.5px; }
         }
 
         section { padding: 100px 2rem; }
@@ -142,10 +160,10 @@
             color: white;
             font-weight: 600;
             font-size: 15px;
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 999px;
-            margin: 12px 0;
-            box-shadow: 0 2px 6px rgba(26, 127, 110, 0.3);
+            margin: 12px 0 16px;
+            box-shadow: 0 2px 8px rgba(26, 127, 110, 0.25);
         }
 
         #verify { background: var(--white); border-top: 3px solid var(--teal); }
@@ -200,7 +218,6 @@
         .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
 
         @media (max-width: 640px) {
-            nav { padding: 0 1rem; }
             section { padding: 72px 1.25rem; }
             #hero { padding-top: 112px; }
             .service-columns { grid-template-columns: 1fr; }
@@ -215,12 +232,14 @@
 <body>
 
 <nav>
-    <a href="#" class="nav-logo">Four Foxes <span>Consulting</span></a>
-    <div class="nav-links">
-        <a href="#services" class="nav-link">Services</a>
-        <a href="how-it-works.html" class="nav-link">How it works</a>
-        <a href="#verify" class="nav-link">Verify</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+    <div class="nav-container">
+        <a href="#" class="nav-logo">Four Foxes <span>Consulting</span></a>
+        <div class="nav-links">
+            <a href="#services" class="nav-link">Services</a>
+            <a href="how-it-works.html" class="nav-link">How it works</a>
+            <a href="#verify" class="nav-link">Verify</a>
+            <a href="#contact" class="nav-cta">Contact</a>
+        </div>
     </div>
 </nav>
 
@@ -252,7 +271,6 @@
         <p class="section-intro">Start where you are. Whether you need a first AML/CTF program, a bi‑annual health check, help with AUSTRAC reporting, or a full independent review, we can right‑size the work to your agency.</p>
 
         <div class="service-grid">
-            <!-- Your service cards remain unchanged -->
             <article class="service-card">
                 <div class="service-header"><div class="service-title">AML/CTF Program Setup (Parts A & B)</div><div class="service-price">From $499</div></div>
                 <p class="service-tagline">Designing a practical, documented AML program tailored to how your agency actually operates.</p>
@@ -298,7 +316,6 @@
         <h2>Verification without the platform lock‑in.</h2>
         <p class="section-intro">Alongside program work, we offer a simple, pay‑per‑check KYC/KYB tool built specifically for medium, small and boutique real estate agencies that don't want full‑blown enterprise software.</p>
         
-        <!-- Prominent price highlight -->
         <div class="price-highlight">$12.50 per individual check with Four Foxes</div>
 
         <div class="verify-card">
@@ -313,7 +330,6 @@
     </div>
 </section>
 
-<!-- The rest of your sections (approach, contact, footer) remain unchanged -->
 <section id="approach">
     <div class="container">
         <div class="eyebrow">Approach</div>
@@ -387,7 +403,7 @@
     });
 </script>
 
-<!-- JSON-LD Schema remains unchanged -->
+<!-- JSON-LD Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -396,7 +412,6 @@
   "description": "Practical AML/CTF compliance programs, health checks, AUSTRAC reporting support and verification tools designed specifically for small to medium Australian real estate agencies.",
   "url": "https://fourfoxes.com.au",
   "logo": "https://fourfoxes.com.au/logo.png", 
-  "telephone": "", 
   "email": "aml@fourfoxes.com.au",
   "address": {
     "@type": "PostalAddress",
@@ -408,49 +423,16 @@
     "@type": "Person",
     "name": "Brad"
   },
-  "sameAs": [],
   "serviceType": "AML/CTF Compliance Consulting",
   "areaServed": "Australia",
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "AML Services for Real Estate",
     "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "AML/CTF Program Setup (Parts A & B)",
-          "description": "Designing a practical, documented AML program tailored to how your agency actually operates.",
-          "offers": { "@type": "Offer", "price": "499", "priceCurrency": "AUD" }
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "AML Health Check",
-          "description": "Bi-annual review of your AML program with sampling and practical recommendations.",
-          "offers": { "@type": "Offer", "price": "399", "priceCurrency": "AUD" }
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Independent AML Review",
-          "description": "Deep independent review required every 2–3 years by AUSTRAC.",
-          "offers": { "@type": "Offer", "price": "1999", "priceCurrency": "AUD" }
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "KYC/KYB Verification Checks",
-          "description": "Pay-per-check verification tool with no subscriptions.",
-          "offers": { "@type": "Offer", "price": "12.50", "priceCurrency": "AUD" }
-        }
-      }
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AML/CTF Program Setup (Parts A & B)", "offers": {"@type": "Offer", "price": "499", "priceCurrency": "AUD"}}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AML Health Check", "offers": {"@type": "Offer", "price": "399", "priceCurrency": "AUD"}}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Independent AML Review", "offers": {"@type": "Offer", "price": "1999", "priceCurrency": "AUD"}}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "KYC/KYB Verification Checks", "offers": {"@type": "Offer", "price": "12.50", "priceCurrency": "AUD"}}}
     ]
   }
 }
