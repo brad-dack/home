@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How It Works — Four Foxes Consulting</title>
-    <meta name="description" content="A step by step guide to AML compliance for real estate agents, and how Four Foxes Consulting can help at each stage.">
-
-    <!-- Preload critical fonts -->
+    <meta name="description" content="Step-by-step AML compliance guide for Australian real estate agents. See exactly what AUSTRAC Tranche 2 requires, where Four Foxes helps, and indicative costs for program setup, verification and reviews.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Preload critical fonts to fix render-blocking -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" as="style">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" media="print" onload="this.media='all'">
     <noscript>
@@ -68,7 +69,6 @@
         }
         .nav-cta:hover { background: var(--navy-mid); }
 
-        /* Mobile improvements for nav */
         @media (max-width: 640px) {
             nav { padding: 0 1rem; }
             .nav-links { gap: 0.75rem; }
@@ -76,9 +76,7 @@
             .nav-cta { padding: 9px 16px; font-size: 13px; }
         }
 
-        /* Rest of your styles (unchanged except container padding for consistency) */
         .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
-
         .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; }
         .section-divider { width: 40px; height: 2px; background: var(--teal); margin-bottom: 1.5rem; }
         h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 1.25rem; max-width: 620px; }
@@ -168,7 +166,6 @@
     </div>
 </nav>
 
-<!-- The rest of your page content remains exactly the same -->
 <section id="hero">
     <div class="container">
         <div class="hero-content">
@@ -267,5 +264,40 @@
         document.documentElement.classList.add('fonts-loaded');
     });
 </script>
+
+<!-- JSON-LD Schema Markup (added below) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the AML compliance steps for real estate agents under AUSTRAC Tranche 2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The key steps include customer onboarding, AML risk assessment, initial Customer Due Diligence (CDD), Enhanced Due Diligence (EDD) when required, and escalation & reporting to AUSTRAC when necessary."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does AML program setup cost with Four Foxes Consulting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AML/CTF Program Setup (Parts A & B) starts from $499–$599 depending on agency size and complexity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a single KYC verification check cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "$12.50 per check with no subscription or lock-in contract."
+      }
+    }
+  ]
+}
+</script>
+
 </body>
 </html>
