@@ -1177,6 +1177,85 @@
       }));
   }
 
+
+  /* ── Validation ── */
+  function validateStep(step) {
+    let ok = true;
+
+    const req = (id, errId, checkFn) => {
+      hideErr(errId);
+      if (!checkFn()) { showErr(errId); ok = false; }
+    };
+    const requireText  = (id) => req(id, `err-${id}`, () => val(id).length > 0);
+    const requireEmail = (id) => req(id, `err-${id}`, () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val(id)));
+    const requireRadio = (name) => req(name, `err-${name}`, () => !!getRadio(name));
+    const requireCheck = (name) => req(name, `err-${name}`, () => getChecked(name).length > 0);
+
+    if (step === 0) {
+      requireText('business_name');
+      requireText('abn');
+      requireText('contact_person');
+      requireEmail('contact_email');
+      requireText('phone');
+      requireCheck('business_type');
+    }
+    if (step === 1) {
+      requireRadio('cash_transactions');
+      requireRadio('virtual_assets');
+      requireRadio('unusual_requests');
+      requireRadio('ai_verification');
+    }
+    if (step === 2) {
+      requireRadio('bodies_corporate');
+      requireRadio('partnerships');
+      requireRadio('trusts');
+      requireRadio('associations');
+      requireRadio('government_bodies');
+    }
+    if (step === 3) {
+      requireRadio('criminal_activity');
+      requireRadio('domestic_peps');
+      requireRadio('international_peps');
+      requireRadio('foreign_peps');
+      requireRadio('complex_ownership');
+      requireRadio('third_party_reps');
+      requireRadio('unexplained_wealth');
+      requireRadio('charities');
+    }
+    if (step === 4) {
+      requireCheck('interaction_methods');
+    }
+    if (step === 5) {
+      requireRadio('overseas_exposure');
+      if (getRadio('overseas_exposure') === 'Yes') {
+        requireText('countries_involved');
+      }
+    }
+    if (step === 6) {
+      requireCheck('ob_info_collected');
+      requireCheck('ob_buyer_info');
+      requireCheck('ob_id_verification');
+      requireRadio('ob_rep_details');
+      requireRadio('ob_written_procedure');
+      requireText('ob_who_onboards');
+      requireText('ob_systems');
+    }
+    if (step === 7) {
+      requireText('governing_body_name');
+      requireText('governing_body_title');
+      requireText('senior_manager_name');
+      requireText('senior_manager_title');
+      requireText('compliance_officer_name');
+      requireText('compliance_officer_title');
+      requireText('other_personnel');
+    }
+
+    const banner = document.getElementById(`val-${step}`);
+    if (banner) banner.classList.toggle('visible', !ok);
+    if (!ok) window.scrollTo({ top: 0, behavior: 'smooth' });
+    return ok;
+  }
+
   /* ── Navigation ── */
   function moveStep(dir) {
     if (dir === 1 && !validateStep(currentStep)) return;
