@@ -880,7 +880,7 @@
   <div class="card">
     <p class="field-question">6.1 Does your business deal with overseas customers, overseas funds or overseas ownership structures?</p>
     <div class="pill-group">
-      <label><input type="radio" name="overseas_exposure" value="Yes" id="oe_yes"><span class="pill">Yes</span></label>
+      <label><input type="radio" name="overseas_exposure" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="overseas_exposure" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="overseas_exposure" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
@@ -889,11 +889,12 @@
 
   <div class="conditional" id="overseas_details">
     <div class="card">
-      <label class="field-label" for="countries_involved">6.2 Which countries are commonly involved?</label>
-      <p class="field-hint" style="font-size:13px;color:var(--text-light);margin-bottom:10px">List all countries where customers, funds, beneficial owners or instructions may originate.</p>
+      <p class="field-question">6.2 Which countries are commonly involved?</p>
+      <p class="field-hint">List all countries where customers, funds, beneficial owners or instructions may originate.</p>
       <textarea id="countries_involved" placeholder="e.g. China, Singapore, United Kingdom..." style="min-height:100px"></textarea>
       <p class="field-error" id="err-countries_involved">Please list the countries involved.</p>
     </div>
+  </div>
 
   <div class="section-comments-card">
     <label class="field-label" for="s6_comments">Section comments <span class="opt">(optional)</span></label>
@@ -914,7 +915,6 @@
 
   <div class="validation-banner" id="val-6">Please answer all questions before continuing.</div>
 
-  <!-- 7.1 Information collected -->
   <div class="card">
     <p class="field-question">7.1 What information do you currently collect from vendors during onboarding?</p>
     <p class="field-hint">Select all that your business currently collects.</p>
@@ -930,7 +930,6 @@
     <p class="field-error" id="err-ob_info_collected">Please select at least one option.</p>
   </div>
 
-  <!-- 7.2 Buyer info -->
   <div class="card">
     <p class="field-question">7.2 What information do you currently collect from buyers during onboarding?</p>
     <p class="field-hint">Select all that your business currently collects.</p>
@@ -949,7 +948,6 @@
     <p class="field-error" id="err-ob_buyer_info">Please select at least one option.</p>
   </div>
 
-  <!-- 7.2 Identity verification -->
   <div class="card">
     <p class="field-question">7.3 What identity verification does your business currently perform?</p>
     <p class="field-hint">Select all that apply.</p>
@@ -963,9 +961,6 @@
     <p class="field-error" id="err-ob_id_verification">Please select at least one option.</p>
   </div>
 
-  </div>
-
-  <!-- 7.4 Representative details -->
   <div class="card">
     <p class="field-question">7.4 Does your business collect details about customer representatives or agents acting on a customer's behalf?</p>
     <div class="pill-group">
@@ -976,7 +971,6 @@
     <p class="field-error" id="err-ob_rep_details">Please select an answer.</p>
   </div>
 
-  <!-- 7.5 Written onboarding procedure -->
   <div class="card">
     <p class="field-question">7.5 Does your business have a written onboarding procedure, customer intake form or onboarding technology such as digital ID checks?</p>
     <div class="pill-group">
@@ -987,7 +981,6 @@
     <p class="field-error" id="err-ob_written_procedure">Please select an answer.</p>
   </div>
 
-  <!-- 7.6 Who performs onboarding -->
   <div class="card">
     <p class="field-question">7.6 Who performs customer onboarding in your business?</p>
     <p class="field-hint">For example: principal, licensee in charge, office manager, all sales agents.</p>
@@ -995,7 +988,6 @@
     <p class="field-error" id="err-ob_who_onboards">Please describe who performs onboarding.</p>
   </div>
 
-  <!-- 7.7 Systems used -->
   <div class="card">
     <p class="field-question">7.7 What systems or software does your business use to manage customers?</p>
     <p class="field-hint">For example: property management software, CRM, digital ID verification tools, paper forms. If none, write "None".</p>
