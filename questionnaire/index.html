@@ -890,28 +890,10 @@
   <div class="conditional" id="overseas_details">
     <div class="card">
       <label class="field-label" for="countries_involved">6.2 Which countries are commonly involved?</label>
-      <p class="field-hint">List any countries where customers, funds, beneficial owners or instructions may originate.</p>
+      <p class="field-hint" style="font-size:13px;color:var(--text-light);margin-bottom:10px">List all countries where customers, funds, beneficial owners or instructions may originate.</p>
       <textarea id="countries_involved" placeholder="e.g. China, Singapore, United Kingdom..." style="min-height:100px"></textarea>
       <p class="field-error" id="err-countries_involved">Please list the countries involved.</p>
     </div>
-
-    <div class="card">
-      <p class="field-question">6.3 Which overseas risk scenarios may apply?</p>
-      <div class="check-group" style="margin-top:10px">
-        <label class="check-opt"><input type="checkbox" name="overseas_risk_types" value="Foreign residents or citizens"><span>Foreign residents or citizens</span></label>
-        <label class="check-opt"><input type="checkbox" name="overseas_risk_types" value="Beneficial owners located overseas"><span>Beneficial owners located overseas</span></label>
-        <label class="check-opt"><input type="checkbox" name="overseas_risk_types" value="Overseas bank accounts or funds transfers"><span>Overseas bank accounts or funds transfers</span></label>
-        <label class="check-opt"><input type="checkbox" name="overseas_risk_types" value="Overseas companies or trusts"><span>Overseas companies or trusts</span></label>
-        <label class="check-opt"><input type="checkbox" name="overseas_risk_types" value="Instructions originating overseas"><span>Instructions originating overseas</span></label>
-        <label class="check-opt"><input type="checkbox" name="overseas_risk_types" value="Other" id="ort_other_check"><span>Other</span></label>
-      </div>
-      <div class="conditional" id="ort_other_field">
-        <label class="field-label" for="overseas_risk_other" style="margin-top:14px">Please specify</label>
-        <input type="text" id="overseas_risk_other" placeholder="Describe other overseas risk">
-      </div>
-      <p class="field-error" id="err-overseas_risk_types">Please select at least one option.</p>
-    </div>
-  </div>
 
   <div class="section-comments-card">
     <label class="field-label" for="s6_comments">Section comments <span class="opt">(optional)</span></label>
@@ -934,7 +916,7 @@
 
   <!-- 7.1 Information collected -->
   <div class="card">
-    <p class="field-question">7.1 What information do you currently collect from customers during onboarding?</p>
+    <p class="field-question">7.1 What information do you currently collect from vendors during onboarding?</p>
     <p class="field-hint">Select all that your business currently collects.</p>
     <div class="check-group">
       <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Legal name"><span>Legal name</span></label>
@@ -943,17 +925,33 @@
       <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Residential address"><span>Residential address</span></label>
       <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Country of residence"><span>Country of residence</span></label>
       <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Occupation"><span>Occupation</span></label>
-      <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Purpose of the service (e.g. buying, selling, investing)"><span>Purpose of the service (e.g. buying, selling, investing)</span></label>
-      <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Whether finance or a mortgage is being used"><span>Whether finance or a mortgage is being used</span></label>
-      <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Source of funds and payment method"><span>Source of funds and payment method</span></label>
       <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="None of the above"><span>None of the above</span></label>
     </div>
     <p class="field-error" id="err-ob_info_collected">Please select at least one option.</p>
   </div>
 
+  <!-- 7.2 Buyer info -->
+  <div class="card">
+    <p class="field-question">7.2 What information do you currently collect from buyers during onboarding?</p>
+    <p class="field-hint">Select all that your business currently collects.</p>
+    <div class="check-group">
+      <label class="check-opt"><input type="checkbox" name="ob_buyer_info" value="Legal name"><span>Legal name</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_buyer_info" value="Other names or aliases"><span>Other names or aliases</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_buyer_info" value="Date of birth"><span>Date of birth</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_buyer_info" value="Residential address"><span>Residential address</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_buyer_info" value="Country of residence"><span>Country of residence</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_buyer_info" value="Occupation"><span>Occupation</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_buyer_info" value="Purpose of the service (e.g. buying, selling, investing)"><span>Purpose of the service (e.g. buying, selling, investing)</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_buyer_info" value="Whether finance or a mortgage is being used"><span>Whether finance or a mortgage is being used</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_buyer_info" value="Source of funds and payment method"><span>Source of funds and payment method</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_buyer_info" value="None of the above"><span>None of the above</span></label>
+    </div>
+    <p class="field-error" id="err-ob_buyer_info">Please select at least one option.</p>
+  </div>
+
   <!-- 7.2 Identity verification -->
   <div class="card">
-    <p class="field-question">7.2 What identity verification does your business currently perform?</p>
+    <p class="field-question">7.3 What identity verification does your business currently perform?</p>
     <p class="field-hint">Select all that apply.</p>
     <div class="check-group">
       <label class="check-opt"><input type="checkbox" name="ob_id_verification" value="Primary photographic ID (e.g. passport, driver's licence)"><span>Primary photographic ID (e.g. passport, driver's licence)</span></label>
@@ -965,15 +963,6 @@
     <p class="field-error" id="err-ob_id_verification">Please select at least one option.</p>
   </div>
 
-  <!-- 7.3 PEP screening -->
-  <div class="card">
-    <p class="field-question">7.3 Does your business currently screen customers for politically exposed person (PEP) status?</p>
-    <div class="pill-group">
-      <label><input type="radio" name="ob_pep_screening" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="ob_pep_screening" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="ob_pep_screening" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
-    </div>
-    <p class="field-error" id="err-ob_pep_screening">Please select an answer.</p>
   </div>
 
   <!-- 7.4 Representative details -->
@@ -989,18 +978,18 @@
 
   <!-- 7.5 Written onboarding procedure -->
   <div class="card">
-    <p class="field-question">7.5 Does your business have a written onboarding procedure or customer intake form?</p>
+    <p class="field-question">7.5 Does your business have a written onboarding procedure, customer intake form or onboarding technology such as digital ID checks?</p>
     <div class="pill-group">
       <label><input type="radio" name="ob_written_procedure" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="ob_written_procedure" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="ob_written_procedure" value="Informal only"><span class="pill">Informal only</span></label>
+      <label><input type="radio" name="ob_written_procedure" value="Informal process only"><span class="pill">Informal process only</span></label>
     </div>
     <p class="field-error" id="err-ob_written_procedure">Please select an answer.</p>
   </div>
 
   <!-- 7.6 Who performs onboarding -->
   <div class="card">
-    <label class="field-label" for="ob_who_onboards">7.6 Who performs customer onboarding in your business?</label>
+    <p class="field-question">7.6 Who performs customer onboarding in your business?</p>
     <p class="field-hint">For example: principal, licensee in charge, office manager, all sales agents.</p>
     <input type="text" id="ob_who_onboards" placeholder="e.g. All sales agents, supervised by the licensee in charge">
     <p class="field-error" id="err-ob_who_onboards">Please describe who performs onboarding.</p>
@@ -1008,7 +997,7 @@
 
   <!-- 7.7 Systems used -->
   <div class="card">
-    <label class="field-label" for="ob_systems">7.7 What systems or software does your business use during onboarding?</label>
+    <p class="field-question">7.7 What systems or software does your business use to manage customers?</p>
     <p class="field-hint">For example: property management software, CRM, digital ID verification tools, paper forms. If none, write "None".</p>
     <input type="text" id="ob_systems" placeholder="e.g. Console Cloud, VaultRE, paper forms">
     <p class="field-error" id="err-ob_systems">Please describe the systems used, or enter "None".</p>
@@ -1031,7 +1020,8 @@
   </div>
 
   <div class="info-banner">
-    For most small real estate agencies, it is reasonable for <strong>one person to hold multiple AML/CTF governance roles</strong>. Where a business has one or two principals, consolidating governance roles into a single person is generally appropriate and proportionate.
+    <strong>About this section.</strong> The AML/CTF Act requires every reporting entity to have specific people responsible for overseeing compliance. This section is about identifying who in your business is best placed to fill those roles.<br><br>
+    For most small real estate agencies, one person can hold more than one role. The answers you provide here are a <strong>starting point only</strong> and will be discussed and confirmed with you before your program is finalised. There are no wrong answers.
   </div>
 
   <div class="validation-banner" id="val-7">Please complete all required fields before continuing.</div>
@@ -1097,9 +1087,13 @@
   </div>
 
   <div class="card">
-    <label class="field-label" for="other_personnel">8.4 Other AML/CTF Personnel <span class="opt">(optional)</span></label>
-    <p class="field-hint">List any other staff involved in AML/CTF responsibilities, such as sales agents, office managers, or trust account personnel.</p>
+    <p class="field-question">8.4 Other Client-Facing Personnel</p>
+    <div class="role-desc">Any staff who have direct contact with customers as part of their role should be listed here. This includes anyone involved in onboarding, sales, property management, or trust account transactions. Examples include sales agents, buyer's agents, property managers, office managers and reception staff.
+    </div>
+    <label class="field-label" for="other_personnel">List all client-facing staff</label>
+    <p class="field-hint">Include name and role for each person.</p>
     <textarea id="other_personnel" placeholder="List names, roles and responsibilities as applicable..."></textarea>
+    <p class="field-error" id="err-other_personnel">Please list your client-facing staff.</p>
   </div>
 
   <div class="section-comments-card">
@@ -1149,7 +1143,6 @@
   </div>
   <h2>Thank you</h2>
   <p>Your AML/CTF Business Risk Assessment has been received. We will be in touch shortly to progress your compliance documentation.</p>
-  <a href="https://www.fourfoxes.com.au">Return to fourfoxes.com.au</a>
 </div>
 
 <script>
@@ -1182,87 +1175,6 @@
         const yes = getRadio('overseas_exposure') === 'Yes';
         document.getElementById('overseas_details').classList.toggle('visible', yes);
       }));
-
-    document.getElementById('ort_other_check').addEventListener('change', e =>
-      document.getElementById('ort_other_field').classList.toggle('visible', e.target.checked));
-  }
-
-  /* ── Validation ── */
-  function validateStep(step) {
-    let ok = true;
-
-    const req = (id, errId, checkFn) => {
-      hideErr(errId);
-      if (!checkFn()) { showErr(errId); ok = false; }
-    };
-
-    const requireText  = (id) => req(id, `err-${id}`, () => val(id).length > 0);
-    const requireEmail = (id) => req(id, `err-${id}`, () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val(id)));
-    const requireRadio = (name) => req(name, `err-${name}`, () => !!getRadio(name));
-    const requireCheck = (name) => req(name, `err-${name}`, () => getChecked(name).length > 0);
-
-    if (step === 0) {
-      requireText('business_name');
-      requireText('abn');
-      requireText('contact_person');
-      requireEmail('contact_email');
-      requireText('phone');
-      requireCheck('business_type');
-    }
-    if (step === 1) {
-      requireRadio('cash_transactions');
-      requireRadio('virtual_assets');
-      requireRadio('unusual_requests');
-      requireRadio('ai_verification');
-    }
-    if (step === 2) {
-      requireRadio('bodies_corporate');
-      requireRadio('partnerships');
-      requireRadio('trusts');
-      requireRadio('associations');
-      requireRadio('government_bodies');
-    }
-    if (step === 3) {
-      requireRadio('criminal_activity');
-      requireRadio('domestic_peps');
-      requireRadio('international_peps');
-      requireRadio('foreign_peps');
-      requireRadio('complex_ownership');
-      requireRadio('third_party_reps');
-      requireRadio('unexplained_wealth');
-      requireRadio('charities');
-    }
-    if (step === 4) {
-      requireCheck('interaction_methods');
-    }
-    if (step === 5) {
-      requireRadio('overseas_exposure');
-      if (getRadio('overseas_exposure') === 'Yes') {
-        requireText('countries_involved');
-        requireCheck('overseas_risk_types');
-      }
-    }
-    if (step === 6) {
-      requireCheck('ob_info_collected');
-      requireCheck('ob_id_verification');
-      requireRadio('ob_pep_screening');
-      requireRadio('ob_rep_details');
-      requireRadio('ob_written_procedure');
-      requireText('ob_who_onboards');
-      requireText('ob_systems');
-    }
-    if (step === 7) {
-      requireText('governing_body_name');
-      requireText('governing_body_title');
-      requireText('senior_manager_name');
-      requireText('senior_manager_title');
-      requireText('compliance_officer_name');
-      requireText('compliance_officer_title');
-    }
-
-    const banner = document.getElementById(`val-${step}`);
-    if (banner) banner.classList.toggle('visible', !ok);
-    if (!ok) window.scrollTo({ top: 0, behavior: 'smooth' });
     return ok;
   }
 
@@ -1346,8 +1258,8 @@
       },
       section7: {
         ob_info_collected:    getChecked('ob_info_collected'),
+        ob_buyer_info:        getChecked('ob_buyer_info'),
         ob_id_verification:   getChecked('ob_id_verification'),
-        ob_pep_screening:     getRadio('ob_pep_screening'),
         ob_rep_details:       getRadio('ob_rep_details'),
         ob_written_procedure: getRadio('ob_written_procedure'),
         ob_who_onboards:      val('ob_who_onboards'),
