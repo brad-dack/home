@@ -3,387 +3,404 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AML/CTF Business Risk Assessment</title>
+<title>AML/CTF Business Risk Assessment — Four Foxes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-  /* ─── TOKENS ─── */
-  :root {
-    --navy:    #0d1b2a;
-    --navy2:   #162334;
-    --slate:   #1e3148;
-    --gold:    #c9a84c;
-    --gold2:   #e8c96a;
-    --cream:   #f5f0e8;
-    --cream2:  #ede7d9;
-    --text:    #1a1a2e;
-    --muted:   #6b7280;
-    --white:   #ffffff;
-    --error:   #c0392b;
-    --success: #1a6b45;
-    --border:  #d4c9b5;
-    --radius:  6px;
-    --shadow:  0 4px 24px rgba(13,27,42,0.10);
-  }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    min-height: 100vh;
+  :root {
+    --navy:       #0f1f38;
+    --navy-mid:   #1a3050;
+    --teal:       #1a7f6e;
+    --teal-light: #e8f5f2;
+    --teal-mid:   #c2e8e0;
+    --sand:       #f5f2ec;
+    --text:       #1a1a2e;
+    --text-mid:   #4a5568;
+    --text-light: #718096;
+    --white:      #ffffff;
+    --border:     #e2ddd6;
+    --error:      #c0392b;
+    --error-bg:   #fdf2f2;
+    --radius:     8px;
   }
 
-  /* ─── HEADER ─── */
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-weight: 400;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ── HEADER ── */
   .site-header {
     background: var(--navy);
-    padding: 28px 40px;
+    padding: 0 2rem;
+    height: 64px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
-  .site-header .logo-mark {
-    width: 36px; height: 36px;
-    border: 2px solid var(--gold);
-    border-radius: 4px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .site-header .logo-mark svg { width: 18px; height: 18px; fill: var(--gold); }
-  .site-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
+  .header-logo {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 18px;
     color: var(--white);
-    font-weight: 500;
-    letter-spacing: 0.01em;
+    text-decoration: none;
+    letter-spacing: -0.01em;
   }
-  .site-header p {
-    font-size: 0.78rem;
+  .header-logo span { color: var(--teal-mid); }
+  .header-home {
+    font-size: 13px;
     color: rgba(255,255,255,0.5);
-    margin-top: 2px;
+    text-decoration: none;
+    transition: color 0.2s;
   }
+  .header-home:hover { color: rgba(255,255,255,0.85); }
 
-  /* ─── PROGRESS BAR ─── */
+  /* ── PROGRESS ── */
   .progress-wrap {
-    background: var(--navy2);
-    padding: 0 40px;
+    background: var(--navy-mid);
     border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .progress-steps {
-    display: flex;
-    gap: 0;
+    padding: 0 2rem;
     overflow-x: auto;
     scrollbar-width: none;
   }
-  .progress-steps::-webkit-scrollbar { display: none; }
+  .progress-wrap::-webkit-scrollbar { display: none; }
+  .progress-steps {
+    display: flex;
+    max-width: 960px;
+    margin: 0 auto;
+  }
   .step-pill {
     flex-shrink: 0;
-    padding: 14px 20px 12px;
-    font-size: 0.72rem;
+    padding: 14px 18px 12px;
+    font-size: 11px;
     font-weight: 500;
-    color: rgba(255,255,255,0.35);
-    cursor: default;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
     border-bottom: 2px solid transparent;
-    transition: all 0.2s;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
     white-space: nowrap;
+    transition: all 0.2s;
   }
-  .step-pill.active  { color: var(--gold); border-bottom-color: var(--gold); }
-  .step-pill.done    { color: rgba(255,255,255,0.55); }
+  .step-pill.active { color: var(--teal-mid); border-bottom-color: var(--teal); }
+  .step-pill.done   { color: rgba(255,255,255,0.5); }
 
-  /* ─── MAIN LAYOUT ─── */
+  /* ── LAYOUT ── */
   .page-body {
-    max-width: 780px;
+    max-width: 720px;
     margin: 0 auto;
-    padding: 48px 24px 80px;
+    padding: 48px 2rem 96px;
   }
 
-  /* ─── SECTION HEADER ─── */
-  .section-header {
-    margin-bottom: 36px;
-  }
-  .section-tag {
-    display: inline-block;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+  /* ── SECTION HEADING ── */
+  .section-header { margin-bottom: 32px; }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--teal);
     margin-bottom: 10px;
+    display: block;
+  }
+  .section-divider {
+    width: 40px; height: 2px;
+    background: var(--teal);
+    margin-bottom: 1rem;
   }
   .section-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.9rem;
-    font-weight: 500;
-    color: var(--navy);
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(26px, 4vw, 36px);
     line-height: 1.2;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
   }
   .section-header p {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.6;
+    font-size: 15px;
+    color: var(--text-mid);
+    font-weight: 300;
+    line-height: 1.75;
   }
 
-  /* ─── COLLECTION NOTICE ─── */
+  /* ── COLLECTION NOTICE ── */
   .collection-notice {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--navy);
+    background: var(--teal-light);
+    border: 1px solid var(--teal-mid);
     border-radius: var(--radius);
     padding: 14px 18px;
-    margin-bottom: 24px;
-    font-size: 0.82rem;
-    color: var(--muted);
+    margin-bottom: 28px;
+    font-size: 13px;
+    color: var(--text-mid);
     line-height: 1.65;
   }
   .collection-notice strong { color: var(--navy); }
-  .collection-notice a { color: var(--gold); text-decoration: underline; }
+  .collection-notice a { color: var(--teal); text-decoration: underline; }
 
-  /* ─── BANNER ─── */
+  /* ── INFO BANNER ── */
   .info-banner {
     background: var(--navy);
-    border-left: 3px solid var(--gold);
     border-radius: var(--radius);
     padding: 16px 20px;
-    margin-bottom: 32px;
-    font-size: 0.84rem;
-    color: rgba(255,255,255,0.82);
-    line-height: 1.6;
+    margin-bottom: 28px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.65;
   }
-  .info-banner strong { color: var(--gold2); }
+  .info-banner strong { color: var(--teal-mid); }
 
-  /* ─── CARDS ─── */
+  /* ── CARDS ── */
   .card {
     background: var(--white);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 28px 28px 24px;
-    margin-bottom: 20px;
-    box-shadow: var(--shadow);
+    border-radius: 14px;
+    padding: 24px 24px 20px;
+    margin-bottom: 16px;
   }
+  .card.invalid { border-color: var(--error); }
 
+  /* ── LABELS & QUESTIONS ── */
   .field-label {
     display: block;
-    font-size: 0.82rem;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--navy);
     margin-bottom: 8px;
     letter-spacing: 0.01em;
   }
-  .field-label .req { color: var(--gold); margin-left: 3px; }
-
+  .field-label .opt { color: var(--text-light); font-weight: 400; }
   .field-question {
-    font-size: 0.94rem;
+    font-size: 15px;
     font-weight: 500;
     color: var(--text);
     margin-bottom: 6px;
     line-height: 1.5;
   }
   .field-hint {
-    font-size: 0.79rem;
-    color: var(--muted);
+    font-size: 13px;
+    color: var(--text-light);
     margin-bottom: 14px;
-    line-height: 1.55;
+    line-height: 1.6;
   }
   .field-hint ul { padding-left: 16px; margin-top: 4px; }
   .field-hint li { margin-bottom: 2px; }
 
-  /* ─── INPUTS ─── */
+  /* ── INPUTS ── */
   input[type="text"],
   input[type="email"],
   input[type="tel"],
   textarea {
     width: 100%;
-    padding: 10px 14px;
+    padding: 12px 14px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.88rem;
+    font-size: 15px;
     color: var(--text);
-    background: var(--cream);
-    transition: border-color 0.15s, box-shadow 0.15s;
+    background: var(--sand);
+    transition: border-color 0.2s, background 0.2s;
     outline: none;
+    min-height: 44px;
   }
   input:focus, textarea:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+    border-color: var(--teal);
     background: var(--white);
   }
-  textarea { resize: vertical; min-height: 90px; }
+  textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
 
-  /* ─── RADIO / CHECK GROUPS ─── */
-  .radio-group, .check-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 4px;
-  }
-  .radio-group.inline, .check-group.inline {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .radio-opt, .check-opt {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-  }
-  .radio-opt input, .check-opt input {
-    width: auto;
-    accent-color: var(--gold);
-    width: 16px; height: 16px;
-    flex-shrink: 0;
-    cursor: pointer;
-  }
-  .radio-opt span, .check-opt span {
-    font-size: 0.87rem;
-    color: var(--text);
-    line-height: 1.4;
-  }
-
-  /* pill-style radio for Yes/No/Don't Know */
-  .pill-group {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 4px;
-  }
-  .pill-group label {
-    cursor: pointer;
-  }
-  .pill-group input[type="radio"] { display: none; }
-  .pill-group .pill {
-    display: inline-block;
-    padding: 7px 18px;
-    border: 1.5px solid var(--border);
-    border-radius: 100px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--muted);
-    background: var(--cream);
-    transition: all 0.15s;
-  }
-  .pill-group input[type="radio"]:checked + .pill {
-    border-color: var(--gold);
-    background: var(--gold);
-    color: var(--navy);
-    font-weight: 600;
-  }
-
-  /* ─── OPTIONAL COMMENT ─── */
-  .optional-comment { margin-top: 14px; }
-  .optional-comment label {
-    display: block;
-    font-size: 0.76rem;
-    font-weight: 500;
-    color: var(--muted);
-    margin-bottom: 5px;
-    letter-spacing: 0.02em;
-  }
-
-  /* ─── MULTI-FIELD ROW ─── */
+  /* ── FIELD ROW ── */
   .field-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
+    gap: 14px;
   }
   @media (max-width: 560px) { .field-row { grid-template-columns: 1fr; } }
-  .field-row:last-child { margin-bottom: 0; }
 
-  /* ─── CONDITIONAL ─── */
-  .conditional { display: none; margin-top: 14px; }
-  .conditional.visible { display: block; }
-
-  /* ─── SUBSECTION DIVIDER ─── */
-  .sub-divider {
-    border: none;
-    border-top: 1px solid var(--cream2);
-    margin: 20px 0;
+  /* ── PILL RADIOS ── */
+  .pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .pill-group label { cursor: pointer; }
+  .pill-group input[type="radio"] { display: none; }
+  .pill-group .pill {
+    display: inline-block;
+    padding: 8px 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-mid);
+    background: var(--sand);
+    transition: all 0.15s;
+    min-height: 44px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+  }
+  .pill-group input[type="radio"]:checked + .pill {
+    border-color: var(--teal);
+    background: var(--teal-light);
+    color: var(--teal);
   }
 
+  /* ── CHECKBOXES ── */
+  .check-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .check-opt {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+  }
+  .check-opt input[type="checkbox"] {
+    width: 17px; height: 17px;
+    accent-color: var(--teal);
+    flex-shrink: 0;
+    margin-top: 3px;
+    cursor: pointer;
+  }
+  .check-opt span {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+
+  /* ── ROLE DESC ── */
   .role-desc {
-    font-size: 0.82rem;
-    color: var(--muted);
-    background: var(--cream);
+    font-size: 13px;
+    color: var(--text-mid);
+    background: var(--sand);
     border-radius: 6px;
     padding: 12px 16px;
-    margin-bottom: 20px;
-    line-height: 1.6;
+    margin-bottom: 18px;
+    line-height: 1.65;
   }
   .role-desc strong { color: var(--navy); }
   .role-desc ul { padding-left: 16px; margin-top: 6px; }
   .role-desc li { margin-bottom: 3px; }
 
-  /* ─── NAVIGATION ─── */
+  /* ── CONDITIONAL ── */
+  .conditional { display: none; margin-top: 14px; }
+  .conditional.visible { display: block; }
+
+  /* ── SECTION DIVIDER ── */
+  .card-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 20px 0;
+  }
+
+  /* ── SECTION COMMENTS ── */
+  .section-comments-card {
+    background: var(--sand);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+
+  /* ── VALIDATION ERROR ── */
+  .field-error {
+    font-size: 12px;
+    color: var(--error);
+    margin-top: 6px;
+    display: none;
+  }
+  .field-error.visible { display: block; }
+  .validation-banner {
+    display: none;
+    background: var(--error-bg);
+    border: 1px solid #f5c6c6;
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--error);
+    margin-bottom: 16px;
+  }
+  .validation-banner.visible { display: block; }
+
+  /* ── NAVIGATION ── */
   .nav-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 36px;
+    margin-top: 32px;
     gap: 12px;
+  }
+  .step-counter {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 400;
   }
 
   .btn {
-    padding: 12px 28px;
+    padding: 12px 24px;
     border-radius: var(--radius);
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.88rem;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
     border: none;
-    transition: all 0.15s;
-    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
   .btn-primary {
     background: var(--navy);
     color: var(--white);
   }
-  .btn-primary:hover { background: var(--slate); }
+  .btn-primary:hover { background: var(--navy-mid); transform: translateY(-1px); }
   .btn-ghost {
     background: transparent;
-    color: var(--muted);
-    border: 1.5px solid var(--border);
+    color: var(--text-mid);
+    border: 1px solid var(--border);
   }
-  .btn-ghost:hover { border-color: var(--navy); color: var(--navy); }
+  .btn-ghost:hover { background: var(--sand); color: var(--navy); }
   .btn-submit {
-    background: var(--gold);
-    color: var(--navy);
-    padding: 14px 36px;
-    font-size: 0.92rem;
+    background: var(--teal);
+    color: var(--white);
+    font-size: 15px;
+    padding: 14px 32px;
   }
-  .btn-submit:hover { background: var(--gold2); }
-  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-submit:hover { background: #158a77; transform: translateY(-1px); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-  .step-counter {
-    font-size: 0.78rem;
-    color: var(--muted);
-    font-weight: 500;
-  }
-
-  /* ─── DECLARATION ─── */
+  /* ── DECLARATION ── */
   .declaration-box {
     background: var(--navy);
-    border-radius: 10px;
+    border-radius: 14px;
     padding: 28px;
-    margin-bottom: 24px;
-    color: rgba(255,255,255,0.85);
-    font-size: 0.88rem;
-    line-height: 1.7;
+    margin-bottom: 20px;
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    line-height: 1.75;
+    font-weight: 300;
   }
   .declaration-box h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.2rem;
     color: var(--white);
     margin-bottom: 12px;
-    font-weight: 500;
+    font-weight: 400;
   }
+  .declaration-box em { color: var(--teal-mid); font-style: normal; }
 
   .agree-row {
     display: flex;
@@ -392,77 +409,83 @@
     padding: 16px 20px;
     background: var(--white);
     border: 1.5px solid var(--border);
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
+    transition: border-color 0.2s;
   }
+  .agree-row:hover { border-color: var(--teal); }
   .agree-row input[type="checkbox"] {
     width: 18px; height: 18px;
-    accent-color: var(--gold);
+    accent-color: var(--teal);
     flex-shrink: 0;
-    margin-top: 1px;
+    margin-top: 2px;
     cursor: pointer;
   }
-  .agree-row span { font-size: 0.87rem; line-height: 1.5; color: var(--text); }
+  .agree-row span { font-size: 14px; line-height: 1.6; color: var(--text-mid); }
+  .agree-row a { color: var(--teal); text-decoration: underline; }
 
-  /* ─── SUCCESS ─── */
+  /* ── SUBMIT ERROR ── */
+  .submit-error {
+    display: none;
+    background: var(--error-bg);
+    border: 1px solid #f5c6c6;
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--error);
+    margin-top: 14px;
+  }
+  .submit-error.visible { display: block; }
+
+  /* ── SUCCESS ── */
   .success-screen {
     display: none;
     text-align: center;
-    padding: 60px 24px;
+    padding: 80px 24px;
   }
-  .success-screen.visible { display: block; }
+  .success-screen.visible { display: block; animation: fadeUp 0.5s ease both; }
   .success-icon {
     width: 72px; height: 72px;
-    background: var(--navy);
+    background: var(--teal-light);
+    border: 2px solid var(--teal-mid);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     margin: 0 auto 24px;
   }
-  .success-icon svg { width: 32px; height: 32px; fill: var(--gold); }
+  .success-icon svg { width: 30px; height: 30px; stroke: var(--teal); fill: none; stroke-width: 2.5; }
   .success-screen h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-size: 2rem;
     color: var(--navy);
     margin-bottom: 12px;
-    font-weight: 500;
   }
-  .success-screen p { color: var(--muted); font-size: 0.92rem; line-height: 1.6; max-width: 420px; margin: 0 auto; }
+  .success-screen p { color: var(--text-mid); font-size: 15px; line-height: 1.7; max-width: 420px; margin: 0 auto 24px; font-weight: 300; }
+  .success-screen a { color: var(--teal); text-decoration: none; font-weight: 500; }
 
-  /* ─── ERROR ─── */
-  .error-msg {
-    display: none;
-    background: #fdf2f2;
-    border: 1px solid #f5c6c6;
-    border-radius: 6px;
-    padding: 12px 16px;
-    font-size: 0.83rem;
-    color: var(--error);
-    margin-top: 16px;
-  }
-  .error-msg.visible { display: block; }
-
-  /* ─── FORM SECTIONS (visibility) ─── */
+  /* ── FORM SECTIONS ── */
   .form-section { display: none; }
-  .form-section.active { display: block; animation: fadeIn 0.25s ease; }
-  @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+  .form-section.active { display: block; animation: fadeUp 0.25s ease both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 640px) {
+    .page-body { padding: 32px 1.25rem 80px; }
+    .site-header { padding: 0 1.25rem; }
+    .progress-wrap { padding: 0 1rem; }
+    .card { padding: 20px 18px; }
+  }
 </style>
 </head>
 <body>
 
-<!-- ════════════════ HEADER ════════════════ -->
+<!-- HEADER -->
 <header class="site-header">
-  <div class="logo-mark">
-    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-  </div>
-  <div>
-    <h1>AML/CTF Business Risk Assessment</h1>
-    <p>Anti-Money Laundering &amp; Counter-Terrorism Financing — Compliance Intake</p>
-  </div>
+  <a href="https://www.fourfoxes.com.au" class="header-logo">four<span>foxes</span></a>
+  <a href="https://www.fourfoxes.com.au" class="header-home">fourfoxes.com.au</a>
 </header>
 
-<!-- ════════════════ PROGRESS ════════════════ -->
+<!-- PROGRESS -->
 <nav class="progress-wrap">
-  <div class="progress-steps" id="progressSteps">
+  <div class="progress-steps">
     <div class="step-pill active" data-step="0">Business Details</div>
     <div class="step-pill" data-step="1">Products &amp; Services</div>
     <div class="step-pill" data-step="2">Customer Structures</div>
@@ -475,52 +498,61 @@
   </div>
 </nav>
 
-<!-- ════════════════ MAIN ════════════════ -->
 <main class="page-body">
 
-<!-- ──────── SECTION 1 — Business Details ──────── -->
+<!-- ══════════════════════════════════════════
+     SECTION 1 — Business Details
+══════════════════════════════════════════ -->
 <div class="form-section active" id="section-0">
   <div class="section-header">
-    <span class="section-tag">Section 1 of 9</span>
+    <span class="eyebrow">Section 1 of 9</span>
+    <div class="section-divider"></div>
     <h2>Business Details</h2>
     <p>Tell us about your business so we can tailor your AML/CTF compliance documentation.</p>
   </div>
 
   <div class="collection-notice">
-    <strong>Collection Notice</strong> — Four Foxes collects the personal and business information in this form for the purpose of preparing AML/CTF compliance documentation for your business. Your information will not be used for any other purpose or disclosed to third parties without your consent, except as required by law. Collection is conducted in accordance with the <em>Privacy Act 1988</em> (Cth). For full details, see our <a href="https://www.fourfoxes.com.au/privacy" target="_blank">Privacy Policy ↗</a>.
+    <strong>Collection Notice.</strong> Four Foxes collects the personal and business information in this form for the purpose of preparing AML/CTF compliance documentation for your business. Your information will not be used for any other purpose or disclosed to third parties without your consent, except as required by law. Collection is conducted in accordance with the <em>Privacy Act 1988</em> (Cth). For full details, see our <a href="https://www.fourfoxes.com.au/privacy" target="_blank">Privacy Policy</a>.
   </div>
 
+  <div class="validation-banner" id="val-0">Please complete all required fields before continuing.</div>
+
   <div class="card">
-    <div class="field-row">
+    <div class="field-row" style="margin-bottom:14px">
       <div>
-        <label class="field-label" for="business_name">Business Name <span class="req">*</span></label>
+        <label class="field-label" for="business_name">Business Name</label>
         <input type="text" id="business_name" placeholder="e.g. Acme Real Estate Pty Ltd">
+        <p class="field-error" id="err-business_name">Business name is required.</p>
       </div>
       <div>
         <label class="field-label" for="abn">ABN</label>
         <input type="text" id="abn" placeholder="00 000 000 000">
+        <p class="field-error" id="err-abn">ABN is required.</p>
       </div>
     </div>
-    <div class="field-row">
+    <div class="field-row" style="margin-bottom:14px">
       <div>
-        <label class="field-label" for="contact_person">Contact Person <span class="req">*</span></label>
+        <label class="field-label" for="contact_person">Contact Person</label>
         <input type="text" id="contact_person" placeholder="Full name">
+        <p class="field-error" id="err-contact_person">Contact person is required.</p>
       </div>
       <div>
-        <label class="field-label" for="contact_email">Contact Email <span class="req">*</span></label>
+        <label class="field-label" for="contact_email">Contact Email</label>
         <input type="email" id="contact_email" placeholder="email@example.com">
+        <p class="field-error" id="err-contact_email">A valid email address is required.</p>
       </div>
     </div>
     <div class="field-row">
       <div>
         <label class="field-label" for="phone">Phone Number</label>
         <input type="tel" id="phone" placeholder="04XX XXX XXX">
+        <p class="field-error" id="err-phone">Phone number is required.</p>
       </div>
     </div>
   </div>
 
   <div class="card">
-    <p class="field-label">Business Type <span class="req">*</span></p>
+    <p class="field-label">Business Type</p>
     <p class="field-hint">Select all that apply.</p>
     <div class="check-group">
       <label class="check-opt"><input type="checkbox" name="business_type" value="Residential real estate agency"><span>Residential real estate agency</span></label>
@@ -532,229 +564,290 @@
       <label class="check-opt"><input type="checkbox" name="business_type" value="Other" id="bt_other_check"><span>Other</span></label>
     </div>
     <div class="conditional" id="bt_other_field">
-      <label class="field-label" for="business_type_other">Please specify</label>
+      <label class="field-label" for="business_type_other" style="margin-top:12px">Please specify</label>
       <input type="text" id="business_type_other" placeholder="Describe your business type">
     </div>
+    <p class="field-error" id="err-business_type">Please select at least one business type.</p>
+  </div>
+
+  <div class="section-comments-card">
+    <label class="field-label" for="s1_comments">Section comments <span class="opt">(optional)</span></label>
+    <textarea id="s1_comments" placeholder="Any additional context for this section..."></textarea>
   </div>
 </div>
 
-<!-- ──────── SECTION 2 — Products & Service Risks ──────── -->
+<!-- ══════════════════════════════════════════
+     SECTION 2 — Products & Service Risks
+══════════════════════════════════════════ -->
 <div class="form-section" id="section-1">
   <div class="section-header">
-    <span class="section-tag">Section 2 of 9</span>
-    <h2>Products &amp; Service Risks</h2>
+    <span class="eyebrow">Section 2 of 9</span>
+    <div class="section-divider"></div>
+    <h2>Products and Service Risks</h2>
     <p>Identify potential risk exposures within your products and services.</p>
   </div>
 
-  <!-- 2.1 -->
+  <div class="validation-banner" id="val-1">Please answer all questions before continuing.</div>
+
   <div class="card">
-    <p class="field-question">2.1 — Would you accept property transactions involving physical cash valued at AUD $50,000 or more?</p>
+    <p class="field-question">2.1 Would you accept property transactions involving physical cash valued at AUD $50,000 or more?</p>
     <div class="pill-group">
       <label><input type="radio" name="cash_transactions" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="cash_transactions" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="cash_transactions" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
-    <div class="optional-comment">
-      <label>Additional comments (optional)</label>
-      <textarea id="cash_transactions_comments" placeholder="Any relevant context…"></textarea>
+    <p class="field-error" id="err-cash_transactions">Please select an answer.</p>
+    <div class="optional-comment" style="margin-top:14px">
+      <label class="field-label" style="font-weight:400;color:var(--text-light);font-size:12px">Additional comments (optional)</label>
+      <textarea id="cash_transactions_comments" placeholder="Any relevant context..." style="min-height:70px"></textarea>
     </div>
   </div>
 
-  <!-- 2.2 -->
   <div class="card">
-    <p class="field-question">2.2 — Would you accept transactions involving virtual assets or cryptocurrency (e.g. Bitcoin, Ethereum)?</p>
+    <p class="field-question">2.2 Would you accept transactions involving virtual assets or cryptocurrency (for example Bitcoin or Ethereum)?</p>
     <div class="pill-group">
       <label><input type="radio" name="virtual_assets" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="virtual_assets" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="virtual_assets" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
-    <div class="optional-comment">
-      <label>Additional comments (optional)</label>
-      <textarea id="virtual_assets_comments" placeholder="Any relevant context…"></textarea>
+    <p class="field-error" id="err-virtual_assets">Please select an answer.</p>
+    <div class="optional-comment" style="margin-top:14px">
+      <label class="field-label" style="font-weight:400;color:var(--text-light);font-size:12px">Additional comments (optional)</label>
+      <textarea id="virtual_assets_comments" placeholder="Any relevant context..." style="min-height:70px"></textarea>
     </div>
   </div>
 
-  <!-- 2.3 -->
   <div class="card">
-    <p class="field-question">2.3 — Would you accept customers requesting unusually complex, rapid or commercially unusual transactions?</p>
-    <div class="field-hint">
-      Examples include:
-      <ul><li>Significantly above-market purchases</li><li>Rushed settlements</li><li>Unusual transaction structures</li></ul>
-    </div>
+    <p class="field-question">2.3 Would you accept customers requesting unusually complex, rapid or commercially unusual transactions?</p>
+    <div class="field-hint">Examples include: significantly above-market purchases, rushed settlements, or unusual transaction structures.</div>
     <div class="pill-group">
       <label><input type="radio" name="unusual_requests" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="unusual_requests" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="unusual_requests" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
-    <div class="optional-comment">
-      <label>Additional comments (optional)</label>
-      <textarea id="unusual_requests_comments" placeholder="Any relevant context…"></textarea>
+    <p class="field-error" id="err-unusual_requests">Please select an answer.</p>
+    <div class="optional-comment" style="margin-top:14px">
+      <label class="field-label" style="font-weight:400;color:var(--text-light);font-size:12px">Additional comments (optional)</label>
+      <textarea id="unusual_requests_comments" placeholder="Any relevant context..." style="min-height:70px"></textarea>
     </div>
   </div>
 
-  <!-- 2.4 -->
   <div class="card">
-    <p class="field-question">2.4 — Does your business use AI, digital identity tools or automated onboarding technology?</p>
-    <div class="field-hint">
-      This includes:
-      <ul><li>Digital ID verification</li><li>AI assistants</li><li>Automated onboarding</li><li>Facial recognition tools</li></ul>
-    </div>
+    <p class="field-question">2.4 Does your business use AI, digital identity tools or automated onboarding technology?</p>
+    <div class="field-hint">This includes digital ID verification, AI assistants, automated onboarding, and facial recognition tools.</div>
     <div class="pill-group">
       <label><input type="radio" name="ai_verification" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="ai_verification" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="ai_verification" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
-    <div class="optional-comment">
-      <label>Additional comments (optional)</label>
-      <textarea id="ai_verification_comments" placeholder="Any relevant context…"></textarea>
+    <p class="field-error" id="err-ai_verification">Please select an answer.</p>
+    <div class="optional-comment" style="margin-top:14px">
+      <label class="field-label" style="font-weight:400;color:var(--text-light);font-size:12px">Additional comments (optional)</label>
+      <textarea id="ai_verification_comments" placeholder="Any relevant context..." style="min-height:70px"></textarea>
     </div>
+  </div>
+
+  <div class="section-comments-card">
+    <label class="field-label" for="s2_comments">Section comments <span class="opt">(optional)</span></label>
+    <textarea id="s2_comments" placeholder="Any additional context for this section..."></textarea>
   </div>
 </div>
 
-<!-- ──────── SECTION 3 — Customer Structures ──────── -->
+<!-- ══════════════════════════════════════════
+     SECTION 3 — Customer Structures
+══════════════════════════════════════════ -->
 <div class="form-section" id="section-2">
   <div class="section-header">
-    <span class="section-tag">Section 3 of 9</span>
+    <span class="eyebrow">Section 3 of 9</span>
+    <div class="section-divider"></div>
     <h2>Customer Structures</h2>
-    <p>Select "Yes" if you currently deal with these customer types, or may do so in future.</p>
+    <p>Select Yes if you currently deal with these customer types, or may do so in future.</p>
   </div>
 
+  <div class="validation-banner" id="val-2">Please answer all questions before continuing.</div>
+
   <div class="card">
-    <p class="field-question">3.1 — Will your business deal with companies, strata corporations or other bodies corporate?</p>
+    <p class="field-question">3.1 Will your business deal with companies, strata corporations or other bodies corporate?</p>
     <div class="pill-group">
       <label><input type="radio" name="bodies_corporate" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="bodies_corporate" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="bodies_corporate" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
+    <p class="field-error" id="err-bodies_corporate">Please select an answer.</p>
   </div>
+
   <div class="card">
-    <p class="field-question">3.2 — Will your business deal with partnerships?</p>
+    <p class="field-question">3.2 Will your business deal with partnerships?</p>
     <div class="pill-group">
       <label><input type="radio" name="partnerships" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="partnerships" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="partnerships" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
+    <p class="field-error" id="err-partnerships">Please select an answer.</p>
   </div>
+
   <div class="card">
-    <p class="field-question">3.3 — Will your business deal with trusts?</p>
+    <p class="field-question">3.3 Will your business deal with trusts?</p>
     <div class="pill-group">
       <label><input type="radio" name="trusts" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="trusts" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="trusts" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
+    <p class="field-error" id="err-trusts">Please select an answer.</p>
   </div>
+
   <div class="card">
-    <p class="field-question">3.4 — Will your business deal with associations or incorporated associations?</p>
+    <p class="field-question">3.4 Will your business deal with associations or incorporated associations?</p>
     <div class="pill-group">
       <label><input type="radio" name="associations" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="associations" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="associations" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
+    <p class="field-error" id="err-associations">Please select an answer.</p>
   </div>
+
   <div class="card">
-    <p class="field-question">3.5 — Will your business deal with government entities or government-owned organisations?</p>
+    <p class="field-question">3.5 Will your business deal with government entities or government-owned organisations?</p>
     <div class="pill-group">
       <label><input type="radio" name="government_bodies" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="government_bodies" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="government_bodies" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
+    <p class="field-error" id="err-government_bodies">Please select an answer.</p>
+  </div>
+
+  <div class="section-comments-card">
+    <label class="field-label" for="s3_comments">Section comments <span class="opt">(optional)</span></label>
+    <textarea id="s3_comments" placeholder="Any additional context for this section..."></textarea>
   </div>
 </div>
 
-<!-- ──────── SECTION 4 — Risk Appetite ──────── -->
+<!-- ══════════════════════════════════════════
+     SECTION 4 — Risk Appetite
+══════════════════════════════════════════ -->
 <div class="form-section" id="section-3">
   <div class="section-header">
-    <span class="section-tag">Section 4 of 9</span>
+    <span class="eyebrow">Section 4 of 9</span>
+    <div class="section-divider"></div>
     <h2>Risk Appetite</h2>
   </div>
+
   <div class="info-banner">
-    <strong>Note:</strong> There are no right or wrong answers in this section. If you accept a risk, your AML/CTF Program must document how it will be managed. If you do not accept a risk, your Program must document how your business avoids that activity.
+    <strong>Note.</strong> There are no right or wrong answers in this section. If you accept a risk, your AML/CTF Program must document how it will be managed. If you do not accept a risk, your Program must document how your business avoids that activity.
   </div>
 
+  <div class="validation-banner" id="val-3">Please answer all questions before continuing.</div>
+
   <div class="card">
-    <p class="field-question">4.1 — Would your business continue acting for a customer you suspect may be linked to criminal activity or illicit wealth?</p>
-    <div class="field-hint">Examples include: fraud, tax evasion, corruption, drug trafficking, money laundering.</div>
+    <p class="field-question">4.1 Would your business continue acting for a customer you suspect may be linked to criminal activity or illicit wealth?</p>
+    <div class="field-hint">Examples include fraud, tax evasion, corruption, drug trafficking, and money laundering.</div>
     <div class="pill-group">
       <label><input type="radio" name="criminal_activity" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="criminal_activity" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="criminal_activity" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
+    <p class="field-error" id="err-criminal_activity">Please select an answer.</p>
   </div>
+
   <div class="card">
-    <p class="field-question">4.2 — Would your business accept domestic politically exposed persons (PEPs) as customers?</p>
+    <p class="field-question">4.2 Would your business accept domestic politically exposed persons (PEPs) as customers?</p>
     <div class="field-hint">This includes senior Australian government officials, their family members and close associates.</div>
     <div class="pill-group">
       <label><input type="radio" name="domestic_peps" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="domestic_peps" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="domestic_peps" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
+    <p class="field-error" id="err-domestic_peps">Please select an answer.</p>
   </div>
+
   <div class="card">
-    <p class="field-question">4.3 — Would your business accept PEPs connected to international organisations?</p>
+    <p class="field-question">4.3 Would your business accept PEPs connected to international organisations?</p>
     <div class="pill-group">
       <label><input type="radio" name="international_peps" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="international_peps" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="international_peps" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
+    <p class="field-error" id="err-international_peps">Please select an answer.</p>
   </div>
+
   <div class="card">
-    <p class="field-question">4.4 — Would your business accept foreign politically exposed persons (PEPs) as customers?</p>
+    <p class="field-question">4.4 Would your business accept foreign politically exposed persons (PEPs) as customers?</p>
     <div class="pill-group">
       <label><input type="radio" name="foreign_peps" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="foreign_peps" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="foreign_peps" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
+    <p class="field-error" id="err-foreign_peps">Please select an answer.</p>
   </div>
+
   <div class="card">
-    <p class="field-question">4.5 — Would your business accept customers using highly complex ownership or control structures?</p>
+    <p class="field-question">4.5 Would your business accept customers using highly complex ownership or control structures?</p>
     <div class="field-hint">These structures can make beneficial ownership difficult to identify.</div>
     <div class="pill-group">
       <label><input type="radio" name="complex_ownership" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="complex_ownership" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="complex_ownership" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
+    <p class="field-error" id="err-complex_ownership">Please select an answer.</p>
   </div>
+
   <div class="card">
-    <p class="field-question">4.6 — Would your business accept customers acting through third parties or intermediaries?</p>
-    <div class="field-hint">Examples include representatives, nominees, intermediaries, persons acting under authority.</div>
+    <p class="field-question">4.6 Would your business accept customers acting through third parties or intermediaries?</p>
+    <div class="field-hint">Examples include representatives, nominees, intermediaries, and persons acting under authority.</div>
     <div class="pill-group">
       <label><input type="radio" name="third_party_reps" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="third_party_reps" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="third_party_reps" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
+    <p class="field-error" id="err-third_party_reps">Please select an answer.</p>
   </div>
+
   <div class="card">
-    <p class="field-question">4.7 — Would your business continue acting for a customer with significant unexplained wealth?</p>
+    <p class="field-question">4.7 Would your business continue acting for a customer with significant unexplained wealth?</p>
     <div class="pill-group">
       <label><input type="radio" name="unexplained_wealth" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="unexplained_wealth" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="unexplained_wealth" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
+    <p class="field-error" id="err-unexplained_wealth">Please select an answer.</p>
   </div>
+
   <div class="card">
-    <p class="field-question">4.8 — Would your business accept charities or non-profit organisations as customers?</p>
+    <p class="field-question">4.8 Would your business accept charities or non-profit organisations as customers?</p>
     <div class="pill-group">
       <label><input type="radio" name="charities" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="charities" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="charities" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
+    <p class="field-error" id="err-charities">Please select an answer.</p>
+  </div>
+
+  <div class="section-comments-card">
+    <label class="field-label" for="s4_comments">Section comments <span class="opt">(optional)</span></label>
+    <textarea id="s4_comments" placeholder="Any additional context for this section..."></textarea>
   </div>
 </div>
 
-<!-- ──────── SECTION 5 — Customer Interaction Methods ──────── -->
+<!-- ══════════════════════════════════════════
+     SECTION 5 — Customer Interaction Methods
+══════════════════════════════════════════ -->
 <div class="form-section" id="section-4">
   <div class="section-header">
-    <span class="section-tag">Section 5 of 9</span>
+    <span class="eyebrow">Section 5 of 9</span>
+    <div class="section-divider"></div>
     <h2>Customer Interaction Methods</h2>
     <p>How does your business interact with customers? Select all that apply.</p>
   </div>
+
+  <div class="validation-banner" id="val-4">Please select at least one interaction method.</div>
+
   <div class="card">
     <div class="check-group">
       <label class="check-opt"><input type="checkbox" name="interaction_methods" value="In person"><span>In person</span></label>
       <label class="check-opt"><input type="checkbox" name="interaction_methods" value="Email"><span>Email</span></label>
       <label class="check-opt"><input type="checkbox" name="interaction_methods" value="Telephone"><span>Telephone</span></label>
       <label class="check-opt"><input type="checkbox" name="interaction_methods" value="Video conferencing"><span>Video conferencing</span></label>
-      <label class="check-opt"><input type="checkbox" name="interaction_methods" value="Online platforms/portals"><span>Online platforms / portals</span></label>
+      <label class="check-opt"><input type="checkbox" name="interaction_methods" value="Online platforms or portals"><span>Online platforms or portals</span></label>
       <label class="check-opt"><input type="checkbox" name="interaction_methods" value="Third-party representatives"><span>Third-party representatives</span></label>
       <label class="check-opt"><input type="checkbox" name="interaction_methods" value="Other" id="im_other_check"><span>Other</span></label>
     </div>
@@ -762,34 +855,48 @@
       <label class="field-label" for="interaction_other" style="margin-top:14px">Please specify</label>
       <input type="text" id="interaction_other" placeholder="Describe other interaction method">
     </div>
+    <p class="field-error" id="err-interaction_methods">Please select at least one option.</p>
+  </div>
+
+  <div class="section-comments-card">
+    <label class="field-label" for="s5_comments">Section comments <span class="opt">(optional)</span></label>
+    <textarea id="s5_comments" placeholder="Any additional context for this section..."></textarea>
   </div>
 </div>
 
-<!-- ──────── SECTION 6 — Overseas Exposure ──────── -->
+<!-- ══════════════════════════════════════════
+     SECTION 6 — Overseas Exposure
+══════════════════════════════════════════ -->
 <div class="form-section" id="section-5">
   <div class="section-header">
-    <span class="section-tag">Section 6 of 9</span>
+    <span class="eyebrow">Section 6 of 9</span>
+    <div class="section-divider"></div>
     <h2>Overseas Exposure</h2>
     <p>Identify any cross-border risks relevant to your business operations.</p>
   </div>
 
+  <div class="validation-banner" id="val-5">Please answer all questions before continuing.</div>
+
   <div class="card">
-    <p class="field-question">6.1 — Does your business deal with overseas customers, overseas funds or overseas ownership structures?</p>
+    <p class="field-question">6.1 Does your business deal with overseas customers, overseas funds or overseas ownership structures?</p>
     <div class="pill-group">
       <label><input type="radio" name="overseas_exposure" value="Yes" id="oe_yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="overseas_exposure" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="overseas_exposure" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
+    <p class="field-error" id="err-overseas_exposure">Please select an answer.</p>
   </div>
 
   <div class="conditional" id="overseas_details">
     <div class="card">
-      <label class="field-label" for="countries_involved">6.2 — Which countries are commonly involved?</label>
+      <label class="field-label" for="countries_involved">6.2 Which countries are commonly involved?</label>
       <p class="field-hint">List any countries where customers, funds, beneficial owners or instructions may originate.</p>
-      <textarea id="countries_involved" placeholder="e.g. China, Singapore, United Kingdom…" style="min-height:100px"></textarea>
+      <textarea id="countries_involved" placeholder="e.g. China, Singapore, United Kingdom..." style="min-height:100px"></textarea>
+      <p class="field-error" id="err-countries_involved">Please list the countries involved.</p>
     </div>
+
     <div class="card">
-      <p class="field-question">6.3 — Which overseas risk scenarios may apply?</p>
+      <p class="field-question">6.3 Which overseas risk scenarios may apply?</p>
       <div class="check-group" style="margin-top:10px">
         <label class="check-opt"><input type="checkbox" name="overseas_risk_types" value="Foreign residents or citizens"><span>Foreign residents or citizens</span></label>
         <label class="check-opt"><input type="checkbox" name="overseas_risk_types" value="Beneficial owners located overseas"><span>Beneficial owners located overseas</span></label>
@@ -802,219 +909,375 @@
         <label class="field-label" for="overseas_risk_other" style="margin-top:14px">Please specify</label>
         <input type="text" id="overseas_risk_other" placeholder="Describe other overseas risk">
       </div>
+      <p class="field-error" id="err-overseas_risk_types">Please select at least one option.</p>
     </div>
   </div>
+
+  <div class="section-comments-card">
+    <label class="field-label" for="s6_comments">Section comments <span class="opt">(optional)</span></label>
+    <textarea id="s6_comments" placeholder="Any additional context for this section..."></textarea>
+  </div>
 </div>
 
-<!-- ──────── SECTION 7 — Customer Onboarding ──────── -->
+<!-- ══════════════════════════════════════════
+     SECTION 7 — Customer Onboarding Practices
+══════════════════════════════════════════ -->
 <div class="form-section" id="section-6">
   <div class="section-header">
-    <span class="section-tag">Section 7 of 9</span>
-    <h2>Customer Onboarding</h2>
-    <p>Describe how your business currently onboards new customers.</p>
+    <span class="eyebrow">Section 7 of 9</span>
+    <div class="section-divider"></div>
+    <h2>Customer Onboarding Practices</h2>
+    <p>Tell us what your business currently does when onboarding new customers. This helps us identify gaps and tailor your AML/CTF Program.</p>
   </div>
+
+  <div class="validation-banner" id="val-6">Please answer all questions before continuing.</div>
+
+  <!-- 7.1 Information collected -->
   <div class="card">
-    <p class="field-hint">Please describe:
-      <ul style="margin-top:6px">
-        <li>What information is collected</li>
-        <li>How identity is verified</li>
-        <li>Whether digital verification is used</li>
-        <li>Who performs onboarding</li>
-        <li>Any systems or software used</li>
-      </ul>
-    </p>
-    <textarea id="onboarding_description" placeholder="Describe your current onboarding process…" style="min-height:160px; margin-top:12px"></textarea>
+    <p class="field-question">7.1 What information do you currently collect from customers during onboarding?</p>
+    <p class="field-hint">Select all that your business currently collects.</p>
+    <div class="check-group">
+      <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Legal name"><span>Legal name</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Other names or aliases"><span>Other names or aliases</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Date of birth"><span>Date of birth</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Residential address"><span>Residential address</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Country of residence"><span>Country of residence</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Occupation"><span>Occupation</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Purpose of the service (e.g. buying, selling, investing)"><span>Purpose of the service (e.g. buying, selling, investing)</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Whether finance or a mortgage is being used"><span>Whether finance or a mortgage is being used</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="Source of funds and payment method"><span>Source of funds and payment method</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_info_collected" value="None of the above"><span>None of the above</span></label>
+    </div>
+    <p class="field-error" id="err-ob_info_collected">Please select at least one option.</p>
+  </div>
+
+  <!-- 7.2 Identity verification -->
+  <div class="card">
+    <p class="field-question">7.2 What identity verification does your business currently perform?</p>
+    <p class="field-hint">Select all that apply.</p>
+    <div class="check-group">
+      <label class="check-opt"><input type="checkbox" name="ob_id_verification" value="Primary photographic ID (e.g. passport, driver's licence)"><span>Primary photographic ID (e.g. passport, driver's licence)</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_id_verification" value="Primary non-photographic ID (e.g. birth certificate, Medicare card)"><span>Primary non-photographic ID (e.g. birth certificate, Medicare card)</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_id_verification" value="Secondary ID documents (e.g. utility bills, bank statements)"><span>Secondary ID documents (e.g. utility bills, bank statements)</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_id_verification" value="Electronic or digital identity verification"><span>Electronic or digital identity verification</span></label>
+      <label class="check-opt"><input type="checkbox" name="ob_id_verification" value="No identity verification currently performed"><span>No identity verification currently performed</span></label>
+    </div>
+    <p class="field-error" id="err-ob_id_verification">Please select at least one option.</p>
+  </div>
+
+  <!-- 7.3 PEP screening -->
+  <div class="card">
+    <p class="field-question">7.3 Does your business currently screen customers for politically exposed person (PEP) status?</p>
+    <div class="pill-group">
+      <label><input type="radio" name="ob_pep_screening" value="Yes"><span class="pill">Yes</span></label>
+      <label><input type="radio" name="ob_pep_screening" value="No"><span class="pill">No</span></label>
+      <label><input type="radio" name="ob_pep_screening" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+    </div>
+    <p class="field-error" id="err-ob_pep_screening">Please select an answer.</p>
+  </div>
+
+  <!-- 7.4 Representative details -->
+  <div class="card">
+    <p class="field-question">7.4 Does your business collect details about customer representatives or agents acting on a customer's behalf?</p>
+    <div class="pill-group">
+      <label><input type="radio" name="ob_rep_details" value="Yes"><span class="pill">Yes</span></label>
+      <label><input type="radio" name="ob_rep_details" value="No"><span class="pill">No</span></label>
+      <label><input type="radio" name="ob_rep_details" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+    </div>
+    <p class="field-error" id="err-ob_rep_details">Please select an answer.</p>
+  </div>
+
+  <!-- 7.5 Written onboarding procedure -->
+  <div class="card">
+    <p class="field-question">7.5 Does your business have a written onboarding procedure or customer intake form?</p>
+    <div class="pill-group">
+      <label><input type="radio" name="ob_written_procedure" value="Yes"><span class="pill">Yes</span></label>
+      <label><input type="radio" name="ob_written_procedure" value="No"><span class="pill">No</span></label>
+      <label><input type="radio" name="ob_written_procedure" value="Informal only"><span class="pill">Informal only</span></label>
+    </div>
+    <p class="field-error" id="err-ob_written_procedure">Please select an answer.</p>
+  </div>
+
+  <!-- 7.6 Who performs onboarding -->
+  <div class="card">
+    <label class="field-label" for="ob_who_onboards">7.6 Who performs customer onboarding in your business?</label>
+    <p class="field-hint">For example: principal, licensee in charge, office manager, all sales agents.</p>
+    <input type="text" id="ob_who_onboards" placeholder="e.g. All sales agents, supervised by the licensee in charge">
+    <p class="field-error" id="err-ob_who_onboards">Please describe who performs onboarding.</p>
+  </div>
+
+  <!-- 7.7 Systems used -->
+  <div class="card">
+    <label class="field-label" for="ob_systems">7.7 What systems or software does your business use during onboarding?</label>
+    <p class="field-hint">For example: property management software, CRM, digital ID verification tools, paper forms. If none, write "None".</p>
+    <input type="text" id="ob_systems" placeholder="e.g. Console Cloud, VaultRE, paper forms">
+    <p class="field-error" id="err-ob_systems">Please describe the systems used, or enter "None".</p>
+  </div>
+
+  <div class="section-comments-card">
+    <label class="field-label" for="s7_comments">Section comments <span class="opt">(optional)</span></label>
+    <textarea id="s7_comments" placeholder="Any additional context for this section..."></textarea>
   </div>
 </div>
 
-<!-- ──────── SECTION 8 — AML Governance Roles ──────── -->
+<!-- ══════════════════════════════════════════
+     SECTION 8 — AML Governance Roles
+══════════════════════════════════════════ -->
 <div class="form-section" id="section-7">
   <div class="section-header">
-    <span class="section-tag">Section 8 of 9</span>
+    <span class="eyebrow">Section 8 of 9</span>
+    <div class="section-divider"></div>
     <h2>AML Governance Roles</h2>
   </div>
+
   <div class="info-banner">
-    For most small real estate agencies, it is reasonable for <strong>one person to hold multiple AML/CTF governance roles</strong>. Where a business has one or two principals, consolidating governance roles is generally appropriate and proportionate.
+    For most small real estate agencies, it is reasonable for <strong>one person to hold multiple AML/CTF governance roles</strong>. Where a business has one or two principals, consolidating governance roles into a single person is generally appropriate and proportionate.
   </div>
 
-  <!-- 8.1 Governing Body -->
+  <div class="validation-banner" id="val-7">Please complete all required fields before continuing.</div>
+
   <div class="card">
-    <p class="field-question">8.1 — Governing Body</p>
+    <p class="field-question">8.1 Governing Body</p>
     <div class="role-desc">
-      Responsible for overall governance and executive-level decisions. Responsibilities include:
-      <ul><li>Setting the strategic direction of the AML/CTF Program</li><li>Appointing AML/CTF roles</li><li>Reviewing compliance reporting</li><li>Ensuring sufficient resources</li></ul>
-      <strong>In smaller businesses, this is commonly the business owner.</strong>
+      Responsible for overall governance and executive-level decisions. Responsibilities include setting the strategic direction of the AML/CTF Program, appointing AML/CTF roles, reviewing compliance reporting, and ensuring sufficient resources are available.
+      <strong style="display:block;margin-top:8px">In smaller businesses, this is commonly the business owner.</strong>
     </div>
     <div class="field-row">
       <div>
         <label class="field-label" for="governing_body_name">Full Name</label>
         <input type="text" id="governing_body_name" placeholder="Full name">
+        <p class="field-error" id="err-governing_body_name">Full name is required.</p>
       </div>
       <div>
         <label class="field-label" for="governing_body_title">Position / Title</label>
         <input type="text" id="governing_body_title" placeholder="e.g. Business Owner">
+        <p class="field-error" id="err-governing_body_title">Position or title is required.</p>
       </div>
     </div>
   </div>
 
-  <!-- 8.2 Senior Manager -->
   <div class="card">
-    <p class="field-question">8.2 — Senior Manager</p>
+    <p class="field-question">8.2 Senior Manager</p>
     <div class="role-desc">
-      Responsible for approving the AML/CTF Program and making decisions about high-risk customers. Responsibilities include:
-      <ul><li>Approving AML/CTF policies and updates</li><li>Deciding whether to continue acting for high-risk customers</li><li>Overseeing AML/CTF decision-making</li></ul>
-      <strong>Commonly the licensee in charge or another senior decision-maker.</strong>
+      Responsible for approving the AML/CTF Program and making decisions about high-risk customers. Responsibilities include approving AML/CTF policies, deciding whether to continue acting for high-risk customers, and overseeing AML/CTF decision-making.
+      <strong style="display:block;margin-top:8px">Commonly the licensee in charge or another senior decision-maker.</strong>
     </div>
     <div class="field-row">
       <div>
         <label class="field-label" for="senior_manager_name">Full Name</label>
         <input type="text" id="senior_manager_name" placeholder="Full name">
+        <p class="field-error" id="err-senior_manager_name">Full name is required.</p>
       </div>
       <div>
         <label class="field-label" for="senior_manager_title">Position / Title</label>
         <input type="text" id="senior_manager_title" placeholder="e.g. Licensee in Charge">
+        <p class="field-error" id="err-senior_manager_title">Position or title is required.</p>
       </div>
     </div>
   </div>
 
-  <!-- 8.3 Compliance Officer -->
   <div class="card">
-    <p class="field-question">8.3 — AML/CTF Compliance Officer</p>
+    <p class="field-question">8.3 AML/CTF Compliance Officer</p>
     <div class="role-desc">
-      Oversees day-to-day AML/CTF compliance. Must be an Australian resident in a management-level role. Responsibilities include:
-      <ul><li>Overseeing AML/CTF compliance</li><li>Monitoring adherence to procedures</li><li>Managing escalated or high-risk matters</li></ul>
-      <strong>Commonly the licensee in charge, business owner or senior operational staff member.</strong>
+      Oversees day-to-day AML/CTF compliance. Must be an Australian resident in a management-level role with sufficient authority and access to information. Responsibilities include overseeing compliance, monitoring procedures, and managing escalated matters.
+      <strong style="display:block;margin-top:8px">Commonly the licensee in charge, business owner or senior operational staff member.</strong>
     </div>
     <div class="field-row">
       <div>
         <label class="field-label" for="compliance_officer_name">Full Name</label>
         <input type="text" id="compliance_officer_name" placeholder="Full name">
+        <p class="field-error" id="err-compliance_officer_name">Full name is required.</p>
       </div>
       <div>
         <label class="field-label" for="compliance_officer_title">Position / Title</label>
         <input type="text" id="compliance_officer_title" placeholder="e.g. Director">
+        <p class="field-error" id="err-compliance_officer_title">Position or title is required.</p>
       </div>
     </div>
   </div>
 
-  <!-- 8.4 Other Personnel -->
   <div class="card">
-    <p class="field-question">8.4 — Other AML/CTF Personnel</p>
-    <div class="role-desc">
-      Other staff who may support AML/CTF obligations as part of their normal duties — e.g. sales agents, office managers, trust account personnel.
-    </div>
-    <label class="field-label" for="other_personnel">Are there other personnel involved in AML/CTF responsibilities?</label>
-    <textarea id="other_personnel" placeholder="List names, roles and responsibilities as applicable…"></textarea>
+    <label class="field-label" for="other_personnel">8.4 Other AML/CTF Personnel <span class="opt">(optional)</span></label>
+    <p class="field-hint">List any other staff involved in AML/CTF responsibilities, such as sales agents, office managers, or trust account personnel.</p>
+    <textarea id="other_personnel" placeholder="List names, roles and responsibilities as applicable..."></textarea>
+  </div>
+
+  <div class="section-comments-card">
+    <label class="field-label" for="s8_comments">Section comments <span class="opt">(optional)</span></label>
+    <textarea id="s8_comments" placeholder="Any additional context for this section..."></textarea>
   </div>
 </div>
 
-<!-- ──────── SECTION 9 — Declaration ──────── -->
+<!-- ══════════════════════════════════════════
+     SECTION 9 — Declaration
+══════════════════════════════════════════ -->
 <div class="form-section" id="section-8">
   <div class="section-header">
-    <span class="section-tag">Section 9 of 9</span>
+    <span class="eyebrow">Section 9 of 9</span>
+    <div class="section-divider"></div>
     <h2>Declaration</h2>
     <p>Please review your submission and confirm the declaration below.</p>
   </div>
 
   <div class="declaration-box">
-    <h3>Accuracy &amp; Consent</h3>
-    I confirm that the information provided in this questionnaire is accurate to the best of my knowledge and understanding. I understand that this information will be used to prepare AML/CTF compliance documentation for my business, in accordance with the <em>Anti-Money Laundering and Counter-Terrorism Financing Act 2006</em> (Cth) and related rules.
+    <h3>Accuracy and Consent</h3>
+    I confirm that the information provided in this questionnaire is accurate to the best of my knowledge and understanding. I understand that this information will be used to prepare AML/CTF compliance documentation for my business, in accordance with the <em>Anti-Money Laundering and Counter-Terrorism Financing Act 2006 (Cth)</em> and related rules.
   </div>
 
   <label class="agree-row" for="declaration_agreed">
     <input type="checkbox" id="declaration_agreed">
-    <span>I agree to the above declaration, confirm that the information provided is accurate, and acknowledge that my information will be handled in accordance with the <a href="https://www.fourfoxes.com.au/privacy" target="_blank" style="color:var(--gold);text-decoration:underline">Four Foxes Privacy Policy</a>.</span>
+    <span>I agree to the above declaration, confirm that the information provided is accurate, and acknowledge that my information will be handled in accordance with the <a href="https://www.fourfoxes.com.au/privacy" target="_blank">Four Foxes Privacy Policy</a>.</span>
   </label>
 
-  <div class="error-msg" id="submit_error"></div>
+  <div class="submit-error" id="submit_error"></div>
 </div>
 
-<!-- ─── NAVIGATION ─── -->
+<!-- NAVIGATION -->
 <div class="nav-row">
-  <button class="btn btn-ghost" id="btnBack" style="display:none" onclick="navigate(-1)">← Back</button>
+  <button class="btn btn-ghost" id="btnBack" style="display:none" onclick="moveStep(-1)">Back</button>
   <span class="step-counter" id="stepCounter">Step 1 of 9</span>
-  <button class="btn btn-primary" id="btnNext" onclick="navigate(1)">Next →</button>
+  <button class="btn btn-primary" id="btnNext" onclick="moveStep(1)">Next</button>
   <button class="btn btn-submit" id="btnSubmit" style="display:none" onclick="submitForm()">Submit Assessment</button>
 </div>
 
 </main>
 
-<!-- ════════════════ SUCCESS ════════════════ -->
+<!-- SUCCESS -->
 <div class="success-screen" id="successScreen">
   <div class="success-icon">
-    <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/><polyline stroke="currentColor" stroke-width="2.5" fill="none" points="20 6 9 17 4 12"/></svg>
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
   </div>
-  <h2>Thank you!</h2>
-  <p>Your AML/CTF Business Risk Assessment has been received successfully. We will be in touch shortly to progress your compliance documentation.</p>
+  <h2>Thank you</h2>
+  <p>Your AML/CTF Business Risk Assessment has been received. We will be in touch shortly to progress your compliance documentation.</p>
+  <a href="https://www.fourfoxes.com.au">Return to fourfoxes.com.au</a>
 </div>
 
 <script>
-  /* ════════ CONFIG — Replace these with your Supabase project values ════════
-     1. Go to your Supabase project → Settings → API
-     2. Copy your Project URL and anon/public key below
-     ════════════════════════════════════════════════════════════════════════ */
-  const SUPABASE_URL  = '__SUPABASE_URL__';
-  const SUPABASE_KEY  = '__SUPABASE_ANON_KEY__';
-  const TABLE_NAME    = 'aml_assessments';     // Create this table in Supabase (see SQL below)
-
-  /* ════════════════════════════════════════════════════════════════════════
-     SUPABASE TABLE SQL — Run this in your Supabase SQL editor:
-
-     create table aml_assessments (
-       id           uuid default gen_random_uuid() primary key,
-       submitted_at timestamptz default now(),
-       data         jsonb not null
-     );
-
-     -- Optional: enable Row Level Security + allow inserts from anon
-     alter table aml_assessments enable row level security;
-     create policy "Allow anon inserts" on aml_assessments
-       for insert to anon with check (true);
-     ════════════════════════════════════════════════════════════════════════ */
+  const SUPABASE_URL = '__SUPABASE_URL__';
+  const SUPABASE_KEY = '__SUPABASE_ANON_KEY__';
+  const TABLE_NAME   = 'aml_assessments';
 
   const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  /* ─── State ─── */
   let currentStep = 0;
   const totalSteps = 9;
 
-  /* ─── Conditional field toggles ─── */
+  /* ── Helpers ── */
+  const getRadio  = n => document.querySelector(`input[name="${n}"]:checked`)?.value || null;
+  const getChecked = n => [...document.querySelectorAll(`input[name="${n}"]:checked`)].map(e => e.value);
+  const val       = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+  const showErr   = id => { const el = document.getElementById(id); if (el) el.classList.add('visible'); };
+  const hideErr   = id => { const el = document.getElementById(id); if (el) el.classList.remove('visible'); };
+
+  /* ── Conditionals ── */
   function setupConditionals() {
-    // Business type "Other"
-    document.getElementById('bt_other_check').addEventListener('change', e => {
-      document.getElementById('bt_other_field').classList.toggle('visible', e.target.checked);
-    });
-    // Interaction methods "Other"
-    document.getElementById('im_other_check').addEventListener('change', e => {
-      document.getElementById('im_other_field').classList.toggle('visible', e.target.checked);
-    });
-    // Overseas exposure — show details if Yes
-    document.querySelectorAll('input[name="overseas_exposure"]').forEach(r => {
+    document.getElementById('bt_other_check').addEventListener('change', e =>
+      document.getElementById('bt_other_field').classList.toggle('visible', e.target.checked));
+
+    document.getElementById('im_other_check').addEventListener('change', e =>
+      document.getElementById('im_other_field').classList.toggle('visible', e.target.checked));
+
+    document.querySelectorAll('input[name="overseas_exposure"]').forEach(r =>
       r.addEventListener('change', () => {
-        const yes = document.querySelector('input[name="overseas_exposure"]:checked')?.value === 'Yes';
+        const yes = getRadio('overseas_exposure') === 'Yes';
         document.getElementById('overseas_details').classList.toggle('visible', yes);
-      });
-    });
-    // Overseas risk "Other"
-    document.getElementById('ort_other_check').addEventListener('change', e => {
-      document.getElementById('ort_other_field').classList.toggle('visible', e.target.checked);
-    });
+      }));
+
+    document.getElementById('ort_other_check').addEventListener('change', e =>
+      document.getElementById('ort_other_field').classList.toggle('visible', e.target.checked));
   }
 
-  /* ─── Navigation ─── */
-  function navigate(dir) {
+  /* ── Validation ── */
+  function validateStep(step) {
+    let ok = true;
+
+    const req = (id, errId, checkFn) => {
+      hideErr(errId);
+      if (!checkFn()) { showErr(errId); ok = false; }
+    };
+
+    const requireText  = (id) => req(id, `err-${id}`, () => val(id).length > 0);
+    const requireEmail = (id) => req(id, `err-${id}`, () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val(id)));
+    const requireRadio = (name) => req(name, `err-${name}`, () => !!getRadio(name));
+    const requireCheck = (name) => req(name, `err-${name}`, () => getChecked(name).length > 0);
+
+    if (step === 0) {
+      requireText('business_name');
+      requireText('abn');
+      requireText('contact_person');
+      requireEmail('contact_email');
+      requireText('phone');
+      requireCheck('business_type');
+    }
+    if (step === 1) {
+      requireRadio('cash_transactions');
+      requireRadio('virtual_assets');
+      requireRadio('unusual_requests');
+      requireRadio('ai_verification');
+    }
+    if (step === 2) {
+      requireRadio('bodies_corporate');
+      requireRadio('partnerships');
+      requireRadio('trusts');
+      requireRadio('associations');
+      requireRadio('government_bodies');
+    }
+    if (step === 3) {
+      requireRadio('criminal_activity');
+      requireRadio('domestic_peps');
+      requireRadio('international_peps');
+      requireRadio('foreign_peps');
+      requireRadio('complex_ownership');
+      requireRadio('third_party_reps');
+      requireRadio('unexplained_wealth');
+      requireRadio('charities');
+    }
+    if (step === 4) {
+      requireCheck('interaction_methods');
+    }
+    if (step === 5) {
+      requireRadio('overseas_exposure');
+      if (getRadio('overseas_exposure') === 'Yes') {
+        requireText('countries_involved');
+        requireCheck('overseas_risk_types');
+      }
+    }
+    if (step === 6) {
+      requireCheck('ob_info_collected');
+      requireCheck('ob_id_verification');
+      requireRadio('ob_pep_screening');
+      requireRadio('ob_rep_details');
+      requireRadio('ob_written_procedure');
+      requireText('ob_who_onboards');
+      requireText('ob_systems');
+    }
+    if (step === 7) {
+      requireText('governing_body_name');
+      requireText('governing_body_title');
+      requireText('senior_manager_name');
+      requireText('senior_manager_title');
+      requireText('compliance_officer_name');
+      requireText('compliance_officer_title');
+    }
+
+    const banner = document.getElementById(`val-${step}`);
+    if (banner) banner.classList.toggle('visible', !ok);
+    if (!ok) window.scrollTo({ top: 0, behavior: 'smooth' });
+    return ok;
+  }
+
+  /* ── Navigation ── */
+  function moveStep(dir) {
     if (dir === 1 && !validateStep(currentStep)) return;
 
+    const pills = document.querySelectorAll('.step-pill');
     document.getElementById(`section-${currentStep}`).classList.remove('active');
-    document.querySelectorAll('.step-pill')[currentStep].classList.remove('active');
-    document.querySelectorAll('.step-pill')[currentStep].classList.add('done');
+    pills[currentStep].classList.remove('active');
+    pills[currentStep].classList.add('done');
 
-    currentStep += dir;
-    if (currentStep < 0) currentStep = 0;
-    if (currentStep >= totalSteps) currentStep = totalSteps - 1;
+    currentStep = Math.max(0, Math.min(totalSteps - 1, currentStep + dir));
 
     document.getElementById(`section-${currentStep}`).classList.add('active');
-    const pills = document.querySelectorAll('.step-pill');
     pills[currentStep].classList.add('active');
     pills[currentStep].classList.remove('done');
 
@@ -1026,51 +1289,29 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  /* ─── Basic validation ─── */
-  function validateStep(step) {
-    if (step === 0) {
-      const name  = document.getElementById('business_name').value.trim();
-      const cp    = document.getElementById('contact_person').value.trim();
-      const email = document.getElementById('contact_email').value.trim();
-      if (!name)  { alert('Please enter your business name.'); return false; }
-      if (!cp)    { alert('Please enter a contact person.'); return false; }
-      if (!email) { alert('Please enter a contact email.'); return false; }
-    }
-    return true;
-  }
-
-  /* ─── Collect form data ─── */
-  function getChecked(name) {
-    return [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(el => el.value);
-  }
-  function getRadio(name) {
-    return document.querySelector(`input[name="${name}"]:checked`)?.value || null;
-  }
-  function val(id) {
-    const el = document.getElementById(id);
-    return el ? el.value.trim() : '';
-  }
-
+  /* ── Collect data ── */
   function collectData() {
     return {
       section1: {
-        business_name:      val('business_name'),
-        abn:                val('abn'),
-        contact_person:     val('contact_person'),
-        contact_email:      val('contact_email'),
-        phone:              val('phone'),
-        business_type:      getChecked('business_type'),
+        business_name:       val('business_name'),
+        abn:                 val('abn'),
+        contact_person:      val('contact_person'),
+        contact_email:       val('contact_email'),
+        phone:               val('phone'),
+        business_type:       getChecked('business_type'),
         business_type_other: val('business_type_other'),
+        comments:            val('s1_comments'),
       },
       section2: {
-        cash_transactions:         getRadio('cash_transactions'),
+        cash_transactions:          getRadio('cash_transactions'),
         cash_transactions_comments: val('cash_transactions_comments'),
-        virtual_assets:            getRadio('virtual_assets'),
-        virtual_assets_comments:   val('virtual_assets_comments'),
-        unusual_requests:          getRadio('unusual_requests'),
-        unusual_requests_comments: val('unusual_requests_comments'),
-        ai_verification:           getRadio('ai_verification'),
-        ai_verification_comments:  val('ai_verification_comments'),
+        virtual_assets:             getRadio('virtual_assets'),
+        virtual_assets_comments:    val('virtual_assets_comments'),
+        unusual_requests:           getRadio('unusual_requests'),
+        unusual_requests_comments:  val('unusual_requests_comments'),
+        ai_verification:            getRadio('ai_verification'),
+        ai_verification_comments:   val('ai_verification_comments'),
+        comments:                   val('s2_comments'),
       },
       section3: {
         bodies_corporate:  getRadio('bodies_corporate'),
@@ -1078,6 +1319,7 @@
         trusts:            getRadio('trusts'),
         associations:      getRadio('associations'),
         government_bodies: getRadio('government_bodies'),
+        comments:          val('s3_comments'),
       },
       section4: {
         criminal_activity:  getRadio('criminal_activity'),
@@ -1088,34 +1330,45 @@
         third_party_reps:   getRadio('third_party_reps'),
         unexplained_wealth: getRadio('unexplained_wealth'),
         charities:          getRadio('charities'),
+        comments:           val('s4_comments'),
       },
       section5: {
         interaction_methods: getChecked('interaction_methods'),
         interaction_other:   val('interaction_other'),
+        comments:            val('s5_comments'),
       },
       section6: {
         overseas_exposure:   getRadio('overseas_exposure'),
         countries_involved:  val('countries_involved'),
         overseas_risk_types: getChecked('overseas_risk_types'),
         overseas_risk_other: val('overseas_risk_other'),
+        comments:            val('s6_comments'),
       },
       section7: {
-        onboarding_description: val('onboarding_description'),
+        ob_info_collected:    getChecked('ob_info_collected'),
+        ob_id_verification:   getChecked('ob_id_verification'),
+        ob_pep_screening:     getRadio('ob_pep_screening'),
+        ob_rep_details:       getRadio('ob_rep_details'),
+        ob_written_procedure: getRadio('ob_written_procedure'),
+        ob_who_onboards:      val('ob_who_onboards'),
+        ob_systems:           val('ob_systems'),
+        comments:             val('s7_comments'),
       },
       section8: {
-        governing_body_name:     val('governing_body_name'),
-        governing_body_title:    val('governing_body_title'),
-        senior_manager_name:     val('senior_manager_name'),
-        senior_manager_title:    val('senior_manager_title'),
-        compliance_officer_name: val('compliance_officer_name'),
+        governing_body_name:      val('governing_body_name'),
+        governing_body_title:     val('governing_body_title'),
+        senior_manager_name:      val('senior_manager_name'),
+        senior_manager_title:     val('senior_manager_title'),
+        compliance_officer_name:  val('compliance_officer_name'),
         compliance_officer_title: val('compliance_officer_title'),
-        other_personnel:         val('other_personnel'),
+        other_personnel:          val('other_personnel'),
+        comments:                 val('s8_comments'),
       },
       declaration_agreed: document.getElementById('declaration_agreed').checked,
     };
   }
 
-  /* ─── Submit ─── */
+  /* ── Submit ── */
   async function submitForm() {
     const errEl = document.getElementById('submit_error');
     errEl.classList.remove('visible');
@@ -1128,15 +1381,12 @@
 
     const btn = document.getElementById('btnSubmit');
     btn.disabled = true;
-    btn.textContent = 'Submitting…';
-
-    const data = collectData();
+    btn.textContent = 'Submitting...';
 
     try {
-      const { error } = await db.from(TABLE_NAME).insert([{ data }]);
+      const { error } = await db.from(TABLE_NAME).insert([{ data: collectData() }]);
       if (error) throw error;
-
-      document.querySelector('.page-body').style.display  = 'none';
+      document.querySelector('.page-body').style.display = 'none';
       document.querySelector('.progress-wrap').style.display = 'none';
       document.getElementById('successScreen').classList.add('visible');
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1149,7 +1399,6 @@
     }
   }
 
-  /* ─── Init ─── */
   setupConditionals();
 </script>
 </body>
