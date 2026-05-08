@@ -1,115 +1,3 @@
-
-Claude finished the response
-You said: I would like to create a html page, hosted on gitbub, where I can send the questionairre below to my clients to gather info.
-
-SECTION 1 — Business Details 1.1 Business Name Text input 1.2 ABN Text input 1.3 Contact Person Text input 1.4 Contact Email Email input 1.5 Phone Number Text input 1.6 Business Type Response Type Multi-select: Residential real estate agency Commercial real estate agency Buyer’s agency P
-
-pasted
-
-I would like to create a html page, hosted on gitbub, where I can send the questionairre below to my clients to gather info. I was thinking it could be written to supabase as I already have the related project there
-
-5:58 PM
-Claude responded: I'll build a polished multi-step HTML form with Supabase integration.
-
-Architected professional multi-step form with Supabase integration for compliance questionnaire
-Architected professional multi-step form with Supabase integration for compliance questionnaire
-I'll build a polished multi-step HTML form with Supabase integration. This will be a single file ready for GitHub Pages.
-
-
-Created a file, read a file
-Created a file, read a file
-Here's your complete AML/CTF questionnaire, ready for GitHub Pages. Here's how to get it live:
-
-1. Supabase setup — run this SQL in your Supabase SQL editor:
-
-sql
-create table aml_assessments (
-  id           uuid default gen_random_uuid() primary key,
-  submitted_at timestamptz default now(),
-  data         jsonb not null
-);
-
-alter table aml_assessments enable row level security;
-create policy "Allow anon inserts" on aml_assessments
-  for insert to anon with check (true);
-2. Update the config at the top of the <script> block:
-
-js
-const SUPABASE_URL = 'https://YOUR-PROJECT.supabase.co';
-const SUPABASE_KEY = 'YOUR_ANON_KEY';  // Settings → API → anon/public
-3. Deploy to GitHub Pages:
-
-Create a new repo (or use an existing one)
-Drop aml-questionnaire.html in as index.html
-Go to Settings → Pages → Deploy from branch → main / root
-Your form will be live at https://yourusername.github.io/your-repo
-All responses are stored as a single jsonb column in Supabase, making them easy to query or export. Let me know if you'd like a Supabase view or dashboard to review submissions.
-
-
-Aml questionnaire
-Code · HTML 
-You said: And any user can do this - no logins?
-And any user can do this - no logins?
-
-6:06 PM
-Claude responded: Yes, exactly — the way it's set up, anyone with the link can submit without any login.
-
-Verified anonymous submission capability and weighed security implications
-Verified anonymous submission capability and weighed security implications
-Yes, exactly — the way it's set up, anyone with the link can submit without any login. Here's why it works safely:
-
-The Supabase anon key is intentionally public. It's designed to be embedded in client-side code. Security comes from the Row Level Security (RLS) policy, not the key itself.
-
-The policy we created only allows INSERT — so a visitor can submit a form, but they cannot read, update or delete any data:
-
-sql
-create policy "Allow anon inserts" on aml_assessments
-  for insert to anon with check (true);
-There's no select policy, so even if someone found your anon key, they can't read other clients' submissions.
-
-A few optional hardening steps if you want them:
-
-Spam/bot protection — add a Cloudflare Turnstile (free, privacy-friendly CAPTCHA) to the submit button
-Domain restriction — in your Supabase project under Settings → API → Allowed Hostnames, restrict the anon key to only work from your GitHub Pages domain
-Duplicate submissions — add a check constraint or unique index on data->>'contact_email' if you want to prevent the same client submitting twice
-For your use case (sending a link to specific clients), it's perfectly fine as-is. The only real risk is someone stumbling on the URL and spamming submissions — which the domain restriction above would prevent.
-
-You said: All done.
-All done. I went to test, filled out fields on first page and clicked next it didn't do anything. Console got this 
-
-Uncaught SyntaxError: Identifier 'supabase' has already been declared (at questionnaire.html:932:9)Understand this error
-4questionnaire.html:917 Uncaught ReferenceError: navigate is not defined
-    at HTMLButtonElement.onclick (questionnaire.html:917:70)
-
-6:19 PM
-Claude responded: Two quick fixes needed — the Supabase CDN already creates a global called supabase, so naming your client the same thing causes a crash, which then also breaks…
-
-Identified variable naming conflict and cascading reference error
-Identified variable naming conflict and cascading reference error
-Two quick fixes needed — the Supabase CDN already creates a global called supabase, so naming your client the same thing causes a crash, which then also breaks navigate. Just rename the client variable.
-
-
-Viewed 3 files, edited a file
-Viewed 3 files, edited a file
-Now update the one place it's used in the submit function:
-
-
-Edited a file, read a file
-Edited a file, read a file
-That's it — just two lines changed. The Supabase CDN exposes itself as window.supabase, so naming our client the same thing caused the crash, which cascaded into navigate being unreachable. Replace your file on GitHub with this one and it should work.
-
-
-Aml questionnaire
-Code · HTML 
-
-Want to be notified when Claude responds?
-
-
-
-Claude is AI and can make mistakes. Please double-check responses.
-Aml questionnaire · HTML
-Copy
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,16 +26,16 @@ Copy
     --radius:  6px;
     --shadow:  0 4px 24px rgba(13,27,42,0.10);
   }
- 
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--cream);
     color: var(--text);
     min-height: 100vh;
   }
- 
+
   /* ─── HEADER ─── */
   .site-header {
     background: var(--navy);
@@ -176,7 +64,7 @@ Copy
     color: rgba(255,255,255,0.5);
     margin-top: 2px;
   }
- 
+
   /* ─── PROGRESS BAR ─── */
   .progress-wrap {
     background: var(--navy2);
@@ -205,14 +93,14 @@ Copy
   }
   .step-pill.active  { color: var(--gold); border-bottom-color: var(--gold); }
   .step-pill.done    { color: rgba(255,255,255,0.55); }
- 
+
   /* ─── MAIN LAYOUT ─── */
   .page-body {
     max-width: 780px;
     margin: 0 auto;
     padding: 48px 24px 80px;
   }
- 
+
   /* ─── SECTION HEADER ─── */
   .section-header {
     margin-bottom: 36px;
@@ -239,7 +127,7 @@ Copy
     color: var(--muted);
     line-height: 1.6;
   }
- 
+
   /* ─── BANNER ─── */
   .info-banner {
     background: var(--navy);
@@ -252,7 +140,7 @@ Copy
     line-height: 1.6;
   }
   .info-banner strong { color: var(--gold2); }
- 
+
   /* ─── CARDS ─── */
   .card {
     background: var(--white);
@@ -262,7 +150,7 @@ Copy
     margin-bottom: 20px;
     box-shadow: var(--shadow);
   }
- 
+
   .field-label {
     display: block;
     font-size: 0.82rem;
@@ -272,7 +160,7 @@ Copy
     letter-spacing: 0.01em;
   }
   .field-label .req { color: var(--gold); margin-left: 3px; }
- 
+
   .field-question {
     font-size: 0.94rem;
     font-weight: 500;
@@ -288,7 +176,7 @@ Copy
   }
   .field-hint ul { padding-left: 16px; margin-top: 4px; }
   .field-hint li { margin-bottom: 2px; }
- 
+
   /* ─── INPUTS ─── */
   input[type="text"],
   input[type="email"],
@@ -311,7 +199,7 @@ Copy
     background: var(--white);
   }
   textarea { resize: vertical; min-height: 90px; }
- 
+
   /* ─── RADIO / CHECK GROUPS ─── */
   .radio-group, .check-group {
     display: flex;
@@ -324,7 +212,7 @@ Copy
     flex-wrap: wrap;
     gap: 8px;
   }
- 
+
   .radio-opt, .check-opt {
     display: flex;
     align-items: center;
@@ -343,7 +231,7 @@ Copy
     color: var(--text);
     line-height: 1.4;
   }
- 
+
   /* pill-style radio for Yes/No/Don't Know */
   .pill-group {
     display: flex;
@@ -372,7 +260,7 @@ Copy
     color: var(--navy);
     font-weight: 600;
   }
- 
+
   /* ─── OPTIONAL COMMENT ─── */
   .optional-comment { margin-top: 14px; }
   .optional-comment label {
@@ -383,7 +271,7 @@ Copy
     margin-bottom: 5px;
     letter-spacing: 0.02em;
   }
- 
+
   /* ─── MULTI-FIELD ROW ─── */
   .field-row {
     display: grid;
@@ -393,18 +281,18 @@ Copy
   }
   @media (max-width: 560px) { .field-row { grid-template-columns: 1fr; } }
   .field-row:last-child { margin-bottom: 0; }
- 
+
   /* ─── CONDITIONAL ─── */
   .conditional { display: none; margin-top: 14px; }
   .conditional.visible { display: block; }
- 
+
   /* ─── SUBSECTION DIVIDER ─── */
   .sub-divider {
     border: none;
     border-top: 1px solid var(--cream2);
     margin: 20px 0;
   }
- 
+
   .role-desc {
     font-size: 0.82rem;
     color: var(--muted);
@@ -417,7 +305,7 @@ Copy
   .role-desc strong { color: var(--navy); }
   .role-desc ul { padding-left: 16px; margin-top: 6px; }
   .role-desc li { margin-bottom: 3px; }
- 
+
   /* ─── NAVIGATION ─── */
   .nav-row {
     display: flex;
@@ -426,7 +314,7 @@ Copy
     margin-top: 36px;
     gap: 12px;
   }
- 
+
   .btn {
     padding: 12px 28px;
     border-radius: var(--radius);
@@ -457,13 +345,13 @@ Copy
   }
   .btn-submit:hover { background: var(--gold2); }
   .btn:disabled { opacity: 0.5; cursor: not-allowed; }
- 
+
   .step-counter {
     font-size: 0.78rem;
     color: var(--muted);
     font-weight: 500;
   }
- 
+
   /* ─── DECLARATION ─── */
   .declaration-box {
     background: var(--navy);
@@ -481,7 +369,7 @@ Copy
     margin-bottom: 12px;
     font-weight: 500;
   }
- 
+
   .agree-row {
     display: flex;
     align-items: flex-start;
@@ -500,7 +388,7 @@ Copy
     cursor: pointer;
   }
   .agree-row span { font-size: 0.87rem; line-height: 1.5; color: var(--text); }
- 
+
   /* ─── SUCCESS ─── */
   .success-screen {
     display: none;
@@ -524,7 +412,7 @@ Copy
     font-weight: 500;
   }
   .success-screen p { color: var(--muted); font-size: 0.92rem; line-height: 1.6; max-width: 420px; margin: 0 auto; }
- 
+
   /* ─── ERROR ─── */
   .error-msg {
     display: none;
@@ -537,7 +425,7 @@ Copy
     margin-top: 16px;
   }
   .error-msg.visible { display: block; }
- 
+
   /* ─── FORM SECTIONS (visibility) ─── */
   .form-section { display: none; }
   .form-section.active { display: block; animation: fadeIn 0.25s ease; }
@@ -545,7 +433,7 @@ Copy
 </style>
 </head>
 <body>
- 
+
 <!-- ════════════════ HEADER ════════════════ -->
 <header class="site-header">
   <div class="logo-mark">
@@ -556,7 +444,7 @@ Copy
     <p>Anti-Money Laundering &amp; Counter-Terrorism Financing — Compliance Intake</p>
   </div>
 </header>
- 
+
 <!-- ════════════════ PROGRESS ════════════════ -->
 <nav class="progress-wrap">
   <div class="progress-steps" id="progressSteps">
@@ -571,10 +459,10 @@ Copy
     <div class="step-pill" data-step="8">Declaration</div>
   </div>
 </nav>
- 
+
 <!-- ════════════════ MAIN ════════════════ -->
 <main class="page-body">
- 
+
 <!-- ──────── SECTION 1 — Business Details ──────── -->
 <div class="form-section active" id="section-0">
   <div class="section-header">
@@ -582,7 +470,7 @@ Copy
     <h2>Business Details</h2>
     <p>Tell us about your business so we can tailor your AML/CTF compliance documentation.</p>
   </div>
- 
+
   <div class="card">
     <div class="field-row">
       <div>
@@ -611,7 +499,7 @@ Copy
       </div>
     </div>
   </div>
- 
+
   <div class="card">
     <p class="field-label">Business Type <span class="req">*</span></p>
     <p class="field-hint">Select all that apply.</p>
@@ -630,7 +518,7 @@ Copy
     </div>
   </div>
 </div>
- 
+
 <!-- ──────── SECTION 2 — Products & Service Risks ──────── -->
 <div class="form-section" id="section-1">
   <div class="section-header">
@@ -638,7 +526,7 @@ Copy
     <h2>Products &amp; Service Risks</h2>
     <p>Identify potential risk exposures within your products and services.</p>
   </div>
- 
+
   <!-- 2.1 -->
   <div class="card">
     <p class="field-question">2.1 — Would you accept property transactions involving physical cash valued at AUD $50,000 or more?</p>
@@ -652,7 +540,7 @@ Copy
       <textarea id="cash_transactions_comments" placeholder="Any relevant context…"></textarea>
     </div>
   </div>
- 
+
   <!-- 2.2 -->
   <div class="card">
     <p class="field-question">2.2 — Would you accept transactions involving virtual assets or cryptocurrency (e.g. Bitcoin, Ethereum)?</p>
@@ -666,7 +554,7 @@ Copy
       <textarea id="virtual_assets_comments" placeholder="Any relevant context…"></textarea>
     </div>
   </div>
- 
+
   <!-- 2.3 -->
   <div class="card">
     <p class="field-question">2.3 — Would you accept customers requesting unusually complex, rapid or commercially unusual transactions?</p>
@@ -684,7 +572,7 @@ Copy
       <textarea id="unusual_requests_comments" placeholder="Any relevant context…"></textarea>
     </div>
   </div>
- 
+
   <!-- 2.4 -->
   <div class="card">
     <p class="field-question">2.4 — Does your business use AI, digital identity tools or automated onboarding technology?</p>
@@ -703,7 +591,7 @@ Copy
     </div>
   </div>
 </div>
- 
+
 <!-- ──────── SECTION 3 — Customer Structures ──────── -->
 <div class="form-section" id="section-2">
   <div class="section-header">
@@ -711,7 +599,7 @@ Copy
     <h2>Customer Structures</h2>
     <p>Select "Yes" if you currently deal with these customer types, or may do so in future.</p>
   </div>
- 
+
   <div class="card">
     <p class="field-question">3.1 — Will your business deal with companies, strata corporations or other bodies corporate?</p>
     <div class="pill-group">
@@ -753,7 +641,7 @@ Copy
     </div>
   </div>
 </div>
- 
+
 <!-- ──────── SECTION 4 — Risk Appetite ──────── -->
 <div class="form-section" id="section-3">
   <div class="section-header">
@@ -763,7 +651,7 @@ Copy
   <div class="info-banner">
     <strong>Note:</strong> There are no right or wrong answers in this section. If you accept a risk, your AML/CTF Program must document how it will be managed. If you do not accept a risk, your Program must document how your business avoids that activity.
   </div>
- 
+
   <div class="card">
     <p class="field-question">4.1 — Would your business continue acting for a customer you suspect may be linked to criminal activity or illicit wealth?</p>
     <div class="field-hint">Examples include: fraud, tax evasion, corruption, drug trafficking, money laundering.</div>
@@ -833,7 +721,7 @@ Copy
     </div>
   </div>
 </div>
- 
+
 <!-- ──────── SECTION 5 — Customer Interaction Methods ──────── -->
 <div class="form-section" id="section-4">
   <div class="section-header">
@@ -857,7 +745,7 @@ Copy
     </div>
   </div>
 </div>
- 
+
 <!-- ──────── SECTION 6 — Overseas Exposure ──────── -->
 <div class="form-section" id="section-5">
   <div class="section-header">
@@ -865,7 +753,7 @@ Copy
     <h2>Overseas Exposure</h2>
     <p>Identify any cross-border risks relevant to your business operations.</p>
   </div>
- 
+
   <div class="card">
     <p class="field-question">6.1 — Does your business deal with overseas customers, overseas funds or overseas ownership structures?</p>
     <div class="pill-group">
@@ -874,7 +762,7 @@ Copy
       <label><input type="radio" name="overseas_exposure" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
   </div>
- 
+
   <div class="conditional" id="overseas_details">
     <div class="card">
       <label class="field-label" for="countries_involved">6.2 — Which countries are commonly involved?</label>
@@ -898,7 +786,7 @@ Copy
     </div>
   </div>
 </div>
- 
+
 <!-- ──────── SECTION 7 — Customer Onboarding ──────── -->
 <div class="form-section" id="section-6">
   <div class="section-header">
@@ -919,7 +807,7 @@ Copy
     <textarea id="onboarding_description" placeholder="Describe your current onboarding process…" style="min-height:160px; margin-top:12px"></textarea>
   </div>
 </div>
- 
+
 <!-- ──────── SECTION 8 — AML Governance Roles ──────── -->
 <div class="form-section" id="section-7">
   <div class="section-header">
@@ -929,7 +817,7 @@ Copy
   <div class="info-banner">
     For most small real estate agencies, it is reasonable for <strong>one person to hold multiple AML/CTF governance roles</strong>. Where a business has one or two principals, consolidating governance roles is generally appropriate and proportionate.
   </div>
- 
+
   <!-- 8.1 Governing Body -->
   <div class="card">
     <p class="field-question">8.1 — Governing Body</p>
@@ -949,7 +837,7 @@ Copy
       </div>
     </div>
   </div>
- 
+
   <!-- 8.2 Senior Manager -->
   <div class="card">
     <p class="field-question">8.2 — Senior Manager</p>
@@ -969,7 +857,7 @@ Copy
       </div>
     </div>
   </div>
- 
+
   <!-- 8.3 Compliance Officer -->
   <div class="card">
     <p class="field-question">8.3 — AML/CTF Compliance Officer</p>
@@ -989,7 +877,7 @@ Copy
       </div>
     </div>
   </div>
- 
+
   <!-- 8.4 Other Personnel -->
   <div class="card">
     <p class="field-question">8.4 — Other AML/CTF Personnel</p>
@@ -1000,7 +888,7 @@ Copy
     <textarea id="other_personnel" placeholder="List names, roles and responsibilities as applicable…"></textarea>
   </div>
 </div>
- 
+
 <!-- ──────── SECTION 9 — Declaration ──────── -->
 <div class="form-section" id="section-8">
   <div class="section-header">
@@ -1008,20 +896,20 @@ Copy
     <h2>Declaration</h2>
     <p>Please review your submission and confirm the declaration below.</p>
   </div>
- 
+
   <div class="declaration-box">
     <h3>Accuracy &amp; Consent</h3>
     I confirm that the information provided in this questionnaire is accurate to the best of my knowledge and understanding. I understand that this information will be used to prepare AML/CTF compliance documentation for my business, in accordance with the <em>Anti-Money Laundering and Counter-Terrorism Financing Act 2006</em> (Cth) and related rules.
   </div>
- 
+
   <label class="agree-row" for="declaration_agreed">
     <input type="checkbox" id="declaration_agreed">
     <span>I agree to the above declaration and confirm that the information provided is accurate.</span>
   </label>
- 
+
   <div class="error-msg" id="submit_error"></div>
 </div>
- 
+
 <!-- ─── NAVIGATION ─── -->
 <div class="nav-row">
   <button class="btn btn-ghost" id="btnBack" style="display:none" onclick="navigate(-1)">← Back</button>
@@ -1029,9 +917,9 @@ Copy
   <button class="btn btn-primary" id="btnNext" onclick="navigate(1)">Next →</button>
   <button class="btn btn-submit" id="btnSubmit" style="display:none" onclick="submitForm()">Submit Assessment</button>
 </div>
- 
+
 </main>
- 
+
 <!-- ════════════════ SUCCESS ════════════════ -->
 <div class="success-screen" id="successScreen">
   <div class="success-icon">
@@ -1040,7 +928,7 @@ Copy
   <h2>Thank you!</h2>
   <p>Your AML/CTF Business Risk Assessment has been received successfully. We will be in touch shortly to progress your compliance documentation.</p>
 </div>
- 
+
 <script>
   /* ════════ CONFIG — Replace these with your Supabase project values ════════
      1. Go to your Supabase project → Settings → API
@@ -1049,28 +937,28 @@ Copy
   const SUPABASE_URL  = 'YOUR_SUPABASE_URL';   // e.g. https://xxxx.supabase.co
   const SUPABASE_KEY  = 'YOUR_SUPABASE_ANON_KEY';
   const TABLE_NAME    = 'aml_assessments';     // Create this table in Supabase (see SQL below)
- 
+
   /* ════════════════════════════════════════════════════════════════════════
      SUPABASE TABLE SQL — Run this in your Supabase SQL editor:
- 
+
      create table aml_assessments (
        id           uuid default gen_random_uuid() primary key,
        submitted_at timestamptz default now(),
        data         jsonb not null
      );
- 
+
      -- Optional: enable Row Level Security + allow inserts from anon
      alter table aml_assessments enable row level security;
      create policy "Allow anon inserts" on aml_assessments
        for insert to anon with check (true);
      ════════════════════════════════════════════════════════════════════════ */
- 
+
   const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
- 
+
   /* ─── State ─── */
   let currentStep = 0;
   const totalSteps = 9;
- 
+
   /* ─── Conditional field toggles ─── */
   function setupConditionals() {
     // Business type "Other"
@@ -1093,32 +981,32 @@ Copy
       document.getElementById('ort_other_field').classList.toggle('visible', e.target.checked);
     });
   }
- 
+
   /* ─── Navigation ─── */
   function navigate(dir) {
     if (dir === 1 && !validateStep(currentStep)) return;
- 
+
     document.getElementById(`section-${currentStep}`).classList.remove('active');
     document.querySelectorAll('.step-pill')[currentStep].classList.remove('active');
     document.querySelectorAll('.step-pill')[currentStep].classList.add('done');
- 
+
     currentStep += dir;
     if (currentStep < 0) currentStep = 0;
     if (currentStep >= totalSteps) currentStep = totalSteps - 1;
- 
+
     document.getElementById(`section-${currentStep}`).classList.add('active');
     const pills = document.querySelectorAll('.step-pill');
     pills[currentStep].classList.add('active');
     pills[currentStep].classList.remove('done');
- 
+
     document.getElementById('btnBack').style.display   = currentStep === 0 ? 'none' : '';
     document.getElementById('btnNext').style.display   = currentStep === totalSteps - 1 ? 'none' : '';
     document.getElementById('btnSubmit').style.display = currentStep === totalSteps - 1 ? '' : 'none';
     document.getElementById('stepCounter').textContent = `Step ${currentStep + 1} of ${totalSteps}`;
- 
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
- 
+
   /* ─── Basic validation ─── */
   function validateStep(step) {
     if (step === 0) {
@@ -1131,7 +1019,7 @@ Copy
     }
     return true;
   }
- 
+
   /* ─── Collect form data ─── */
   function getChecked(name) {
     return [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(el => el.value);
@@ -1143,7 +1031,7 @@ Copy
     const el = document.getElementById(id);
     return el ? el.value.trim() : '';
   }
- 
+
   function collectData() {
     return {
       section1: {
@@ -1207,28 +1095,28 @@ Copy
       declaration_agreed: document.getElementById('declaration_agreed').checked,
     };
   }
- 
+
   /* ─── Submit ─── */
   async function submitForm() {
     const errEl = document.getElementById('submit_error');
     errEl.classList.remove('visible');
- 
+
     if (!document.getElementById('declaration_agreed').checked) {
       errEl.textContent = 'Please tick the declaration checkbox before submitting.';
       errEl.classList.add('visible');
       return;
     }
- 
+
     const btn = document.getElementById('btnSubmit');
     btn.disabled = true;
     btn.textContent = 'Submitting…';
- 
+
     const data = collectData();
- 
+
     try {
       const { error } = await db.from(TABLE_NAME).insert([{ data }]);
       if (error) throw error;
- 
+
       document.querySelector('.page-body').style.display  = 'none';
       document.querySelector('.progress-wrap').style.display = 'none';
       document.getElementById('successScreen').classList.add('visible');
@@ -1241,10 +1129,9 @@ Copy
       btn.textContent = 'Submit Assessment';
     }
   }
- 
+
   /* ─── Init ─── */
   setupConditionals();
 </script>
 </body>
 </html>
- 
