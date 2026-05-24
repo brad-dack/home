@@ -38,7 +38,7 @@
     font-size: 16px;
   }
 
-  /* ── HEADER ── */
+  /* HEADER */
   .site-header {
     background: var(--navy);
     padding: 0 2rem;
@@ -66,7 +66,7 @@
   }
   .header-home:hover { color: rgba(255,255,255,0.85); }
 
-  /* ── PROGRESS ── */
+  /* PROGRESS */
   .progress-wrap {
     background: var(--navy-mid);
     border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -95,14 +95,14 @@
   .step-pill.active { color: var(--teal-mid); border-bottom-color: var(--teal); }
   .step-pill.done   { color: rgba(255,255,255,0.5); }
 
-  /* ── LAYOUT ── */
+  /* LAYOUT */
   .page-body {
     max-width: 720px;
     margin: 0 auto;
     padding: 48px 2rem 96px;
   }
 
-  /* ── SECTION HEADING ── */
+  /* SECTION HEADING */
   .section-header { margin-bottom: 32px; }
   .eyebrow {
     font-size: 11px;
@@ -133,7 +133,7 @@
     line-height: 1.75;
   }
 
-  /* ── COLLECTION NOTICE ── */
+  /* COLLECTION NOTICE */
   .collection-notice {
     background: var(--teal-light);
     border: 1px solid var(--teal-mid);
@@ -147,7 +147,7 @@
   .collection-notice strong { color: var(--navy); }
   .collection-notice a { color: var(--teal); text-decoration: underline; }
 
-  /* ── INFO BANNER ── */
+  /* INFO BANNER */
   .info-banner {
     background: var(--navy);
     border-radius: var(--radius);
@@ -159,7 +159,7 @@
   }
   .info-banner strong { color: var(--teal-mid); }
 
-  /* ── CARDS ── */
+  /* CARDS */
   .card {
     background: var(--white);
     border: 1px solid var(--border);
@@ -169,7 +169,7 @@
   }
   .card.invalid { border-color: var(--error); }
 
-  /* ── LABELS & QUESTIONS ── */
+  /* LABELS AND QUESTIONS */
   .field-label {
     display: block;
     font-size: 13px;
@@ -195,7 +195,7 @@
   .field-hint ul { padding-left: 16px; margin-top: 4px; }
   .field-hint li { margin-bottom: 2px; }
 
-  /* ── INPUTS ── */
+  /* INPUTS */
   input[type="text"],
   input[type="email"],
   input[type="tel"],
@@ -218,7 +218,7 @@
   }
   textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
 
-  /* ── FIELD ROW ── */
+  /* FIELD ROW */
   .field-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -226,7 +226,7 @@
   }
   @media (max-width: 560px) { .field-row { grid-template-columns: 1fr; } }
 
-  /* ── PILL RADIOS ── */
+  /* PILL RADIOS */
   .pill-group {
     display: flex;
     flex-wrap: wrap;
@@ -236,7 +236,8 @@
   .pill-group label { cursor: pointer; }
   .pill-group input[type="radio"] { display: none; }
   .pill-group .pill {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: 8px 18px;
     border: 1.5px solid var(--border);
     border-radius: 100px;
@@ -246,9 +247,6 @@
     background: var(--sand);
     transition: all 0.15s;
     min-height: 44px;
-    line-height: 1;
-    display: inline-flex;
-    align-items: center;
   }
   .pill-group input[type="radio"]:checked + .pill {
     border-color: var(--teal);
@@ -256,7 +254,7 @@
     color: var(--teal);
   }
 
-  /* ── CHECKBOXES ── */
+  /* CHECKBOXES */
   .check-group {
     display: flex;
     flex-direction: column;
@@ -281,7 +279,7 @@
     line-height: 1.5;
   }
 
-  /* ── ROLE DESC ── */
+  /* ROLE DESC */
   .role-desc {
     font-size: 13px;
     color: var(--text-mid);
@@ -295,18 +293,11 @@
   .role-desc ul { padding-left: 16px; margin-top: 6px; }
   .role-desc li { margin-bottom: 3px; }
 
-  /* ── CONDITIONAL ── */
+  /* CONDITIONAL */
   .conditional { display: none; margin-top: 14px; }
   .conditional.visible { display: block; }
 
-  /* ── SECTION DIVIDER ── */
-  .card-divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 20px 0;
-  }
-
-  /* ── SECTION COMMENTS ── */
+  /* SECTION COMMENTS */
   .section-comments-card {
     background: var(--sand);
     border: 1px solid var(--border);
@@ -315,7 +306,7 @@
     margin-bottom: 16px;
   }
 
-  /* ── VALIDATION ERROR ── */
+  /* VALIDATION ERROR */
   .field-error {
     font-size: 12px;
     color: var(--error);
@@ -335,7 +326,7 @@
   }
   .validation-banner.visible { display: block; }
 
-  /* ── NAVIGATION ── */
+  /* NAVIGATION */
   .nav-row {
     display: flex;
     justify-content: space-between;
@@ -382,7 +373,7 @@
   .btn-submit:hover { background: #158a77; transform: translateY(-1px); }
   .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-  /* ── DECLARATION ── */
+  /* DECLARATION */
   .declaration-box {
     background: var(--navy);
     border-radius: 14px;
@@ -424,7 +415,7 @@
   .agree-row span { font-size: 14px; line-height: 1.6; color: var(--text-mid); }
   .agree-row a { color: var(--teal); text-decoration: underline; }
 
-  /* ── SUBMIT ERROR ── */
+  /* SUBMIT ERROR */
   .submit-error {
     display: none;
     background: var(--error-bg);
@@ -437,7 +428,7 @@
   }
   .submit-error.visible { display: block; }
 
-  /* ── SUCCESS ── */
+  /* SUCCESS */
   .success-screen {
     display: none;
     text-align: center;
@@ -462,7 +453,7 @@
   .success-screen p { color: var(--text-mid); font-size: 15px; line-height: 1.7; max-width: 420px; margin: 0 auto 24px; font-weight: 300; }
   .success-screen a { color: var(--teal); text-decoration: none; font-weight: 500; }
 
-  /* ── FORM SECTIONS ── */
+  /* FORM SECTIONS */
   .form-section { display: none; }
   .form-section.active { display: block; animation: fadeUp 0.25s ease both; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
@@ -500,9 +491,9 @@
 
 <main class="page-body">
 
-<!-- ══════════════════════════════════════════
+<!-- =============================================
      SECTION 1 — Business Details
-══════════════════════════════════════════ -->
+============================================= -->
 <div class="form-section active" id="section-0">
   <div class="section-header">
     <span class="eyebrow">Section 1 of 9</span>
@@ -542,19 +533,19 @@
         <p class="field-error" id="err-contact_email">A valid email address is required.</p>
       </div>
     </div>
-   <div class="field-row">
-        <div>
-          <label class="field-label" for="phone">Phone Number</label>
-          <input type="tel" id="phone" placeholder="04XX XXX XXX">
-          <p class="field-error" id="err-phone">Phone number is required.</p>
-        </div>
-        <div>
-          <label class="field-label" for="avg_sales_per_year">Average number of sales per year</label>
-         <input type="text" id="avg_sales_per_year" placeholder="e.g. 80">
-          <p class="field-error" id="err-avg_sales_per_year">Please select an approximate range.</p>
-        </div>
+    <div class="field-row">
+      <div>
+        <label class="field-label" for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="04XX XXX XXX">
+        <p class="field-error" id="err-phone">Phone number is required.</p>
+      </div>
+      <div>
+        <label class="field-label" for="avg_sales_per_year">Average number of sales per year</label>
+        <input type="text" id="avg_sales_per_year" placeholder="e.g. 80">
+        <p class="field-error" id="err-avg_sales_per_year">Please enter an approximate number.</p>
       </div>
     </div>
+  </div>
 
   <div class="card">
     <p class="field-label">Business Type</p>
@@ -581,25 +572,25 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- =============================================
      SECTION 2 — Products & Service Risks
-══════════════════════════════════════════ -->
+============================================= -->
 <div class="form-section" id="section-1">
   <div class="section-header">
     <span class="eyebrow">Section 2 of 9</span>
     <div class="section-divider"></div>
     <h2>Products and Service Risks</h2>
-    <p>Identify potential risk exposures within your products and services.</p>
+    <p>For each of the following, indicate whether your agency will accept the risk and adapt your AML/CTF Program to manage it, or whether your agency chooses to avoid the risk entirely and decline to transact in these situations.</p>
   </div>
 
   <div class="validation-banner" id="val-1">Please answer all questions before continuing.</div>
 
   <div class="card">
-    <p class="field-question">2.1 Would you accept property transactions involving physical cash valued at AUD $50,000 or more?</p>
+    <p class="field-question">2.1 Will your agency accept the risk of property transactions where physical cash payments of AUD $50,000 or more are involved, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely and decline to proceed with such transactions?</p>
     <div class="pill-group">
-      <label><input type="radio" name="cash_transactions" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="cash_transactions" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="cash_transactions" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="cash_transactions" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="cash_transactions" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="cash_transactions" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-cash_transactions">Please select an answer.</p>
     <div class="optional-comment" style="margin-top:14px">
@@ -609,11 +600,11 @@
   </div>
 
   <div class="card">
-    <p class="field-question">2.2 Would you accept transactions involving virtual assets or cryptocurrency (for example Bitcoin or Ethereum)?</p>
+    <p class="field-question">2.2 Will your agency accept the risk of transactions where funds involve virtual assets or cryptocurrency such as Bitcoin or Ethereum, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely?</p>
     <div class="pill-group">
-      <label><input type="radio" name="virtual_assets" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="virtual_assets" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="virtual_assets" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="virtual_assets" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="virtual_assets" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="virtual_assets" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-virtual_assets">Please select an answer.</p>
     <div class="optional-comment" style="margin-top:14px">
@@ -623,12 +614,12 @@
   </div>
 
   <div class="card">
-    <p class="field-question">2.3 Would you accept customers requesting unusually complex, rapid or commercially unusual transactions?</p>
-    <div class="field-hint">Examples include: significantly above-market purchases, rushed settlements, or unusual transaction structures.</div>
+    <p class="field-question">2.3 Will your agency accept the risk of acting for customers who request unusually complex, rapid, or commercially unusual transactions, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely and decline such transactions?</p>
+    <p class="field-hint">Examples include significantly above-market purchases, rushed settlements, or unusual transaction structures.</p>
     <div class="pill-group">
-      <label><input type="radio" name="unusual_requests" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="unusual_requests" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="unusual_requests" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="unusual_requests" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="unusual_requests" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="unusual_requests" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-unusual_requests">Please select an answer.</p>
     <div class="optional-comment" style="margin-top:14px">
@@ -639,7 +630,7 @@
 
   <div class="card">
     <p class="field-question">2.4 Does your business use AI, digital identity tools or automated onboarding technology?</p>
-    <div class="field-hint">This includes digital ID verification, AI assistants, automated onboarding, and facial recognition tools.</div>
+    <p class="field-hint">This includes digital ID verification, AI assistants, automated onboarding, and facial recognition tools.</p>
     <div class="pill-group">
       <label><input type="radio" name="ai_verification" value="Yes"><span class="pill">Yes</span></label>
       <label><input type="radio" name="ai_verification" value="No"><span class="pill">No</span></label>
@@ -658,67 +649,67 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- =============================================
      SECTION 3 — Customer Structures
-══════════════════════════════════════════ -->
+============================================= -->
 <div class="form-section" id="section-2">
   <div class="section-header">
     <span class="eyebrow">Section 3 of 9</span>
     <div class="section-divider"></div>
     <h2>Customer Structures</h2>
-    <p><p>Select Yes if you currently deal with these customer types, or may do so in future. If you select <strong>No</strong> for a particular type, your AML/CTF Program will include a requirement to decline or terminate any transaction involving that structure. If you select <strong>Yes</strong>, your Program will set out how to manage the additional complexity, including identifying beneficial owners and applying appropriate due diligence.</p></p>
+    <p>For each customer structure below, indicate whether your agency will accept the risk of dealing with them and adapt your AML/CTF Program accordingly, or whether your agency chooses to avoid this risk entirely and decline to transact in these situations. There are no right or wrong answers.</p>
   </div>
 
   <div class="validation-banner" id="val-2">Please answer all questions before continuing.</div>
 
   <div class="card">
-    <p class="field-question">3.1 Will your business deal with companies, strata corporations or other bodies corporate?</p>
+    <p class="field-question">3.1 Will your agency accept the risk of acting for companies, strata corporations, or other bodies corporate, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely?</p>
     <div class="pill-group">
-      <label><input type="radio" name="bodies_corporate" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="bodies_corporate" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="bodies_corporate" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="bodies_corporate" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="bodies_corporate" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="bodies_corporate" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-bodies_corporate">Please select an answer.</p>
   </div>
 
   <div class="card">
-    <p class="field-question">3.2 Will your business deal with partnerships?</p>
+    <p class="field-question">3.2 Will your agency accept the risk of acting for partnerships, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely?</p>
     <div class="pill-group">
-      <label><input type="radio" name="partnerships" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="partnerships" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="partnerships" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="partnerships" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="partnerships" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="partnerships" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-partnerships">Please select an answer.</p>
   </div>
 
   <div class="card">
-    <p class="field-question">3.3 Will your business deal with trusts?</p>
+    <p class="field-question">3.3 Will your agency accept the risk of acting for trusts, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely?</p>
     <div class="pill-group">
-      <label><input type="radio" name="trusts" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="trusts" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="trusts" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="trusts" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="trusts" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="trusts" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-trusts">Please select an answer.</p>
   </div>
 
   <div class="card">
-    <p class="field-question">3.4 Will your business deal with associations or incorporated associations?</p>
+    <p class="field-question">3.4 Will your agency accept the risk of acting for associations or incorporated associations, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely?</p>
     <div class="pill-group">
-      <label><input type="radio" name="associations" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="associations" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="associations" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="associations" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="associations" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="associations" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-associations">Please select an answer.</p>
   </div>
 
   <div class="card">
-    <p class="field-question">3.5 Will your business deal with government entities or government-owned organisations?</p>
+    <p class="field-question">3.5 Will your agency accept the risk of acting for government entities or government-owned organisations, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely?</p>
     <div class="pill-group">
-      <label><input type="radio" name="government_bodies" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="government_bodies" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="government_bodies" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="government_bodies" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="government_bodies" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="government_bodies" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
- <p class="field-error" id="err-government_bodies">Please select an answer.</p>
+    <p class="field-error" id="err-government_bodies">Please select an answer.</p>
   </div>
 
   <div class="card">
@@ -726,10 +717,10 @@
     <p class="field-hint">Include any transaction where a buyer, seller, or beneficial owner acts through a corporate or trust structure.</p>
     <div class="pill-group">
       <label><input type="radio" name="business_entity_pct" value="Less than 10%"><span class="pill">Less than 10%</span></label>
-      <label><input type="radio" name="business_entity_pct" value="10–25%"><span class="pill">10–25%</span></label>
-      <label><input type="radio" name="business_entity_pct" value="25–50%"><span class="pill">25–50%</span></label>
+      <label><input type="radio" name="business_entity_pct" value="10 to 25%"><span class="pill">10 to 25%</span></label>
+      <label><input type="radio" name="business_entity_pct" value="25 to 50%"><span class="pill">25 to 50%</span></label>
       <label><input type="radio" name="business_entity_pct" value="More than 50%"><span class="pill">More than 50%</span></label>
-      <label><input type="radio" name="business_entity_pct" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="business_entity_pct" value="Not sure"><span class="pill">Not sure</span></label>
     </div>
     <p class="field-error" id="err-business_entity_pct">Please select an answer.</p>
   </div>
@@ -740,9 +731,9 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- =============================================
      SECTION 4 — Risk Appetite
-══════════════════════════════════════════ -->
+============================================= -->
 <div class="form-section" id="section-3">
   <div class="section-header">
     <span class="eyebrow">Section 4 of 9</span>
@@ -751,91 +742,91 @@
   </div>
 
   <div class="info-banner">
-    <strong>Note.</strong> There are no right or wrong answers here, your answers define your agency's risk appetite. If you select <strong>Yes</strong>, your AML/CTF Program will document how to identify, assess, and manage that risk, including enhanced due diligence where required. If you select <strong>No</strong>, your Program will include a requirement to terminate or decline any transaction where that risk arises. Consider what your agency can realistically manage, not just what sounds right on paper.
+    <strong>Note.</strong> For each situation below, indicate whether your agency will accept the risk and adapt your AML/CTF Program to identify and manage it, or whether your agency chooses to avoid the risk entirely and decline or terminate any transaction where it arises. There are no right or wrong answers. Consider what your agency can realistically manage.
   </div>
 
   <div class="validation-banner" id="val-3">Please answer all questions before continuing.</div>
 
   <div class="card">
-    <p class="field-question">4.1 Would your business continue acting for a customer you suspect may be linked to criminal activity or illicit wealth?</p>
-    <div class="field-hint">Examples include fraud, tax evasion, corruption, drug trafficking, and money laundering.</div>
+    <p class="field-question">4.1 Will your agency accept the risk of continuing to act where a suspicion of criminal activity or illicit wealth arises, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely and decline or terminate any such transaction?</p>
+    <p class="field-hint">Examples include fraud, tax evasion, corruption, drug trafficking, and money laundering.</p>
     <div class="pill-group">
-      <label><input type="radio" name="criminal_activity" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="criminal_activity" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="criminal_activity" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="criminal_activity" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="criminal_activity" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="criminal_activity" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-criminal_activity">Please select an answer.</p>
   </div>
 
   <div class="card">
-    <p class="field-question">4.2 Would your business accept domestic politically exposed persons (PEPs) as customers?</p>
-    <div class="field-hint">This includes senior Australian government officials, their family members and close associates.</div>
+    <p class="field-question">4.2 Will your agency accept the risk of acting for domestic politically exposed persons (PEPs), and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely and decline to act for PEPs?</p>
+    <p class="field-hint">This includes senior Australian government officials, their family members and close associates.</p>
     <div class="pill-group">
-      <label><input type="radio" name="domestic_peps" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="domestic_peps" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="domestic_peps" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="domestic_peps" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="domestic_peps" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="domestic_peps" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-domestic_peps">Please select an answer.</p>
   </div>
 
   <div class="card">
-    <p class="field-question">4.3 Would your business accept PEPs connected to international organisations?</p>
+    <p class="field-question">4.3 Will your agency accept the risk of acting for PEPs connected to international organisations, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely?</p>
     <div class="pill-group">
-      <label><input type="radio" name="international_peps" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="international_peps" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="international_peps" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="international_peps" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="international_peps" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="international_peps" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-international_peps">Please select an answer.</p>
   </div>
 
   <div class="card">
-    <p class="field-question">4.4 Would your business accept foreign politically exposed persons (PEPs) as customers?</p>
+    <p class="field-question">4.4 Will your agency accept the risk of acting for foreign politically exposed persons, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely?</p>
     <div class="pill-group">
-      <label><input type="radio" name="foreign_peps" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="foreign_peps" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="foreign_peps" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="foreign_peps" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="foreign_peps" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="foreign_peps" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-foreign_peps">Please select an answer.</p>
   </div>
 
   <div class="card">
-    <p class="field-question">4.5 Would your business accept customers using highly complex ownership or control structures?</p>
-    <div class="field-hint">These structures can make beneficial ownership difficult to identify.</div>
+    <p class="field-question">4.5 Will your agency accept the risk of acting for customers with highly complex ownership or control structures, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely and decline such transactions?</p>
+    <p class="field-hint">These structures can make beneficial ownership difficult to identify.</p>
     <div class="pill-group">
-      <label><input type="radio" name="complex_ownership" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="complex_ownership" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="complex_ownership" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="complex_ownership" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="complex_ownership" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="complex_ownership" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-complex_ownership">Please select an answer.</p>
   </div>
 
   <div class="card">
-    <p class="field-question">4.6 Would your business accept customers acting through third parties or intermediaries?</p>
-    <div class="field-hint">Examples include representatives, nominees, intermediaries, and persons acting under authority.</div>
+    <p class="field-question">4.6 Will your agency accept the risk of acting for customers who engage through third parties or intermediaries, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely?</p>
+    <p class="field-hint">Examples include representatives, nominees, intermediaries, and persons acting under authority.</p>
     <div class="pill-group">
-      <label><input type="radio" name="third_party_reps" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="third_party_reps" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="third_party_reps" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="third_party_reps" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="third_party_reps" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="third_party_reps" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-third_party_reps">Please select an answer.</p>
   </div>
 
   <div class="card">
-    <p class="field-question">4.7 Would your business continue acting for a customer with significant unexplained wealth?</p>
+    <p class="field-question">4.7 Will your agency accept the risk of continuing to act for a customer where significant unexplained wealth is identified, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely and terminate such transactions?</p>
     <div class="pill-group">
-      <label><input type="radio" name="unexplained_wealth" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="unexplained_wealth" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="unexplained_wealth" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="unexplained_wealth" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="unexplained_wealth" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="unexplained_wealth" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-unexplained_wealth">Please select an answer.</p>
   </div>
 
   <div class="card">
-    <p class="field-question">4.8 Would your business accept charities or non-profit organisations as customers?</p>
+    <p class="field-question">4.8 Will your agency accept the risk of acting for charities or non-profit organisations, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely?</p>
     <div class="pill-group">
-      <label><input type="radio" name="charities" value="Yes"><span class="pill">Yes</span></label>
-      <label><input type="radio" name="charities" value="No"><span class="pill">No</span></label>
-      <label><input type="radio" name="charities" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+      <label><input type="radio" name="charities" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="charities" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="charities" value="Need guidance"><span class="pill">Need guidance</span></label>
     </div>
     <p class="field-error" id="err-charities">Please select an answer.</p>
   </div>
@@ -846,9 +837,9 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- =============================================
      SECTION 5 — Customer Interaction Methods
-══════════════════════════════════════════ -->
+============================================= -->
 <div class="form-section" id="section-4">
   <div class="section-header">
     <span class="eyebrow">Section 5 of 9</span>
@@ -882,9 +873,9 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- =============================================
      SECTION 6 — Overseas Exposure
-══════════════════════════════════════════ -->
+============================================= -->
 <div class="form-section" id="section-5">
   <div class="section-header">
     <span class="eyebrow">Section 6 of 9</span>
@@ -920,9 +911,9 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- =============================================
      SECTION 7 — Customer Onboarding Practices
-══════════════════════════════════════════ -->
+============================================= -->
 <div class="form-section" id="section-6">
   <div class="section-header">
     <span class="eyebrow">Section 7 of 9</span>
@@ -1019,9 +1010,9 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- =============================================
      SECTION 8 — AML Governance Roles
-══════════════════════════════════════════ -->
+============================================= -->
 <div class="form-section" id="section-7">
   <div class="section-header">
     <span class="eyebrow">Section 8 of 9</span>
@@ -1112,9 +1103,9 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- =============================================
      SECTION 9 — Declaration
-══════════════════════════════════════════ -->
+============================================= -->
 <div class="form-section" id="section-8">
   <div class="section-header">
     <span class="eyebrow">Section 9 of 9</span>
@@ -1165,14 +1156,14 @@
   let currentStep = 0;
   const totalSteps = 9;
 
-  /* ── Helpers ── */
-  const getRadio  = n => document.querySelector(`input[name="${n}"]:checked`)?.value || null;
+  /* Helpers */
+  const getRadio   = n => document.querySelector(`input[name="${n}"]:checked`)?.value || null;
   const getChecked = n => [...document.querySelectorAll(`input[name="${n}"]:checked`)].map(e => e.value);
-  const val       = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
-  const showErr   = id => { const el = document.getElementById(id); if (el) el.classList.add('visible'); };
-  const hideErr   = id => { const el = document.getElementById(id); if (el) el.classList.remove('visible'); };
+  const val        = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+  const showErr    = id => { const el = document.getElementById(id); if (el) el.classList.add('visible'); };
+  const hideErr    = id => { const el = document.getElementById(id); if (el) el.classList.remove('visible'); };
 
-  /* ── Conditionals ── */
+  /* Conditionals */
   function setupConditionals() {
     document.getElementById('bt_other_check').addEventListener('change', e =>
       document.getElementById('bt_other_field').classList.toggle('visible', e.target.checked));
@@ -1187,8 +1178,7 @@
       }));
   }
 
-
-  /* ── Validation ── */
+  /* Validation */
   function validateStep(step) {
     let ok = true;
 
@@ -1201,7 +1191,7 @@
     const requireRadio = (name) => req(name, `err-${name}`, () => !!getRadio(name));
     const requireCheck = (name) => req(name, `err-${name}`, () => getChecked(name).length > 0);
 
-  if (step === 0) {
+    if (step === 0) {
       requireText('business_name');
       requireText('abn');
       requireText('contact_person');
@@ -1216,7 +1206,7 @@
       requireRadio('unusual_requests');
       requireRadio('ai_verification');
     }
-   if (step === 2) {
+    if (step === 2) {
       requireRadio('bodies_corporate');
       requireRadio('partnerships');
       requireRadio('trusts');
@@ -1268,7 +1258,7 @@
     return ok;
   }
 
-  /* ── Navigation ── */
+  /* Navigation */
   function moveStep(dir) {
     if (dir === 1 && !validateStep(currentStep)) return;
 
@@ -1291,7 +1281,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  /* ── Collect data ── */
+  /* Collect data */
   function collectData() {
     return {
       section1: {
@@ -1317,13 +1307,13 @@
         comments:                   val('s2_comments'),
       },
       section3: {
-        bodies_corporate:  getRadio('bodies_corporate'),
-        partnerships:      getRadio('partnerships'),
-        trusts:            getRadio('trusts'),
-        associations:      getRadio('associations'),
-        government_bodies: getRadio('government_bodies'),
+        bodies_corporate:    getRadio('bodies_corporate'),
+        partnerships:        getRadio('partnerships'),
+        trusts:              getRadio('trusts'),
+        associations:        getRadio('associations'),
+        government_bodies:   getRadio('government_bodies'),
         business_entity_pct: getRadio('business_entity_pct'),
-        comments:          val('s3_comments'),
+        comments:            val('s3_comments'),
       },
       section4: {
         criminal_activity:  getRadio('criminal_activity'),
@@ -1342,11 +1332,9 @@
         comments:            val('s5_comments'),
       },
       section6: {
-        overseas_exposure:   getRadio('overseas_exposure'),
-        countries_involved:  val('countries_involved'),
-        overseas_risk_types: getChecked('overseas_risk_types'),
-        overseas_risk_other: val('overseas_risk_other'),
-        comments:            val('s6_comments'),
+        overseas_exposure:  getRadio('overseas_exposure'),
+        countries_involved: val('countries_involved'),
+        comments:           val('s6_comments'),
       },
       section7: {
         ob_info_collected:    getChecked('ob_info_collected'),
@@ -1372,7 +1360,7 @@
     };
   }
 
-  /* ── Submit ── */
+  /* Submit */
   async function submitForm() {
     const errEl = document.getElementById('submit_error');
     errEl.classList.remove('visible');
