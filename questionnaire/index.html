@@ -1208,12 +1208,13 @@
     const requireRadio = (name) => req(name, `err-${name}`, () => !!getRadio(name));
     const requireCheck = (name) => req(name, `err-${name}`, () => getChecked(name).length > 0);
 
-    if (step === 0) {
+  if (step === 0) {
       requireText('business_name');
       requireText('abn');
       requireText('contact_person');
       requireEmail('contact_email');
       requireText('phone');
+      req('avg_sales_per_year', 'err-avg_sales_per_year', () => val('avg_sales_per_year').length > 0);
       requireCheck('business_type');
     }
     if (step === 1) {
@@ -1222,12 +1223,13 @@
       requireRadio('unusual_requests');
       requireRadio('ai_verification');
     }
-    if (step === 2) {
+   if (step === 2) {
       requireRadio('bodies_corporate');
       requireRadio('partnerships');
       requireRadio('trusts');
       requireRadio('associations');
       requireRadio('government_bodies');
+      requireRadio('business_entity_pct');
     }
     if (step === 3) {
       requireRadio('criminal_activity');
@@ -1305,6 +1307,7 @@
         contact_person:      val('contact_person'),
         contact_email:       val('contact_email'),
         phone:               val('phone'),
+        avg_sales_per_year:  val('avg_sales_per_year'),
         business_type:       getChecked('business_type'),
         business_type_other: val('business_type_other'),
         comments:            val('s1_comments'),
@@ -1326,6 +1329,7 @@
         trusts:            getRadio('trusts'),
         associations:      getRadio('associations'),
         government_bodies: getRadio('government_bodies'),
+        business_entity_pct: getRadio('business_entity_pct'),
         comments:          val('s3_comments'),
       },
       section4: {
