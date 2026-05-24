@@ -542,14 +542,26 @@
         <p class="field-error" id="err-contact_email">A valid email address is required.</p>
       </div>
     </div>
-    <div class="field-row">
-      <div>
-        <label class="field-label" for="phone">Phone Number</label>
-        <input type="tel" id="phone" placeholder="04XX XXX XXX">
-        <p class="field-error" id="err-phone">Phone number is required.</p>
+   <div class="field-row">
+        <div>
+          <label class="field-label" for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="04XX XXX XXX">
+          <p class="field-error" id="err-phone">Phone number is required.</p>
+        </div>
+        <div>
+          <label class="field-label" for="avg_sales_per_year">Average number of sales per year</label>
+          <select id="avg_sales_per_year" style="width:100%; padding:12px 14px; border:1px solid var(--border); border-radius:var(--radius); font-family:'DM Sans',sans-serif; font-size:15px; color:var(--text); background:var(--sand); min-height:44px; outline:none;">
+            <option value="">Select a range...</option>
+            <option value="1–25">1 – 25</option>
+            <option value="26–50">26 – 50</option>
+            <option value="51–100">51 – 100</option>
+            <option value="101–200">101 – 200</option>
+            <option value="200+">200+</option>
+          </select>
+          <p class="field-error" id="err-avg_sales_per_year">Please select an approximate range.</p>
+        </div>
       </div>
     </div>
-  </div>
 
   <div class="card">
     <p class="field-label">Business Type</p>
@@ -713,7 +725,20 @@
       <label><input type="radio" name="government_bodies" value="No"><span class="pill">No</span></label>
       <label><input type="radio" name="government_bodies" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
     </div>
-    <p class="field-error" id="err-government_bodies">Please select an answer.</p>
+ <p class="field-error" id="err-government_bodies">Please select an answer.</p>
+  </div>
+
+  <div class="card">
+    <p class="field-question">3.6 Approximately what percentage of your sales involve a business entity such as a company, trust, or partnership?</p>
+    <p class="field-hint">Include any transaction where a buyer, seller, or beneficial owner acts through a corporate or trust structure.</p>
+    <div class="pill-group">
+      <label><input type="radio" name="business_entity_pct" value="Less than 10%"><span class="pill">Less than 10%</span></label>
+      <label><input type="radio" name="business_entity_pct" value="10–25%"><span class="pill">10–25%</span></label>
+      <label><input type="radio" name="business_entity_pct" value="25–50%"><span class="pill">25–50%</span></label>
+      <label><input type="radio" name="business_entity_pct" value="More than 50%"><span class="pill">More than 50%</span></label>
+      <label><input type="radio" name="business_entity_pct" value="Don't Know / Need Guidance"><span class="pill">Don't Know / Need Guidance</span></label>
+    </div>
+    <p class="field-error" id="err-business_entity_pct">Please select an answer.</p>
   </div>
 
   <div class="section-comments-card">
