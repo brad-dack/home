@@ -831,6 +831,17 @@
     <p class="field-error" id="err-charities">Please select an answer.</p>
   </div>
 
+<div class="card">
+  <p class="field-question">4.9 Will your agency accept the risk of dealing with customers who may be using false or fraudulent identities, and adapt your AML/CTF Program to detect and manage it, or does your agency choose to avoid this risk entirely?</p>
+  <p class="field-hint">False identities can include fake documents, misrepresented personal details, or technology-assisted impersonation such as deepfakes or spoofing. Consider how your delivery channels (online, remote, in-person) affect your exposure to this risk and your ability to detect it.</p>
+  <div class="pill-group">
+    <label><input type="radio" name="false_identities" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+    <label><input type="radio" name="false_identities" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+    <label><input type="radio" name="false_identities" value="Need guidance"><span class="pill">Need guidance</span></label>
+  </div>
+  <p class="field-error" id="err-false_identities">Please select an answer.</p>
+</div>
+ 
   <div class="section-comments-card">
     <label class="field-label" for="s4_comments">Section comments <span class="opt">(optional)</span></label>
     <textarea id="s4_comments" placeholder="Any additional context for this section..."></textarea>
@@ -1223,6 +1234,7 @@
       requireRadio('third_party_reps');
       requireRadio('unexplained_wealth');
       requireRadio('charities');
+      requireRadio('false_identities');
     }
     if (step === 4) {
       requireCheck('interaction_methods');
@@ -1324,6 +1336,7 @@
         third_party_reps:   getRadio('third_party_reps'),
         unexplained_wealth: getRadio('unexplained_wealth'),
         charities:          getRadio('charities'),
+        false_identities:   getRadio('false_identities'),
         comments:           val('s4_comments'),
       },
       section5: {
