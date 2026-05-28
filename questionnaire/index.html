@@ -629,7 +629,22 @@
   </div>
 
   <div class="card">
-    <p class="field-question">2.4 Does your business use AI, digital identity tools or automated onboarding technology?</p>
+    <p class="field-question">2.4 Will your agency accept the risk of acting on high-value property transactions of $1.5 million or more where no mortgage or loan from a lending institution is involved, and adapt your AML/CTF Program to manage it, or does your agency choose to avoid this risk entirely and decline such transactions?</p>
+    <p class="field-hint">Unfinanced high-value purchases bypass the due diligence lenders perform on buyers, making them attractive for money laundering. Where these transactions arise, enhanced customer due diligence is required.</p>
+    <div class="pill-group">
+      <label><input type="radio" name="unfinanced_high_value" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="unfinanced_high_value" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="unfinanced_high_value" value="Need guidance"><span class="pill">Need guidance</span></label>
+    </div>
+    <p class="field-error" id="err-unfinanced_high_value">Please select an answer.</p>
+    <div class="optional-comment" style="margin-top:14px">
+      <label class="field-label" style="font-weight:400;color:var(--text-light);font-size:12px">Additional comments (optional)</label>
+      <textarea id="unfinanced_high_value_comments" placeholder="Any relevant context..." style="min-height:70px"></textarea>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="field-question">2.5 Does your business use AI, digital identity tools or automated onboarding technology?</p>
     <p class="field-hint">This includes digital ID verification, AI assistants, automated onboarding, and facial recognition tools.</p>
     <div class="pill-group">
       <label><input type="radio" name="ai_verification" value="Yes"><span class="pill">Yes</span></label>
@@ -831,17 +846,17 @@
     <p class="field-error" id="err-charities">Please select an answer.</p>
   </div>
 
-<div class="card">
-  <p class="field-question">4.9 Will your agency accept the risk of dealing with customers who may be using false or fraudulent identities, and adapt your AML/CTF Program to detect and manage it, or does your agency choose to avoid this risk entirely?</p>
-  <p class="field-hint">False identities can include fake documents, misrepresented personal details, or technology-assisted impersonation such as deepfakes or spoofing. Consider how your delivery channels (online, remote, in-person) affect your exposure to this risk and your ability to detect it.</p>
-  <div class="pill-group">
-    <label><input type="radio" name="false_identities" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
-    <label><input type="radio" name="false_identities" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
-    <label><input type="radio" name="false_identities" value="Need guidance"><span class="pill">Need guidance</span></label>
+  <div class="card">
+    <p class="field-question">4.9 Will your agency accept the risk of dealing with customers who may be using false or fraudulent identities, and adapt your AML/CTF Program to detect and manage it, or does your agency choose to avoid this risk entirely?</p>
+    <p class="field-hint">False identities can include fake documents, misrepresented personal details, or technology-assisted impersonation such as deepfakes or spoofing. Consider how your delivery channels (online, remote, in-person) affect your exposure to this risk and your ability to detect it.</p>
+    <div class="pill-group">
+      <label><input type="radio" name="false_identities" value="Accept &amp; manage the risk"><span class="pill">Accept &amp; manage the risk</span></label>
+      <label><input type="radio" name="false_identities" value="Avoid this risk entirely"><span class="pill">Avoid this risk entirely</span></label>
+      <label><input type="radio" name="false_identities" value="Need guidance"><span class="pill">Need guidance</span></label>
+    </div>
+    <p class="field-error" id="err-false_identities">Please select an answer.</p>
   </div>
-  <p class="field-error" id="err-false_identities">Please select an answer.</p>
-</div>
- 
+
   <div class="section-comments-card">
     <label class="field-label" for="s4_comments">Section comments <span class="opt">(optional)</span></label>
     <textarea id="s4_comments" placeholder="Any additional context for this section..."></textarea>
@@ -1215,6 +1230,7 @@
       requireRadio('cash_transactions');
       requireRadio('virtual_assets');
       requireRadio('unusual_requests');
+      requireRadio('unfinanced_high_value');
       requireRadio('ai_verification');
     }
     if (step === 2) {
@@ -1308,15 +1324,17 @@
         comments:            val('s1_comments'),
       },
       section2: {
-        cash_transactions:          getRadio('cash_transactions'),
-        cash_transactions_comments: val('cash_transactions_comments'),
-        virtual_assets:             getRadio('virtual_assets'),
-        virtual_assets_comments:    val('virtual_assets_comments'),
-        unusual_requests:           getRadio('unusual_requests'),
-        unusual_requests_comments:  val('unusual_requests_comments'),
-        ai_verification:            getRadio('ai_verification'),
-        ai_verification_comments:   val('ai_verification_comments'),
-        comments:                   val('s2_comments'),
+        cash_transactions:                getRadio('cash_transactions'),
+        cash_transactions_comments:       val('cash_transactions_comments'),
+        virtual_assets:                   getRadio('virtual_assets'),
+        virtual_assets_comments:          val('virtual_assets_comments'),
+        unusual_requests:                 getRadio('unusual_requests'),
+        unusual_requests_comments:        val('unusual_requests_comments'),
+        unfinanced_high_value:            getRadio('unfinanced_high_value'),
+        unfinanced_high_value_comments:   val('unfinanced_high_value_comments'),
+        ai_verification:                  getRadio('ai_verification'),
+        ai_verification_comments:         val('ai_verification_comments'),
+        comments:                         val('s2_comments'),
       },
       section3: {
         bodies_corporate:    getRadio('bodies_corporate'),
