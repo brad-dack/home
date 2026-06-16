@@ -4,16 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Collection Notice — Four Foxes Consulting</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap"></noscript>
   <style>
     :root {
-      --ink: #1a1612;
-      --parchment: #f5f0e8;
-      --warm-mid: #c8b89a;
-      --accent: #8b4513;
-      --accent-light: #c46a2a;
-      --rule: #d4c4a8;
-      --section-bg: #ede8de;
+      --navy: #0f1f38; --navy-mid: #1a3050;
+      --teal: #1a7f6e; --teal-light: #e8f5f2; --teal-mid: #c2e8e0;
+      --sand: #f5f2ec; --text: #1a1a2e; --text-mid: #4a5568; --text-light: #718096;
+      --white: #ffffff; --border: #e2ddd6;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -21,99 +20,86 @@
     html { scroll-behavior: smooth; }
 
     body {
-      background-color: var(--parchment);
-      color: var(--ink);
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 18px;
-      line-height: 1.75;
+      background-color: var(--white);
+      color: var(--text);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
       min-height: 100vh;
     }
 
     /* ── Header ── */
     header {
-      background-color: var(--ink);
-      color: var(--parchment);
+      background-color: var(--navy);
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      color: var(--white);
       padding: 3rem 2rem 2.5rem;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
 
-    header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(
-          45deg,
-          transparent,
-          transparent 40px,
-          rgba(255,255,255,0.015) 40px,
-          rgba(255,255,255,0.015) 80px
-        );
-      pointer-events: none;
-    }
-
     .header-eyebrow {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      font-weight: 300;
-      letter-spacing: 0.25em;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--warm-mid);
+      color: var(--teal-mid);
       margin-bottom: 1rem;
     }
 
     header h1 {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 600;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 400;
       letter-spacing: -0.02em;
       line-height: 1.1;
       margin-bottom: 0.5rem;
+      color: var(--white);
     }
 
     header h1 span {
-      color: var(--accent-light);
-      font-style: italic;
+      color: var(--teal-mid);
     }
 
     .header-sub {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      color: var(--warm-mid);
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
       margin-top: 1.25rem;
     }
 
     .header-rule {
-      width: 60px;
+      width: 40px;
       height: 2px;
-      background: var(--accent-light);
+      background: var(--teal);
       margin: 1.25rem auto 0;
     }
 
     /* ── Layout ── */
     .page-wrapper {
-      max-width: 820px;
+      max-width: 720px;
       margin: 0 auto;
       padding: 3rem 2rem 5rem;
     }
 
     /* ── TOC ── */
     .toc {
-      background: var(--section-bg);
-      border-left: 3px solid var(--accent);
+      background: var(--teal-light);
+      border: 1px solid var(--teal-mid);
+      border-radius: 12px;
       padding: 1.75rem 2rem;
       margin-bottom: 3.5rem;
       animation: fadeUp 0.6s ease both;
     }
 
     .toc-title {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--teal);
       margin-bottom: 1rem;
     }
 
@@ -131,28 +117,25 @@
     .toc li {
       counter-increment: toc-counter;
       padding: 0.2rem 0;
-      font-size: 0.88rem;
+      font-size: 14px;
       line-height: 1.4;
     }
 
     .toc li::before {
       content: counter(toc-counter, decimal-leading-zero) ". ";
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--accent);
+      font-size: 12px;
+      color: var(--teal);
       margin-right: 0.3rem;
     }
 
     .toc a {
-      color: var(--ink);
+      color: var(--text-mid);
       text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s, color 0.2s;
+      transition: color 0.2s;
     }
 
     .toc a:hover {
-      color: var(--accent);
-      border-bottom-color: var(--accent-light);
+      color: var(--teal);
     }
 
     /* ── Sections ── */
@@ -168,28 +151,32 @@
       gap: 1rem;
       margin-bottom: 1.25rem;
       padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--rule);
+      border-bottom: 1px solid var(--border);
     }
 
     .section-number {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--accent);
-      letter-spacing: 0.1em;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--teal);
+      letter-spacing: 0.08em;
       flex-shrink: 0;
       padding-top: 0.2rem;
     }
 
     .section-header h2 {
-      font-size: 1.45rem;
-      font-weight: 600;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(1.3rem, 3vw, 1.6rem);
+      font-weight: 400;
       letter-spacing: -0.01em;
       line-height: 1.2;
+      color: var(--navy);
     }
 
     p {
       margin-bottom: 1rem;
-      font-size: 1rem;
+      font-size: 15px;
+      color: var(--text-mid);
+      font-weight: 300;
     }
 
     ul, ol {
@@ -198,7 +185,8 @@
 
     li {
       margin-bottom: 0.35rem;
-      font-size: 0.97rem;
+      font-size: 14px;
+      color: var(--text-mid);
     }
 
     ul ul, ol ul {
@@ -207,84 +195,90 @@
     }
 
     .subsection-title {
-      font-style: italic;
-      font-weight: 600;
-      font-size: 1.05rem;
+      font-weight: 500;
+      font-size: 15px;
       margin: 1.5rem 0 0.5rem;
-      color: var(--accent);
+      color: var(--navy);
     }
 
     /* Callout box */
     .callout {
-      background: var(--section-bg);
-      border-left: 3px solid var(--accent);
+      background: var(--teal-light);
+      border: 1px solid var(--teal-mid);
+      border-radius: 10px;
       padding: 1rem 1.25rem;
       margin: 1.25rem 0;
-      font-size: 0.94rem;
+      font-size: 14px;
+      color: var(--text-mid);
     }
 
     /* Warning callout */
     .callout-warning {
-      background: #f9f0e4;
-      border-left: 3px solid #b85c00;
+      background: var(--sand);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--navy);
+      border-radius: 10px;
       padding: 1rem 1.25rem;
       margin: 1.25rem 0;
-      font-size: 0.94rem;
+      font-size: 14px;
+      color: var(--text-mid);
     }
 
     .callout-warning strong {
       display: block;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #b85c00;
+      color: var(--navy);
       margin-bottom: 0.4rem;
     }
 
     /* Acknowledgement box */
     .acknowledgement {
-      background: var(--ink);
-      color: var(--parchment);
+      background: var(--navy);
+      border-radius: 10px;
       padding: 1.75rem 2rem;
       margin-top: 1.25rem;
     }
 
     .acknowledgement .ack-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent-light);
+      color: var(--teal-mid);
       margin-bottom: 0.75rem;
     }
 
     .acknowledgement p {
-      font-size: 0.95rem;
-      color: var(--warm-mid);
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      font-weight: 300;
       margin: 0;
     }
 
     /* ── Contact card ── */
     .contact-card {
-      background: var(--ink);
-      color: var(--parchment);
+      background: var(--sand);
+      border: 1px solid var(--border);
+      border-radius: 12px;
       padding: 1.5rem 2rem;
       margin-top: 1rem;
     }
 
     .contact-card p {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.78rem;
-      letter-spacing: 0.05em;
-      line-height: 1.9;
-      color: var(--warm-mid);
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-mid);
+      font-weight: 300;
       margin: 0;
     }
 
     .contact-card a {
-      color: var(--accent-light);
+      color: var(--teal);
       text-decoration: none;
+      font-weight: 500;
     }
 
     .contact-card a:hover {
@@ -293,13 +287,12 @@
 
     /* ── Footer ── */
     footer {
-      text-align: center;
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.06);
       padding: 2rem;
-      border-top: 1px solid var(--rule);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--warm-mid);
-      letter-spacing: 0.15em;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
     }
 
     /* ── Scroll progress bar ── */
@@ -307,7 +300,7 @@
       position: fixed;
       top: 0; left: 0;
       height: 3px;
-      background: var(--accent-light);
+      background: var(--teal);
       width: 0%;
       z-index: 100;
       transition: width 0.1s linear;
