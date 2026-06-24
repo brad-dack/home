@@ -26,6 +26,7 @@
             --teal: #1a7f6e; --teal-light: #e8f5f2; --teal-mid: #c2e8e0;
             --sand: #f5f2ec; --text: #1a1a2e; --text-mid: #4a5568; --text-light: #718096;
             --white: #ffffff; --border: #e2ddd6;
+            --red: #d62839; --red-light: #fdecee; --red-mid: #f5b8be;
         }
         html { scroll-behavior: smooth; }
         body { 
@@ -129,6 +130,14 @@
         .btn-teal-outline:hover { background: var(--teal-light); color: var(--teal); }
 
         .hero-note { font-size: 13px; color: var(--text-light); margin-top: 0.75rem; }
+
+        .help-banner { margin-top: 2rem; background: var(--red-light); border: 1px solid var(--red-mid); border-left: 4px solid var(--red); border-radius: 12px; padding: 1.1rem 1.4rem; max-width: 560px; }
+        .help-banner .help-tag { display: inline-flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--red); margin-bottom: 0.55rem; }
+        .help-banner .help-tag::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--red); flex-shrink: 0; animation: pulse 1.2s infinite; }
+        .help-banner .help-headline { font-family: 'DM Serif Display', Georgia, serif; font-size: 22px; color: var(--navy); margin: 0 0 0.35rem; line-height: 1.2; }
+        .help-banner p { font-size: 15px; color: var(--text-mid); line-height: 1.6; margin: 0; }
+        .help-banner a.help-call { display: inline-flex; align-items: center; gap: 8px; margin-top: 0.9rem; background: var(--navy); color: var(--white); padding: 11px 20px; border-radius: 8px; text-decoration: none; font-size: 15px; font-weight: 600; min-height: 44px; transition: background 0.2s, transform 0.15s; }
+        .help-banner a.help-call:hover { background: var(--navy-mid); transform: translateY(-1px); }
 
         .callout-strip { background: var(--navy); padding: 1.25rem 2rem; text-align: center; }
         .callout-strip p { color: rgba(255,255,255,0.8); font-size: 15px; font-weight: 300; max-width: 720px; margin: 0 auto; line-height: 1.65; }
@@ -265,6 +274,12 @@
                 <a href="https://verify.fourfoxes.com.au" class="btn-primary">$12.50 per check</a>
             </div>
             <p class="hero-note">Independent, on‑shore support, personalised service.</p>
+            <div class="help-banner">
+                <span class="help-tag">Late June update</span>
+                <p class="help-headline">Still need help before 1 July? We can.</p>
+                <p>We're continuing to take on clients who need a program set up and ongoing checks in place ahead of the deadline.</p>
+                <a href="tel:0499804031" class="help-call">📞 Call Brad on 0499 804 031</a>
+            </div>
         </div>
     </div>
 </section>
