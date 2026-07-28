@@ -9,8 +9,8 @@
     <meta property="og:title" content="Four Foxes Consulting - AML for Real Estate">
     <meta property="og:description" content="Practical AML programs, health checks, AUSTRAC reporting support, and verification tools built for small to medium real estate agencies.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fourfoxes.com.au">
-    <link rel="canonical" href="https://fourfoxes.com.au">
+    <meta property="og:url" content="https://www.fourfoxes.com.au/">
+    <link rel="canonical" href="https://www.fourfoxes.com.au/">
 
     <!-- Preload critical fonts -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" as="style">
@@ -413,9 +413,15 @@
 
     document.getElementById('contactForm').addEventListener('submit', function() {
         const form = this;
-        setTimeout(function() { 
-            form.style.display = 'none'; 
-            document.getElementById('successMsg').style.display = 'block'; 
+        if (typeof gtag === 'function') {
+            gtag('event', 'generate_lead', {
+                event_category: 'contact_form',
+                page_location: window.location.href
+            });
+        }
+        setTimeout(function() {
+            form.style.display = 'none';
+            document.getElementById('successMsg').style.display = 'block';
         }, 100);
     });
 
