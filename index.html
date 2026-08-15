@@ -441,10 +441,11 @@
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+  "@id": "https://www.fourfoxes.com.au/#organization",
   "name": "Four Foxes Consulting",
   "description": "Practical AML/CTF compliance programs, health checks, AUSTRAC reporting support and verification tools designed specifically for small to medium Australian real estate agencies.",
-  "url": "https://fourfoxes.com.au",
-  "logo": "https://fourfoxes.com.au/logo.png", 
+  "url": "https://www.fourfoxes.com.au/",
+  "logo": "[NEEDS INPUT: absolute URL of a real logo file]",
   "email": "aml@fourfoxes.com.au",
   "address": {
     "@type": "PostalAddress",
@@ -454,7 +455,7 @@
   },
   "founder": {
     "@type": "Person",
-    "name": "Brad"
+    "name": "[NEEDS INPUT: full name for founder]"
   },
   "serviceType": "AML/CTF Compliance Consulting",
   "areaServed": "Australia",
@@ -462,10 +463,30 @@
     "@type": "OfferCatalog",
     "name": "AML Services for Real Estate",
     "itemListElement": [
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AML/CTF Program Setup (Parts A & B)", "offers": {"@type": "Offer", "price": "499", "priceCurrency": "AUD"}}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AML Health Check", "offers": {"@type": "Offer", "price": "399", "priceCurrency": "AUD"}}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Independent AML Review", "offers": {"@type": "Offer", "price": "1999", "priceCurrency": "AUD"}}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "KYC/KYB Verification Checks", "offers": {"@type": "Offer", "price": "13.50", "priceCurrency": "AUD"}}}
+      {
+        "@type": "Offer",
+        "price": "499",
+        "priceCurrency": "AUD",
+        "itemOffered": { "@type": "Service", "name": "AML/CTF Program Setup (Parts A & B)" }
+      },
+      {
+        "@type": "Offer",
+        "price": "399",
+        "priceCurrency": "AUD",
+        "itemOffered": { "@type": "Service", "name": "AML Health Check" }
+      },
+      {
+        "@type": "Offer",
+        "price": "1999",
+        "priceCurrency": "AUD",
+        "itemOffered": { "@type": "Service", "name": "Independent AML Review" }
+      },
+      {
+        "@type": "Offer",
+        "price": "13.50",
+        "priceCurrency": "AUD",
+        "itemOffered": { "@type": "Service", "name": "KYC/KYB Verification Checks" }
+      }
     ]
   }
 }
