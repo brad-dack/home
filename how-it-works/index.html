@@ -13,11 +13,13 @@
     <meta property="og:url" content="https://www.fourfoxes.com.au/how-it-works/">
     <meta property="og:image" content="https://www.fourfoxes.com.au/fourfoxes_combo_hero.png">
 
-    <!-- Preload critical fonts to fix render-blocking -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" as="style">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" media="print" onload="this.media='all'">
+    <!-- Preload critical fonts (DM Serif Display is used for headings only; body text uses the system stack) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;display=swap" media="print" onload="this.media='all'">
     <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@300;400;500&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;display=swap">
     </noscript>
 
     <style>
@@ -27,20 +29,17 @@
             --teal: #1a7f6e; --teal-light: #e8f5f2; --teal-mid: #c2e8e0;
             --sand: #f5f2ec; --text: #1a1a2e; --text-mid: #4a5568; --text-light: #718096;
             --white: #ffffff; --border: #e2ddd6;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
         html { scroll-behavior: smooth; }
-        body { 
-            font-family: 'DM Sans', system-ui, sans-serif; 
-            font-weight: 400; 
-            color: var(--text); 
-            background: var(--white); 
-            line-height: 1.7; 
-            font-size: 16px; 
+        body {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+            font-size: 16px;
         }
-
-        /* Font fallback */
-        body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body.fonts-loaded { font-family: 'DM Sans', system-ui, sans-serif; }
 
         nav { 
             position: fixed; top: 0; left: 0; right: 0; z-index: 100; 
@@ -308,12 +307,6 @@
     </div>
     <p class="footer-copy">© 2026 Four Foxes Consulting. ABN 78 538 005 810 · fourfoxes.com.au</p>
 </footer>
-
-<script>
-    document.fonts.ready.then(() => {
-        document.documentElement.classList.add('fonts-loaded');
-    });
-</script>
 
 </body>
 </html>

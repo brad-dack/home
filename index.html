@@ -12,11 +12,13 @@
     <meta property="og:url" content="https://www.fourfoxes.com.au/">
     <link rel="canonical" href="https://www.fourfoxes.com.au/">
 
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" as="style">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" media="print" onload="this.media='all'">
+    <!-- Preload critical fonts (DM Serif Display is used for headings only; body text uses the system stack) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;display=swap" media="print" onload="this.media='all'">
     <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@300;400;500&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;display=swap">
     </noscript>
 
     <style>
@@ -27,19 +29,17 @@
             --sand: #f5f2ec; --text: #1a1a2e; --text-mid: #4a5568; --text-light: #718096;
             --white: #ffffff; --border: #e2ddd6;
             --red: #d62839; --red-light: #fdecee; --red-mid: #f5b8be;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
         html { scroll-behavior: smooth; }
-        body { 
-            font-family: 'DM Sans', system-ui, sans-serif; 
-            font-weight: 400; 
-            color: var(--text); 
-            background: var(--white); 
-            line-height: 1.7; 
-            font-size: 16px; 
+        body {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+            font-size: 16px;
         }
-
-        body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body.fonts-loaded { font-family: 'DM Sans', system-ui, sans-serif; }
 
         nav { 
             position: fixed; top: 0; left: 0; right: 0; z-index: 100; 
@@ -203,10 +203,10 @@
         .contact-sub { font-size: 16px; color: var(--text-mid); font-weight: 300; line-height: 1.75; margin-top: 1rem; margin-bottom: 2.5rem; }
         .contact-form { display: flex; flex-direction: column; gap: 14px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-        .contact-form input, .contact-form textarea { width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--sand); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s, background 0.2s; min-height: 44px; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--sand); color: var(--text); font-family: var(--font-sans); font-size: 15px; outline: none; transition: border-color 0.2s, background 0.2s; min-height: 44px; }
         .contact-form input:focus, .contact-form textarea:focus { border-color: var(--teal); background: var(--white); }
         .contact-form textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
-        .btn-contact { background: var(--navy); color: var(--white); border: none; padding: 16px 28px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 500; cursor: pointer; transition: background 0.2s, transform 0.15s; width: 100%; margin-top: 6px; min-height: 52px; }
+        .btn-contact { background: var(--navy); color: var(--white); border: none; padding: 16px 28px; border-radius: 8px; font-family: var(--font-sans); font-size: 16px; font-weight: 500; cursor: pointer; transition: background 0.2s, transform 0.15s; width: 100%; margin-top: 6px; min-height: 52px; }
         .btn-contact:hover { background: var(--navy-mid); transform: translateY(-1px); }
         .form-reassurance { font-size: 13px; color: var(--text-light); text-align: center; margin-top: 4px; }
         .success-msg { display: none; background: var(--teal-light); border: 1px solid var(--teal-mid); border-radius: 10px; padding: 1.25rem 1.5rem; color: var(--teal); font-size: 15px; margin-top: 1rem; line-height: 1.6; }
@@ -412,10 +412,6 @@
 </footer>
 
 <script>
-    document.fonts.ready.then(() => {
-        document.documentElement.classList.add('fonts-loaded');
-    });
-
     document.getElementById('contactForm').addEventListener('submit', function() {
         const form = this;
         if (typeof gtag === 'function') {
